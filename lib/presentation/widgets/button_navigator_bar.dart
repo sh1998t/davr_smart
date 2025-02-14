@@ -1,10 +1,12 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:incasator/presentation/screens/deposit_screen/deposit_screen.dart';
-import 'package:incasator/presentation/screens/profile_screen/profile_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:incasator/presentation/screens/deposit_screen.dart';
+import 'package:incasator/presentation/screens/precessing_screen.dart';
+import 'package:incasator/presentation/screens/profile_screen.dart';
+import 'package:incasator/presentation/screens/qr_code_scaner.dart';
 
-import '../screens/history/history_screen.dart';
-import '../screens/processing_screen/precessing_screen.dart';
+import '../screens/history_screen.dart';
 
 class ButtonNavigationBarWidget extends StatefulWidget {
   const ButtonNavigationBarWidget({super.key});
@@ -17,6 +19,7 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
   final pages = [
     PrecessingScreen(),
     DepositScreen(),
+    QrCodeScanner(),
     HistoryScreen(),
     ProfileScreen()
   ];
@@ -27,22 +30,37 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Color(0xFF0D1B2A),
         style: TabStyle.fixedCircle,
-        activeColor: Colors.white,
-        color: Colors.white38,
+        color: Color(0xFF0D1B2A),
+        curveSize: 25,
+        top: -25,
         initialActiveIndex: page,
+        height: 45.h,
         items: [
-          TabItem(icon: Icons.edit_document, title: ''),
-          TabItem(icon: Icons.account_balance, title: ''),
           TabItem(
-            icon: Icon(
-              Icons.qr_code,
-              color: Colors.white,
-              size: 36,
-            ),
+            icon: Icon(Icons.edit_document, color: Colors.white38),
+            activeIcon: Icon(Icons.edit_document, color: Colors.white),
             title: '',
           ),
-          TabItem(icon: Icons.history, title: ''),
-          TabItem(icon: Icons.settings, title: ''),
+          TabItem(
+            icon: Icon(Icons.account_balance, color: Colors.white38),
+            activeIcon: Icon(Icons.account_balance, color: Colors.white),
+            title: '',
+          ),
+          TabItem(
+            icon: Icon(Icons.qr_code, color: Colors.white, size: 36),
+            activeIcon: Icon(Icons.qr_code, color: Colors.white, size: 36),
+            title: '',
+          ),
+          TabItem(
+            icon: Icon(Icons.history, color: Colors.white38),
+            activeIcon: Icon(Icons.history, color: Colors.white),
+            title: '',
+          ),
+          TabItem(
+            icon: Icon(Icons.settings, color: Colors.white38),
+            activeIcon: Icon(Icons.settings, color: Colors.white),
+            title: '',
+          ),
         ],
         onTap: (index) {
           setState(() {

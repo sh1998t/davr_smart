@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:incasator/presentation/screens/login_screen/login_screen.dart';
+import 'package:incasator/presentation/screens/login_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {

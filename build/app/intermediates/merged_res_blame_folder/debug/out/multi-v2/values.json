@@ -294,7 +294,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/davrsmart/projects/davr_smart/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

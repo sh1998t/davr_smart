@@ -1526,7 +1526,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/davrsmart/projects/davr_smart/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -3361,7 +3361,7 @@
             "outputFile": "com.example.incasator.app-merged_res-46:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/davrsmart/projects/davr_smart/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
