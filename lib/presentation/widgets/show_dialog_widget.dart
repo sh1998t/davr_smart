@@ -88,11 +88,12 @@ class ShowDialogWidget extends StatelessWidget {
                               color: Color(0xFF0F0F0F)),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
+                                padding: EdgeInsets.all(0),
                                 side: BorderSide.none,
                               ),
                               onPressed: () {},
                               child: Text(
-                                'data',
+                                'Отклонение',
                                 style: TextStyle(
                                     fontSize: 16.sp, color: Colors.white),
                               )),
@@ -109,10 +110,11 @@ class ShowDialogWidget extends StatelessWidget {
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
+                                padding: EdgeInsets.all(0),
                               ),
                               onPressed: () {},
                               child: Text(
-                                'data',
+                                'Принятие',
                                 style: TextStyle(
                                     fontSize: 16.sp, color: Colors.white),
                               )),
@@ -124,8 +126,78 @@ class ShowDialogWidget extends StatelessWidget {
               ),
             ),
             Container(
+              padding: EdgeInsets.only(left: 15),
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.59,
               color: Color(0xff1D1D1D),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text(
+                    'Name',
+                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                  ),
+                  Text(
+                    'Kassir Name',
+                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    'Status ',
+                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                  ),
+                  Text(
+                    'Status Name',
+                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    'date ',
+                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                  ),
+                  Text(
+                    '12:00 00.00',
+                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    'Summa',
+                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                  ),
+                  Text(
+                    '100000000',
+                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Container(
+                    height: 35.h,
+                    width: 80.w,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color(0xFF0F0F0F)),
+                    child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide.none,
+                          padding: EdgeInsets.all(0),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          'check',
+                          style:
+                              TextStyle(fontSize: 16.sp, color: Colors.white),
+                        )),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

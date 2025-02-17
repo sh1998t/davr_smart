@@ -686,6 +686,18 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-28.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "syncfusion_flutter_datepicker",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/syncfusion_flutter_datepicker-28.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -788,7 +800,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-02-14T06:31:51.398432Z",
+  "generated": "2025-02-17T04:53:12.933318Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/davrsmart/development/flutter",

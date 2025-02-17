@@ -1,4 +1,4 @@
-#Wed Feb 12 15:01:23 UZT 2025
+#Fri Feb 14 14:55:31 UZT 2025
 base.0=/Users/davrsmart/projects/davr_smart/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/davrsmart/projects/davr_smart/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/Users/davrsmart/projects/davr_smart/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex

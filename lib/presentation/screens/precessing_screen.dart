@@ -75,18 +75,13 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
   }
 }
 
-class CardWidget extends StatefulWidget {
+class CardWidget extends StatelessWidget {
   const CardWidget({super.key});
 
   @override
-  State<CardWidget> createState() => _CardWidgetState();
-}
-
-class _CardWidgetState extends State<CardWidget> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.h,
+      height: 50.h,
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
         onPressed: () {
@@ -112,7 +107,7 @@ class _CardWidgetState extends State<CardWidget> {
             children: [
               Center(
                 child: Container(
-                  height: 45.h,
+                  height: 42.h,
                   width: 50.w,
                   decoration: BoxDecoration(
                       color: Colors.black12,
