@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 application
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:2:5-33:19
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
-MERGED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-32:19
-MERGED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-32:19
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:2:5-33:19
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
+MERGED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-32:19
+MERGED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-32:19
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:23:5-34:19
@@ -39,21 +39,23 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/da
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/davrsmart/.gradle/caches/transforms-3/5a8c14941c74f8fdf34df1e6cc9be58e/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/davrsmart/.gradle/caches/transforms-3/5a8c14941c74f8fdf34df1e6cc9be58e/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
 	android:extractNativeLibs
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:name
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml
 manifest
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:1:1-45:12
-MERGED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:1:1-45:12
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-MERGED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-34:12
-MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/davr_smart/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
-MERGED from [:shared_preferences_android] /Users/davrsmart/projects/davr_smart/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:1:1-45:12
+MERGED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:1:1-45:12
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+MERGED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-34:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_secure_storage] /Users/davrsmart/projects/incasator/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-10:12
+MERGED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:path_provider_android] /Users/davrsmart/projects/incasator/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences_android] /Users/davrsmart/projects/incasator/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-lifecycle:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/f56256fc230c2f8af7e80eb50f3c2b57/transformed/jetified-camera-lifecycle-1.3.4/AndroidManifest.xml:2:1-7:12
@@ -105,12 +107,13 @@ MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/davrsmart/.gradle/cach
 MERGED from [androidx.datastore:datastore-core-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/9441e8b274faebbfe21cf8c8f463be95/transformed/jetified-datastore-core-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/0cf0dfa47f40d2ebd3407bd47f3dd25e/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/e3611af684c8af9ba655b32249084f4e/transformed/jetified-datastore-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/de258cad7dbb6e789f5ae62dc60121e0/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/davrsmart/.gradle/caches/transforms-3/2c0e63250bd48da5a5fc948829060aa1/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/a1fd92b89d0c194f8fe8fdca4d20e2ee/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/e896b9ac412a8814559a776dc7b5a420/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/d21e37b6169caa7895fc002c1192b0f1/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/davrsmart/.gradle/caches/transforms-3/3cccf64d8e44a1ff0116ea6b8bd8d8e9/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:15:1-41:12
@@ -126,43 +129,47 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/davrsmart
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/davrsmart/.gradle/caches/transforms-3/84b17be5f49a910e04e8c35fea028f28/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/davrsmart/.gradle/caches/transforms-3/5a8c14941c74f8fdf34df1e6cc9be58e/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
 	package
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:1:11-69
 queries
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:39:5-44:15
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:39:5-44:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:40:9-43:18
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:40:9-43:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:41:13-72
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:41:13-72
 	android:name
-		ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:41:21-70
+		ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:41:21-70
 data
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:42:13-50
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:42:13-50
 	android:mimeType
-		ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/main/AndroidManifest.xml:42:19-48
+		ADDED from /Users/davrsmart/projects/incasator/android/app/src/main/AndroidManifest.xml:42:19-48
 uses-permission#android.permission.INTERNET
-ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml:6:5-66
+ADDED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml:6:5-66
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
 	android:name
-		ADDED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml:6:22-64
+		ADDED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml:6:22-64
 uses-sdk
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
-INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
-MERGED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-44
-MERGED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-44
-MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/davr_smart/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/davr_smart/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_android] /Users/davrsmart/projects/davr_smart/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_android] /Users/davrsmart/projects/davr_smart/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
+MERGED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-44
+MERGED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_secure_storage] /Users/davrsmart/projects/incasator/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:53
+MERGED from [:flutter_secure_storage] /Users/davrsmart/projects/incasator/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:53
+MERGED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/davrsmart/projects/incasator/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] /Users/davrsmart/projects/incasator/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/davrsmart/projects/incasator/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] /Users/davrsmart/projects/incasator/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:21:5-44
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:21:5-44
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:21:5-44
@@ -265,6 +272,8 @@ MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davr
 MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/0cf0dfa47f40d2ebd3407bd47f3dd25e/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/e3611af684c8af9ba655b32249084f4e/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/e3611af684c8af9ba655b32249084f4e/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/de258cad7dbb6e789f5ae62dc60121e0/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/de258cad7dbb6e789f5ae62dc60121e0/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/davrsmart/.gradle/caches/transforms-3/2c0e63250bd48da5a5fc948829060aa1/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/davrsmart/.gradle/caches/transforms-3/2c0e63250bd48da5a5fc948829060aa1/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
@@ -273,10 +282,10 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/davrsmart/.gradle/ca
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/a1fd92b89d0c194f8fe8fdca4d20e2ee/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/e896b9ac412a8814559a776dc7b5a420/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/e896b9ac412a8814559a776dc7b5a420/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/d21e37b6169caa7895fc002c1192b0f1/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/d21e37b6169caa7895fc002c1192b0f1/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/davrsmart/.gradle/caches/transforms-3/1122d081a937e71194adcd50d186ca4f/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/davrsmart/.gradle/caches/transforms-3/3cccf64d8e44a1ff0116ea6b8bd8d8e9/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/davrsmart/.gradle/caches/transforms-3/3cccf64d8e44a1ff0116ea6b8bd8d8e9/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
@@ -305,58 +314,60 @@ MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/davrsmart/.gradle/c
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /Users/davrsmart/.gradle/caches/transforms-3/84b17be5f49a910e04e8c35fea028f28/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/davrsmart/.gradle/caches/transforms-3/5a8c14941c74f8fdf34df1e6cc9be58e/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.odml:image:1.0.0-beta1] /Users/davrsmart/.gradle/caches/transforms-3/5a8c14941c74f8fdf34df1e6cc9be58e/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
+	tools:overrideLibrary
+		ADDED from [:flutter_secure_storage] /Users/davrsmart/projects/incasator/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-50
 	android:targetSdkVersion
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/davrsmart/projects/davr_smart/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /Users/davrsmart/projects/incasator/android/app/src/debug/AndroidManifest.xml
 provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-17:20
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-17:20
 	android:grantUriPermissions
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-47
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-47
 	android:authorities
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
 	android:exported
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
 	android:name
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-82
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-82
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:75
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-16:75
 	android:resource
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-72
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-72
 	android:name
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:17-67
 service#com.google.android.gms.metadata.ModuleDependencies
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-31:19
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-31:19
 	android:enabled
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-36
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-36
 	android:exported
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-37
 	tools:ignore
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-40
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-40
 	android:name
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-78
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-78
 intent-filter#action:name:com.google.android.gms.metadata.MODULE_DEPENDENCIES
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-26:29
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-26:29
 action#com.google.android.gms.metadata.MODULE_DEPENDENCIES
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-94
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-94
 	android:name
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:25-91
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:25-91
 meta-data#photopicker_activity:0:required
-ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-30:36
+ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-30:36
 	android:value
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-33
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-33
 	android:name
-		ADDED from [:image_picker_android] /Users/davrsmart/projects/davr_smart/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-63
+		ADDED from [:image_picker_android] /Users/davrsmart/projects/incasator/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:29:17-63
 uses-permission#android.permission.CAMERA
-ADDED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-65
+ADDED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-65
 	android:name
-		ADDED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-62
+		ADDED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-62
 uses-feature#android.hardware.camera
-ADDED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-11:36
+ADDED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-11:36
 	android:required
-		ADDED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-33
+		ADDED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-33
 	android:name
-		ADDED from [:mobile_scanner] /Users/davrsmart/projects/davr_smart/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-47
+		ADDED from [:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-47
 service#androidx.camera.core.impl.MetadataHolderService
 ADDED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:29:9-33:78
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:24:9-33:19

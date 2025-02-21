@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.incasator.app-mergeDebugResources-44:/values/values.xml",
+            "outputFile": "com.example.incasator.app-mergeDebugResources-45:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/davrsmart/.gradle/caches/transforms-3/047aa7ddff6241681155a5178fa0e58d/transformed/preference-1.2.1/res/values/values.xml",
@@ -294,7 +294,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/projects/davr_smart/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

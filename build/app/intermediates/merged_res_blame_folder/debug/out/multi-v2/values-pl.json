@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.incasator.app-mergeDebugResources-44:/values-pl/values-pl.xml",
+            "outputFile": "com.example.incasator.app-mergeDebugResources-45:/values-pl/values-pl.xml",
             "map": [
                 {
                     "source": "/Users/davrsmart/.gradle/caches/transforms-3/2d8fb55a80d1bdc40c49276f2c2f5c9f/transformed/jetified-play-services-basement-18.1.0/res/values-pl/values.xml",

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:incasator/presentation/screens/pinput_screen.dart';
 import 'package:incasator/presentation/widgets/text_from_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/button_navigator_bar.dart';
 
@@ -15,6 +17,25 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController loginController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  void _register() async {
+    String username = loginController.text;
+    String password = passwordController.text;
+
+    if (username.isNotEmpty && password.isNotEmpty) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isRegistered', true);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SetPinScreen()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Iltimos, barcha maydonlarni to‘ldiring!")),
+      );
+    }
+  }
+
   bool obscurePassword = true;
   @override
   Widget build(BuildContext context) {
@@ -90,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: Color(0xFF209A9A),
                           ),
                           onPressed: () {
+                            _register();
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -102,10 +124,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             style:
                                 TextStyle(fontSize: 22.sp, color: Colors.white),
                           )),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           )
         ],

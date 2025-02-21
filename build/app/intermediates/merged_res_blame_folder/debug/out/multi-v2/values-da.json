@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.incasator.app-mergeDebugResources-44:/values-da/values-da.xml",
+            "outputFile": "com.example.incasator.app-mergeDebugResources-45:/values-da/values-da.xml",
             "map": [
                 {
                     "source": "/Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/res/values-da/values-da.xml",

@@ -21,7 +21,7 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
     DepositScreen(),
     QrCodeScanner(),
     HistoryScreen(),
-    ProfileScreen()
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
