@@ -17,8 +17,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         centerTitle: false,
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xFF323747),
+        leading: Text(''),
         title: Text(
-          'Profile',
+          'Статистика',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -59,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fontWeight: FontWeight.w600)),
                     SizedBox(height: 5.h),
                     Text(
-                      "Incasator",
+                      "Инкасатор",
                       style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
@@ -71,47 +72,78 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(top: 30, left: 15, right: 15),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(25),
-                    topLeft: Radius.circular(25)),
-                color: Color(0xFF13171F)),
-            height: MediaQuery.of(context).size.height - 335.7,
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (
-                context,
-                index,
-              ) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Kassir balans',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w600)),
-                        Text(
-                          "1000000",
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25)),
+                  color: Color(0xFF13171F)),
+              height: MediaQuery.of(context).size.height - 238.2,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Баланс',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    )
-                  ],
-                );
-              },
-            ),
-          )
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600)),
+                      Text(
+                        "1000000",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Логин',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600)),
+                      Text(
+                        "azizov@123",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Код',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600)),
+                      Text(
+                        "ABC356",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  )
+                ],
+              ))
         ],
       ),
     );

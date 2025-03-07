@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:incasator/presentation/widgets/show_dialog_deposit_screen.dart';
 
 class DepositScreen extends StatefulWidget {
+  static String name = 'deposit_screen';
+  static String path = '/deposit_screen';
   const DepositScreen({super.key});
 
   @override
@@ -20,7 +22,7 @@ class _DepositScreenState extends State<DepositScreen> {
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
-          "Обработка поступления",
+          "Депозит",
           style: TextStyle(
               color: Colors.white,
               fontSize: 18.sp,
@@ -38,7 +40,7 @@ class _DepositScreenState extends State<DepositScreen> {
               height: 10.h,
             ),
             Text(
-              "  10 fevral",
+              "  10 февраль",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
@@ -54,7 +56,7 @@ class _DepositScreenState extends State<DepositScreen> {
               height: 5.h,
             ),
             Text(
-              "  9 fevral",
+              "  9 февраль",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
@@ -78,7 +80,7 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 60.h,
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
         onPressed: () {
@@ -104,7 +106,7 @@ class CardWidget extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  height: 42.h,
+                  height: 45.h,
                   width: 50.w,
                   decoration: BoxDecoration(
                       color: Colors.black12,
@@ -128,9 +130,6 @@ class CardWidget extends StatelessWidget {
                   Text(
                     'Ravshan Azizov',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white60),
-                  ),
-                  SizedBox(
-                    height: 5.h,
                   ),
                   Text(
                     '12345678',

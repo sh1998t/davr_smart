@@ -1,3 +1,5 @@
+import 'package:cherry_toast/cherry_toast.dart';
+import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +16,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.378,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -113,27 +115,16 @@ class ShowDialogDepositScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(0),
                               ),
                               onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Dialog(
-                                      child: Container(
-                                        height: 250.h,
-                                        width:
-                                            MediaQuery.of(context).size.width -
-                                                100.w,
-                                        child: Column(
-                                          children: [
-                                            Text('data'),
-                                            Text('data'),
-                                            Text('data'),
-                                            Text('data'),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
+                                CherryToast.warning(
+                                  inheritThemeColors: true,
+                                  description: const Text(
+                                    'Ошибка',
+                                  ),
+                                  animationType: AnimationType.fromTop,
+                                  action: const Text(
+                                      'Резервное копирование данных'),
+                                  actionHandler: () {},
+                                ).show(context);
                               },
                               child: Text(
                                 'Принятие',
@@ -157,29 +148,29 @@ class ShowDialogDepositScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'Name',
+                    'Имя',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white38),
                   ),
                   Text(
-                    'Kassir Name',
+                    'Имя Кассир',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
-                    'Status ',
+                    'Статус ',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white38),
                   ),
                   Text(
-                    'Status Name',
+                    'Имя статуса',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
-                    'date ',
+                    'дата ',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white38),
                   ),
                   Text(
@@ -190,7 +181,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
                     height: 20.h,
                   ),
                   Text(
-                    'Summa',
+                    'Сумма',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white38),
                   ),
                   Text(

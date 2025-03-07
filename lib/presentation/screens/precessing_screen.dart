@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import '../widgets/show_dialog_widget.dart';
 
 class PrecessingScreen extends StatefulWidget {
+  static String name = 'precessing_screen';
+  static String path = '/precessing_screen';
   const PrecessingScreen({super.key});
 
   @override
@@ -32,56 +34,56 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: SingleChildScrollView(
-        child: Column(
-          spacing: 4.h,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              "  10 fevral",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CardWidget(),
-            CardWidget(),
-            CardWidget(),
-            SizedBox(
-              height: 5.h,
-            ),
-            Text(
-              "  9 fevral",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CardWidget(),
-            CardWidget(),
-          ],
-        ),
+      body: Column(
+        spacing: 4.h,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 10.h,
+          ),
+          Text(
+            "  10 февраль",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          CardWidget(),
+          CardWidget(),
+          CardWidget(),
+          SizedBox(
+            height: 5.h,
+          ),
+          Text(
+            "  9 февраль",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          CardWidget(),
+          CardWidget(),
+        ],
       ),
     );
   }
 }
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({super.key});
+  const CardWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 60.h,
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
         onPressed: () {
@@ -107,7 +109,7 @@ class CardWidget extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  height: 42.h,
+                  height: 45.h,
                   width: 50.w,
                   decoration: BoxDecoration(
                       color: Colors.black12,
@@ -131,9 +133,6 @@ class CardWidget extends StatelessWidget {
                   Text(
                     'Ravshan Azizov',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white60),
-                  ),
-                  SizedBox(
-                    height: 5.h,
                   ),
                   Text(
                     '12345678',

@@ -110,6 +110,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "cherry_toast",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/cherry_toast-1.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/clock-1.1.1",
       "packageUri": "lib/",
@@ -190,6 +196,12 @@
     {
       "name": "easy_logger",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/easy_logger-0.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/equatable-2.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -357,7 +369,7 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/go_router-14.8.0",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/go_router-14.8.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -444,6 +456,18 @@
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/image_picker_windows-0.2.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "injectable",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/injectable-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "injectable_generator",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/injectable_generator-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "intl",
@@ -654,6 +678,12 @@
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/pubspec_parse-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.6"
+    },
+    {
+      "name": "recase",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/recase-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "retrofit",
@@ -896,7 +926,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-02-21T10:59:44.679716Z",
+  "generated": "2025-03-07T09:36:50.010114Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/davrsmart/development/flutter",

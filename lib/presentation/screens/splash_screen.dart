@@ -1,8 +1,9 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:incasator/presentation/screens/login_screen.dart';
 import 'package:incasator/presentation/screens/pinput_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +25,11 @@ class _SplashScreenState extends State<SplashScreen> {
         onEnd: () async {
           debugPrint("Splash ended");
           await Future.delayed(const Duration(seconds: 2), () {
-            _navigateToNextScreen();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ));
           });
         },
         childWidget: SizedBox(
@@ -47,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isRegistered = prefs.getBool('isRegistered') ?? false;
 
-    Widget nextScreen = isRegistered ? SetPinScreen() : LoginScreen();
+    Widget nextScreen = isRegistered ? SetPinScreen() : const LoginScreen();
 
     Navigator.pushReplacement(
       context,

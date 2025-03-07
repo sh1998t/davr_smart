@@ -7,6 +7,8 @@ import '../screens/login_screen.dart'; // 🔹 LoginScreen qo‘shildi
 import '../widgets/button_navigator_bar.dart';
 
 class SetPinScreen extends StatefulWidget {
+  static String name = 'pin_put_screen';
+  static String path = '/pin_put_screen';
   @override
   _SetPinScreenState createState() => _SetPinScreenState();
 }

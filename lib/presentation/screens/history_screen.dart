@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import '../widgets/show_dialog_widget.dart';
 
 class HistoryScreen extends StatefulWidget {
+  static String name = 'history_screen';
+  static String path = '/history_screen';
   const HistoryScreen({super.key});
 
   @override
@@ -21,7 +23,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
-          "Обработка поступления",
+          "История",
           style: TextStyle(
               color: Colors.white,
               fontSize: 18.sp,
@@ -39,7 +41,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               height: 10.h,
             ),
             Text(
-              "  10 fevral",
+              "  10 февраль",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
@@ -55,7 +57,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               height: 5.h,
             ),
             Text(
-              "  9 fevral",
+              "  9 февраль",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
@@ -79,7 +81,7 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 60.h,
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
         onPressed: () {
@@ -105,7 +107,7 @@ class CardWidget extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  height: 42.h,
+                  height: 45.h,
                   width: 50.w,
                   decoration: BoxDecoration(
                       color: Colors.black12,
@@ -129,9 +131,6 @@ class CardWidget extends StatelessWidget {
                   Text(
                     'Ravshan Azizov',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white60),
-                  ),
-                  SizedBox(
-                    height: 5.h,
                   ),
                   Text(
                     '12345678',
