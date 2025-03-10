@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widgets/show_dialog_widget.dart';
+import '../../data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
+import '../../data/model/deposit_model.dart';
+import '../widgets/precessing_widget_dialog.dart';
 
 class PrecessingScreen extends StatefulWidget {
   static String name = 'precessing_screen';
@@ -22,6 +25,17 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xFF0D1B2A),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                )),
+          )
+        ],
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
@@ -34,51 +48,133 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: Column(
-        spacing: 4.h,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 10.h,
-          ),
-          Text(
-            "  10 февраль",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          CardWidget(),
-          CardWidget(),
-          CardWidget(),
-          SizedBox(
-            height: 5.h,
-          ),
-          Text(
-            "  9 февраль",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          CardWidget(),
-          CardWidget(),
-        ],
+      body: BlocBuilder<DepositBlocCubit, DepositBlocState>(
+        builder: (context, state) {
+          if (state is DepositLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is DepositError) {
+            print(state.message);
+            return Center(
+              child: Text('${state.message}'),
+            );
+          } else if (state is DepositData && state.deposits.isEmpty) {
+            return Center(
+              child: Text('Malumot Yo\'q'),
+            );
+          } else if (state is DepositData) {
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (var entry in groupByDate(state.deposits).entries) ...[
+                      Text(
+                        "  ${entry.key}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 5.h),
+                      ...entry.value.map((deposit) => CardWidget(
+                            name: deposit.login,
+                            date: formatDate(deposit.createdAt),
+                            summa: deposit.amount,
+                            onevent: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return PrecessingWidgetDialog(
+                                    depositId: deposit.id,
+                                    login: deposit.login,
+                                    statusName: deposit.statusName,
+                                    date: formatDate(deposit.createdAt),
+                                    summa: deposit.amount,
+                                    comment: deposit.comment,
+                                  );
+                                },
+                              );
+                            },
+                          )),
+                      SizedBox(height: 10.h),
+                    ]
+                  ],
+                ),
+              ),
+            );
+          }
+          return Container();
+        },
       ),
     );
+  }
+
+  String formatDate(DateTime date) {
+    const months = [
+      "январь",
+      "февраль",
+      "март",
+      "апрель",
+      "май",
+      "июнь",
+      "июль",
+      "август",
+      "сентябрь",
+      "октябрь",
+      "ноябрь",
+      "декабрь"
+    ];
+
+    return "${date.day} ${months[date.month - 1]} ${date.year}";
+  }
+
+  Map<String, List<DepositReplenishmentsModel>> groupByDate(
+      List<DepositReplenishmentsModel> deposits) {
+    Map<String, List<DepositReplenishmentsModel>> grouped = {};
+
+    for (var deposit in deposits) {
+      String formattedDate =
+          "${deposit.createdAt.day} ${getMonthName(deposit.createdAt.month)}";
+      grouped.putIfAbsent(formattedDate, () => []).add(deposit);
+    }
+
+    return grouped;
+  }
+
+  String getMonthName(int month) {
+    const months = [
+      "январь",
+      "февраль",
+      "март",
+      "апрель",
+      "май",
+      "июнь",
+      "июль",
+      "август",
+      "сентябрь",
+      "октябрь",
+      "ноябрь",
+      "декабрь"
+    ];
+    return months[month - 1];
   }
 }
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({
-    super.key,
-  });
+  final String? name;
+  final String? date;
+  final double? summa;
+  final VoidCallback onevent;
+  const CardWidget(
+      {super.key,
+      required this.date,
+      required this.name,
+      required this.summa,
+      required this.onevent});
 
   @override
   Widget build(BuildContext context) {
@@ -86,14 +182,7 @@ class CardWidget extends StatelessWidget {
       height: 60.h,
       width: MediaQuery.of(context).size.width,
       child: OutlinedButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return ShowDialogWidget();
-            },
-          );
-        },
+        onPressed: onevent,
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.only(left: 10.w, right: 10.w),
           shape: RoundedRectangleBorder(
@@ -131,11 +220,11 @@ class CardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Ravshan Azizov',
+                    '$name',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white60),
                   ),
                   Text(
-                    '12345678',
+                    '$summa',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
                   ),
                 ],
@@ -146,7 +235,7 @@ class CardWidget extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    '12:45',
+                    '$date',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white60),
                   ),
                 ],

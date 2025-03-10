@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../core/theme/color.dart';
+import 'package:incasator/%20core/colors.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({
@@ -37,7 +36,7 @@ class MyButton extends StatelessWidget {
       height: height ?? 58,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primary,
+            backgroundColor: MainColor.primary,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
         onPressed: (isLoading ?? false) ? null : onPressed,

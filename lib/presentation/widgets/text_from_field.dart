@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/theme/color.dart';
+import '../../ core/colors.dart';
 
 class MainTextField extends StatelessWidget {
   const MainTextField({
@@ -75,7 +75,7 @@ class MainTextField extends StatelessWidget {
               hintText: hintText,
               hintStyle: const TextStyle(
                   fontSize: 14,
-                  color: AppColors.hintText,
+                  color: MainColor.hintText,
                   fontWeight: FontWeight.w500),
               filled: true,
               border: OutlineInputBorder(

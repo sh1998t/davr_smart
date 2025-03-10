@@ -141,7 +141,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.59,
+              height: MediaQuery.of(context).size.height * 0.512,
               color: Color(0xff1D1D1D),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,6 +187,9 @@ class ShowDialogDepositScreen extends StatelessWidget {
                   Text(
                     '100000000',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
                   ),
                 ],
               ),

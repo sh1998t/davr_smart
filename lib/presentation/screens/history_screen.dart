@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widgets/show_dialog_widget.dart';
+import '../../data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
+import '../../data/model/deposit_model.dart';
+import '../widgets/show_dialog_history_widget.dart';
 
 class HistoryScreen extends StatefulWidget {
   static String name = 'history_screen';
@@ -14,6 +17,12 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<DepositBlocCubit>().fetchDeposits(page: 1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,51 +41,110 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: SingleChildScrollView(
-        child: Column(
-          spacing: 4.h,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              "  10 февраль",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CardWidget(),
-            CardWidget(),
-            CardWidget(),
-            SizedBox(
-              height: 5.h,
-            ),
-            Text(
-              "  9 февраль",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            CardWidget(),
-            CardWidget(),
-          ],
-        ),
+      body: BlocBuilder<DepositBlocCubit, DepositBlocState>(
+        builder: (context, state) {
+          if (state is DepositLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is DepositError) {
+            print(state.message);
+            return Center(
+              child: Text('${state.message}'),
+            );
+          } else if (state is DepositData) {
+            print(state.deposits.first);
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (var entry in groupByDate(state.deposits).entries) ...[
+                      Text(
+                        "  ${entry.key}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 5.h),
+                      ...entry.value.map((deposit) => CardWidget(
+                            name: deposit.login,
+                            date: formatDate(deposit.createdAt),
+                            summa: deposit.amount,
+                          )),
+                      SizedBox(height: 10.h),
+                    ]
+                  ],
+                ),
+              ),
+            );
+          }
+          return Container();
+        },
       ),
     );
+  }
+
+  String formatDate(DateTime date) {
+    const months = [
+      "январь",
+      "февраль",
+      "март",
+      "апрель",
+      "май",
+      "июнь",
+      "июль",
+      "август",
+      "сентябрь",
+      "октябрь",
+      "ноябрь",
+      "декабрь"
+    ];
+
+    return "${date.day} ${months[date.month - 1]} ${date.year}";
+  }
+
+  Map<String, List<DepositReplenishmentsModel>> groupByDate(
+      List<DepositReplenishmentsModel> deposits) {
+    Map<String, List<DepositReplenishmentsModel>> grouped = {};
+
+    for (var deposit in deposits) {
+      String formattedDate =
+          "${deposit.createdAt.day} ${getMonthName(deposit.createdAt.month)}";
+      grouped.putIfAbsent(formattedDate, () => []).add(deposit);
+    }
+
+    return grouped;
+  }
+
+  String getMonthName(int month) {
+    const months = [
+      "январь",
+      "февраль",
+      "март",
+      "апрель",
+      "май",
+      "июнь",
+      "июль",
+      "август",
+      "сентябрь",
+      "октябрь",
+      "ноябрь",
+      "декабрь"
+    ];
+    return months[month - 1];
   }
 }
 
 class CardWidget extends StatelessWidget {
-  const CardWidget({super.key});
+  final String? name;
+  final String? date;
+  final double? summa;
+  const CardWidget(
+      {super.key, required this.date, required this.name, required this.summa});
 
   @override
   Widget build(BuildContext context) {
@@ -129,11 +197,11 @@ class CardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Ravshan Azizov',
+                    '$name',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white60),
                   ),
                   Text(
-                    '12345678',
+                    '$summa',
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
                   ),
                 ],
@@ -144,7 +212,7 @@ class CardWidget extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    '12:45',
+                    '$date',
                     style: TextStyle(fontSize: 14.sp, color: Colors.white60),
                   ),
                 ],
