@@ -13,6 +13,6 @@ class CourierAcceptDeposit extends BaseApiRequest {
     }
 
     var data = response?.data['data'] ?? [];
-    return data;
+    return true;
   }
 }

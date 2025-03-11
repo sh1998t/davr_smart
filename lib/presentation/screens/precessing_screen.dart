@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
+import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/precessing_widget_dialog.dart';
 
@@ -18,6 +18,11 @@ class PrecessingScreen extends StatefulWidget {
 
 class _PrecessingScreenState extends State<PrecessingScreen> {
   DateTime selectedDate = DateTime.now();
+  @override
+  void initState() {
+    super.initState();
+    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +32,12 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         centerTitle: true,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(top: 8),
+            padding: EdgeInsets.only(bottom: 12.h),
             child: IconButton(
                 onPressed: () {},
                 icon: Icon(
                   Icons.notifications,
+                  size: 28,
                   color: Colors.white,
                 )),
           )
@@ -48,22 +54,40 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: BlocBuilder<DepositBlocCubit, DepositBlocState>(
+      body: BlocBuilder<PrecessingBlocCubit, PrecessingBlocState>(
         builder: (context, state) {
-          if (state is DepositLoading) {
+          if (state is PrecessingLoading) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is DepositError) {
+          } else if (state is PrecessingError) {
             print(state.message);
             return Center(
               child: Text('${state.message}'),
             );
-          } else if (state is DepositData && state.deposits.isEmpty) {
+          } else if (state is PrecessingData && state.deposits.isEmpty) {
             return Center(
-              child: Text('Malumot Yo\'q'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/noData.png',
+                    height: 180.h,
+                    width: 200.w,
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text('Нет новых поступлений',
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white))
+                ],
+              ),
             );
-          } else if (state is DepositData) {
+          } else if (state is PrecessingData) {
             return SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
@@ -85,18 +109,28 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                             date: formatDate(deposit.createdAt),
                             summa: deposit.amount,
                             onevent: () {
-                              showDialog(
+                              showGeneralDialog(
                                 context: context,
-                                builder: (context) {
-                                  return PrecessingWidgetDialog(
-                                    depositId: deposit.id,
-                                    login: deposit.login,
-                                    statusName: deposit.statusName,
-                                    date: formatDate(deposit.createdAt),
-                                    summa: deposit.amount,
-                                    comment: deposit.comment,
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) {
+                                  return SlideTransition(
+                                    position: Tween<Offset>(
+                                      begin: Offset(0, 1),
+                                      end: Offset(0, 0),
+                                    ).animate(animation),
+                                    child: PrecessingWidgetDialog(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate(deposit.createdAt),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      image: Image.network(
+                                          "${deposit.operatorPhoto}"),
+                                    ),
                                   );
                                 },
+                                transitionDuration: Duration(milliseconds: 300),
                               );
                             },
                           )),

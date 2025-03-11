@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/data/bloc/auth_bloc/auth_bloc_cubit.dart';
-import 'package:incasator/data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
+import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
 import 'package:incasator/data/network/auth_api.dart';
-import 'package:incasator/data/network/deposit_api.dart';
+import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/presentation/screens/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
+import 'data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
+import 'data/network/deposit_api.dart';
 
 void main() async {
   // await initDi();
@@ -42,9 +45,12 @@ class MyApp extends StatelessWidget {
               BlocProvider<AuthBlocCubit>(
                 create: (context) => AuthBlocCubit(AuthApiRequest()),
               ),
-              BlocProvider<DepositBlocCubit>(
+              BlocProvider<PrecessingBlocCubit>(
+                create: (context) => PrecessingBlocCubit(PrecessingApi()),
+              ),
+              BlocProvider<DepositCubit>(
                 create: (context) =>
-                    DepositBlocCubit(DepositReplenishmentsListRequest()),
+                    DepositCubit(DepositReplenishmentsListRequest()),
               )
             ],
             child: MaterialApp(

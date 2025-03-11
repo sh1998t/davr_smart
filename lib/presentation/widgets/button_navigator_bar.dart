@@ -1,11 +1,13 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/presentation/screens/deposit_screen.dart';
 import 'package:incasator/presentation/screens/precessing_screen.dart';
 import 'package:incasator/presentation/screens/profile_screen.dart';
 import 'package:incasator/presentation/screens/qr_code_scaner.dart';
 
+import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../screens/history_screen.dart';
 
 class ButtonNavigationBarWidget extends StatefulWidget {
@@ -24,11 +26,18 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
     ProfileScreen(),
   ];
   @override
+  void initState() {
+    super.initState();
+    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[page],
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Color(0xFF0D1B2A),
+        cornerRadius: 5,
         style: TabStyle.fixedCircle,
         color: Color(0xFF0D1B2A),
         curveSize: 25,

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
 
-import '../../data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
+import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/show_dialog_history_widget.dart';
 
@@ -20,7 +21,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<DepositBlocCubit>().fetchDeposits(page: 1);
+    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
   }
 
   @override
@@ -41,7 +42,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: BlocBuilder<DepositBlocCubit, DepositBlocState>(
+      body: BlocBuilder<DepositCubit, DepositState>(
         builder: (context, state) {
           if (state is DepositLoading) {
             return Center(
@@ -51,6 +52,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
             print(state.message);
             return Center(
               child: Text('${state.message}'),
+            );
+          } else if (state is DepositData && state.deposits.isEmpty) {
+            return Center(
+              child: Text('Malumot Yo\'q'),
             );
           } else if (state is DepositData) {
             print(state.deposits.first);

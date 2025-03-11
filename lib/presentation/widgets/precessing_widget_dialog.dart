@@ -1,8 +1,10 @@
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/network/courier_accept_deposit.dart';
 
 class PrecessingWidgetDialog extends StatelessWidget {
@@ -11,7 +13,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
   final String? statusName;
   final String? date;
   final double? summa;
-
+  final Widget? image;
   final String? comment;
   const PrecessingWidgetDialog(
       {super.key,
@@ -20,6 +22,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
       required this.statusName,
       required this.date,
       required this.summa,
+      required this.image,
       required this.comment});
 
   @override
@@ -32,7 +35,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 480.h,
+              height: MediaQuery.of(context).size.height - 380.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -130,24 +133,40 @@ class PrecessingWidgetDialog extends StatelessWidget {
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
-                              onPressed: () async {
+                              onPressed: () {
                                 CourierAcceptDeposit()
                                     .request("$depositId")
                                     .then(
-                                  (value) {
-                                    if (value == true) {}
+                                  (value) async {
+                                    if (value == true) {
+                                      CherryToast.success(
+                                        animationDuration:
+                                            Duration(milliseconds: 300),
+                                        inheritThemeColors: true,
+                                        animationType: AnimationType.fromTop,
+                                        title: Text('Успех!'),
+                                        description:
+                                            Text('Данные успешно загружены!'),
+                                      ).show(context);
+
+                                      await context
+                                          .read<PrecessingBlocCubit>()
+                                          .fetchDeposits();
+                                      Navigator.pop(context);
+                                    } else {
+                                      CherryToast.warning(
+                                        inheritThemeColors: true,
+                                        description: const Text(
+                                          'Ошибка',
+                                        ),
+                                        animationType: AnimationType.fromTop,
+                                        action: const Text(
+                                            'Резервное копирование данных'),
+                                        actionHandler: () {},
+                                      ).show(context);
+                                    }
                                   },
                                 );
-                                CherryToast.warning(
-                                  inheritThemeColors: true,
-                                  description: const Text(
-                                    'Ошибка',
-                                  ),
-                                  animationType: AnimationType.fromTop,
-                                  action: const Text(
-                                      'Резервное копирование данных'),
-                                  actionHandler: () {},
-                                ).show(context);
                               },
                               child: Text(
                                 'Принятие',
@@ -156,6 +175,18 @@ class PrecessingWidgetDialog extends StatelessWidget {
                               )),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: Card(
+                        child: SizedBox(
+                          height: 80.h,
+                          width: 100.w,
+                          child: image,
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -164,7 +195,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 286.h,
+              height: MediaQuery.of(context).size.height - 313.h,
               color: Color(0xff1D1D1D),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,9 +252,6 @@ class PrecessingWidgetDialog extends StatelessWidget {
                   Text(
                     "$comment",
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
                   ),
                 ],
               ),

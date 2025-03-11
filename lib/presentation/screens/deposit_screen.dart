@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:incasator/data/bloc/deposit_bloc/deposit_bloc_cubit.dart';
 import 'package:incasator/presentation/widgets/show_dialog_deposit_screen.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
+import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
 
 class DepositScreen extends StatefulWidget {
@@ -20,9 +21,10 @@ class _DepositScreenState extends State<DepositScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<DepositBlocCubit>().fetchDeposits(page: 1);
+    context.read<DepositCubit>().fetchDeposits(page: 1);
   }
 
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class _DepositScreenState extends State<DepositScreen> {
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
-          "Депозит",
+          "Выручка",
           style: TextStyle(
               color: Colors.white,
               fontSize: 18.sp,
@@ -41,44 +43,73 @@ class _DepositScreenState extends State<DepositScreen> {
         ),
       ),
       backgroundColor: Color(0xFF25364A),
-      body: BlocBuilder<DepositBlocCubit, DepositBlocState>(
+      body: BlocBuilder<DepositCubit, DepositState>(
         builder: (context, state) {
           if (state is DepositLoading) {
             return Center(
               child: CircularProgressIndicator(),
             );
           } else if (state is DepositError) {
-            print(state.message);
             return Center(
               child: Text('${state.message}'),
             );
+          } else if (state is DepositData && state.deposits.isEmpty) {
+            return Center(
+              child: Text('Malumot Yo\'q'),
+            );
           } else if (state is DepositData) {
-            print(state.deposits.first);
             return SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    for (var entry in groupByDate(state.deposits).entries) ...[
-                      Text(
-                        "  ${entry.key}",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 5.h),
-                      ...entry.value.map((deposit) => CardWidget(
-                            name: deposit.login,
-                            date: formatDate(deposit.createdAt),
-                            summa: deposit.amount,
-                          )),
-                      SizedBox(height: 10.h),
-                    ]
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: ToggleSwitch(
+                      initialLabelIndex: 0,
+                      activeFgColor: Color(0xF6750A4),
+                      inactiveBgColor: Color(0xFF17222F),
+                      minWidth: 620.w,
+                      minHeight: 40.h,
+                      totalSwitches: 2,
+                      labels: ['На руках', 'Передано'],
+                      onToggle: (index) {
+                        setState(() {
+                          selectedIndex = index!;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  selectedIndex == 0
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (var entry
+                                  in groupByDate(state.deposits).entries) ...[
+                                Text(
+                                  "  ${entry.key}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                ...entry.value.map((deposit) => CardWidget(
+                                      name: deposit.login,
+                                      date: formatDate(deposit.createdAt),
+                                      summa: deposit.amount,
+                                    )),
+                                SizedBox(height: 10.h),
+                              ]
+                            ],
+                          ),
+                        )
+                      : Text('data'),
+                ],
               ),
             );
           }
@@ -136,6 +167,15 @@ class _DepositScreenState extends State<DepositScreen> {
       "декабрь"
     ];
     return months[month - 1];
+  }
+}
+
+class InHand extends StatelessWidget {
+  const InHand({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
 
