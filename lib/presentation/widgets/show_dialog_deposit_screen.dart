@@ -2,9 +2,25 @@ import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:incasator/%20core/colors.dart';
 
 class ShowDialogDepositScreen extends StatelessWidget {
-  const ShowDialogDepositScreen({super.key});
+  final int? depositId;
+  final String? login;
+  final String? statusName;
+  final String? date;
+  final double? summa;
+  final Widget? image;
+  final String? comment;
+  const ShowDialogDepositScreen(
+      {super.key,
+      required this.depositId,
+      required this.login,
+      required this.statusName,
+      required this.date,
+      required this.summa,
+      required this.image,
+      required this.comment});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +32,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.378,
+              height: MediaQuery.of(context).size.height - 380.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -27,14 +43,14 @@ class ShowDialogDepositScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFF303030),
-                    Color(0xFF202020),
+                    MainColor.darkTheme.opacityColorsTop,
+                    MainColor.darkTheme.opacityColorsButton,
                   ],
                 ),
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 15.w,
+                  left: 25.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +65,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
                       child: Icon(
                         Icons.close,
                         size: 26,
-                        color: Colors.white,
+                        color: MainColor.darkTheme.white,
                       ),
                     ),
                     SizedBox(
@@ -58,21 +74,21 @@ class ShowDialogDepositScreen extends StatelessWidget {
                     Text(
                       "Успешно",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Оплата",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "2500000",
+                      "$summa",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
@@ -87,7 +103,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFF0F0F0F)),
+                              color: MainColor.darkTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 padding: EdgeInsets.all(0),
@@ -97,7 +113,8 @@ class ShowDialogDepositScreen extends StatelessWidget {
                               child: Text(
                                 'Отклонение',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.white),
+                                    fontSize: 16.sp,
+                                    color: MainColor.darkTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -108,7 +125,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFF0F0F0F)),
+                              color: MainColor.darkTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
@@ -129,7 +146,8 @@ class ShowDialogDepositScreen extends StatelessWidget {
                               child: Text(
                                 'Принятие',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.white),
+                                    fontSize: 16.sp,
+                                    color: MainColor.darkTheme.white),
                               )),
                         ),
                       ],
@@ -141,55 +159,73 @@ class ShowDialogDepositScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.512,
-              color: Color(0xff1D1D1D),
+              height: MediaQuery.of(context).size.height - 313.h,
+              color: MainColor.darkTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
                   Text(
                     'Имя',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
-                    'Имя Кассир',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    "$login",
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'Статус ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
-                    'Имя статуса',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    '$statusName',
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'дата ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
-                    '12:00 00.00',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    '$date',
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'Сумма',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
-                    '100000000',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    "$summa",
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
+                  ),
+                  Text(
+                    'комментария ',
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                  ),
+                  Text(
+                    "$comment",
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                 ],
               ),

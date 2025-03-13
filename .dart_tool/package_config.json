@@ -2,22 +2,10 @@
   "configVersion": 2,
   "packages": [
     {
-      "name": "_fe_analyzer_shared",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-80.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
       "name": "ai_barcode_scanner",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/ai_barcode_scanner-6.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "analyzer",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/analyzer-7.3.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
     },
     {
       "name": "another_flutter_splash_screen",
@@ -50,64 +38,10 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "build",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build-2.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "build_config",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build_config-1.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "build_daemon",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build_daemon-4.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "build_resolvers",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build_resolvers-2.4.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "build_runner",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build_runner-2.4.15",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "build_runner_core",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/build_runner_core-8.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "built_collection",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/built_collection-5.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "built_value",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/built_value-8.9.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "characters",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/characters-1.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "checked_yaml",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/checked_yaml-2.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "cherry_toast",
@@ -122,20 +56,8 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "code_builder",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/code_builder-4.10.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.5"
-    },
-    {
       "name": "collection",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/collection-1.19.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "convert",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/convert-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -170,12 +92,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "dart_style",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/dart_style-3.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
       "name": "dio",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/dio-5.8.0+1",
       "packageUri": "lib/",
@@ -196,12 +112,6 @@
     {
       "name": "easy_logger",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/easy_logger-0.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "equatable",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/equatable-2.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -246,12 +156,6 @@
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/file_selector_windows-0.9.3+4",
       "packageUri": "lib/",
       "languageVersion": "3.4"
-    },
-    {
-      "name": "fixnum",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
     },
     {
       "name": "flutter",
@@ -350,32 +254,8 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "frontend_server_client",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/frontend_server_client-4.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "get_it",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/get_it-8.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "glob",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/glob-2.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
       "name": "go_router",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/go_router-14.8.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "graphs",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/graphs-2.3.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -386,22 +266,10 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "hive_flutter",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/hive_flutter-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "http",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/http-1.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
-    },
-    {
-      "name": "http_multi_server",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/http_multi_server-3.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
     },
     {
       "name": "http_parser",
@@ -458,28 +326,10 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "injectable",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/injectable-2.5.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "injectable_generator",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/injectable_generator-2.7.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "intl",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/intl-0.19.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "io",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/io-1.0.5",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
     },
     {
       "name": "js",
@@ -492,12 +342,6 @@
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/json_annotation-4.9.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "json_serializable",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/json_serializable-6.9.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
     },
     {
       "name": "leak_tracker",
@@ -572,12 +416,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "package_config",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/package_config-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
       "name": "path",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
@@ -650,52 +488,10 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "pool",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/pool-1.5.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "protobuf",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/protobuf-3.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
       "name": "provider",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/provider-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "pub_semver",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/pub_semver-2.1.5",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "pubspec_parse",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/pubspec_parse-1.5.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "recase",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/recase-4.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "retrofit",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/retrofit-4.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
-      "name": "retrofit_generator",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/retrofit_generator-9.1.9",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
     },
     {
       "name": "shared_preferences",
@@ -740,34 +536,10 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "shelf",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/shelf-1.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "shelf_web_socket",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/shelf_web_socket-3.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.5"
-    },
-    {
       "name": "sky_engine",
       "rootUri": "file:///Users/davrsmart/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
-    },
-    {
-      "name": "source_gen",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/source_gen-2.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "source_helper",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/source_helper-1.3.5",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
     },
     {
       "name": "source_span",
@@ -786,12 +558,6 @@
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/stream_channel-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
-    },
-    {
-      "name": "stream_transform",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/stream_transform-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
     },
     {
       "name": "string_scanner",
@@ -820,12 +586,6 @@
     {
       "name": "test_api",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/test_api-0.7.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "timing",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/timing-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -878,28 +638,10 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "watcher",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/watcher-1.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "web",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/web-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
-    },
-    {
-      "name": "web_socket",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/web_socket-0.1.6",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
-      "name": "web_socket_channel",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/web_socket_channel-3.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
     },
     {
       "name": "win32",
@@ -920,19 +662,13 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "yaml",
-      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/yaml-3.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
       "name": "incasator",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-11T07:29:27.042353Z",
+  "generated": "2025-03-13T05:11:26.999338Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/davrsmart/development/flutter",

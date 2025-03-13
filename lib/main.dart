@@ -9,6 +9,7 @@ import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/presentation/screens/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import ' core/colors.dart';
 import 'data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import 'data/network/deposit_api.dart';
 
@@ -56,8 +57,21 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                primarySwatch: Colors.blue,
+                brightness: Brightness.light,
+                scaffoldBackgroundColor: MainColor.lightTheme.backgroundColor,
+                appBarTheme: AppBarTheme(
+                  backgroundColor: MainColor.lightTheme.appBarBackgroundColor,
+                ),
               ),
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                scaffoldBackgroundColor: MainColor.darkTheme.backgroundColor,
+                appBarTheme: AppBarTheme(
+                  backgroundColor: MainColor.darkTheme.appBarBackgroundColor,
+                ),
+                // Boshqa sozlamalar...
+              ),
+              themeMode: ThemeMode.system,
               home: child,
             ));
       },

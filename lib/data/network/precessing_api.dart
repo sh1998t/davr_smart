@@ -6,7 +6,6 @@ class PrecessingApi extends BaseApiRequest {
   Future<List<DepositReplenishmentsModel>> request({int? page}) async {
     var endPoint = ApiConst.new_deposit;
     final response = await super.getRequest(endPoint);
-    print(response);
     if (response.statusCode != 200) {
       throw Exception('Server xatosi: success false qaytdi');
     }

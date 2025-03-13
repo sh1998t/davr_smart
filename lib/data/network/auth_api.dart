@@ -15,9 +15,11 @@ class AuthApiRequest extends BaseApiRequest {
     if (response?.data['error'] != null) {
       throw (response?.data['message']);
     }
-    final String token = response?.data['token'];
-    AuthUtil.setToken(token);
-
+    final String? token = response?.data['data']?['token'];
+    if (token == null) {
+      throw Exception("Token mavjud emas!");
+    }
+    await AuthUtil.setToken(token);
     return response;
   }
 }

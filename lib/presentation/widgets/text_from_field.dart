@@ -73,9 +73,9 @@ class MainTextField extends StatelessWidget {
               prefixIcon: prefix,
               fillColor: Color(0xFF293A4F),
               hintText: hintText,
-              hintStyle: const TextStyle(
+              hintStyle: TextStyle(
                   fontSize: 14,
-                  color: MainColor.hintText,
+                  color: MainColor.darkTheme.hintText,
                   fontWeight: FontWeight.w500),
               filled: true,
               border: OutlineInputBorder(

@@ -7,7 +7,6 @@ class CourierAcceptDeposit extends BaseApiRequest {
     var endPoint = ApiConst.Courier_Accept_Deposit;
     final response =
         await super.getFilterRequest(endPoint, {"depositId": depositId});
-    print(response);
     if (response.statusCode != 200) {
       throw Exception('Server xatosi: success false qaytdi');
     }

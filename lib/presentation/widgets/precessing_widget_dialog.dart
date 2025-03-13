@@ -3,6 +3,7 @@ import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:incasator/%20core/colors.dart';
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/network/courier_accept_deposit.dart';
@@ -59,7 +60,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 10.h,
+                      height: 25.h,
                     ),
                     InkWell(
                       onTap: () {
@@ -68,7 +69,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                       child: Icon(
                         Icons.close,
                         size: 26,
-                        color: Colors.white,
+                        color: MainColor.darkTheme.white,
                       ),
                     ),
                     SizedBox(
@@ -77,21 +78,21 @@ class PrecessingWidgetDialog extends StatelessWidget {
                     Text(
                       "Успешно",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Оплата",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "$summa",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: MainColor.darkTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
@@ -106,7 +107,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFF0F0F0F)),
+                              color: MainColor.darkTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 padding: EdgeInsets.all(0),
@@ -116,7 +117,8 @@ class PrecessingWidgetDialog extends StatelessWidget {
                               child: Text(
                                 'Отклонение',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.white),
+                                    fontSize: 16.sp,
+                                    color: MainColor.darkTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -127,7 +129,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFF0F0F0F)),
+                              color: MainColor.darkTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
@@ -171,7 +173,8 @@ class PrecessingWidgetDialog extends StatelessWidget {
                               child: Text(
                                 'Принятие',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.white),
+                                    fontSize: 16.sp,
+                                    color: MainColor.darkTheme.white),
                               )),
                         ),
                       ],
@@ -196,62 +199,72 @@ class PrecessingWidgetDialog extends StatelessWidget {
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 313.h,
-              color: Color(0xff1D1D1D),
+              color: MainColor.darkTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
                   Text(
                     'логин',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
                     '$login',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'Статус ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
                     '$statusName',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'дата ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
                     '$date',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'Сумма',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
                     "$summa",
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'комментария ',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+                    style: TextStyle(
+                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
                   ),
                   Text(
                     "$comment",
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 16.sp, color: MainColor.darkTheme.white),
                   ),
                 ],
               ),

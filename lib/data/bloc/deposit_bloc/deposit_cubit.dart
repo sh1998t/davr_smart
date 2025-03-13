@@ -19,16 +19,3 @@ class DepositCubit extends Cubit<DepositState> {
     }
   }
 }
-// final PrecessingApi request;
-//
-//   PrecessingBlocCubit(this.request) : super(PrecessingBlocInitial());
-//
-//   Future<void> fetchDeposits({int? page}) async {
-//     emit(PrecessingLoading());
-//     try {
-//       final deposits = await request.request(page: page);
-//       emit(PrecessingData(deposits));
-//     } catch (e) {
-//       emit(PrecessingError(e.toString()));
-//     }
-//   }

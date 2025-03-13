@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/presentation/widgets/show_dialog_deposit_screen.dart';
-import 'package:toggle_switch/toggle_switch.dart';
+import 'package:intl/intl.dart';
 
 import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
+import '../widgets/card_widget.dart';
+import '../widgets/switch_widget.dart';
 
 class DepositScreen extends StatefulWidget {
   static String name = 'deposit_screen';
@@ -24,19 +26,24 @@ class _DepositScreenState extends State<DepositScreen> {
     context.read<DepositCubit>().fetchDeposits(page: 1);
   }
 
+  String formatDate(String date) {
+    DateTime parsedDate = DateTime.parse(date);
+    return DateFormat('dd.MM.yyyy').format(parsedDate);
+  }
+
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0D1B2A),
+        backgroundColor: MainColor.darkTheme.appBarBackgroundColor,
         centerTitle: true,
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
           "Выручка",
           style: TextStyle(
-              color: Colors.white,
+              color: MainColor.darkTheme.white,
               fontSize: 18.sp,
               fontFamily: 'Regular',
               fontWeight: FontWeight.w700),
@@ -55,31 +62,43 @@ class _DepositScreenState extends State<DepositScreen> {
             );
           } else if (state is DepositData && state.deposits.isEmpty) {
             return Center(
-              child: Text('Malumot Yo\'q'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/noData.png',
+                    height: 180.h,
+                    width: 200.w,
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text('Нет новых поступлений',
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: MainColor.darkTheme.white))
+                ],
+              ),
             );
           } else if (state is DepositData) {
             return SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: ToggleSwitch(
-                      initialLabelIndex: 0,
-                      activeFgColor: Color(0xF6750A4),
-                      inactiveBgColor: Color(0xFF17222F),
-                      minWidth: 620.w,
-                      minHeight: 40.h,
-                      totalSwitches: 2,
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: CustomToggleButton(
                       labels: ['На руках', 'Передано'],
-                      onToggle: (index) {
+                      onToggle: (value) {
                         setState(() {
-                          selectedIndex = index!;
+                          selectedIndex = value;
                         });
                       },
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
                   ),
                   selectedIndex == 0
                       ? Padding(
@@ -92,7 +111,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                 Text(
                                   "  ${entry.key}",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: MainColor.darkTheme.white,
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -100,15 +119,98 @@ class _DepositScreenState extends State<DepositScreen> {
                                 SizedBox(height: 5.h),
                                 ...entry.value.map((deposit) => CardWidget(
                                       name: deposit.login,
-                                      date: formatDate(deposit.createdAt),
+                                      date: formatDate("${deposit.createdAt}"),
                                       summa: deposit.amount,
+                                      onevent: () {
+                                        showGeneralDialog(
+                                          context: context,
+                                          pageBuilder: (context, animation,
+                                              secondaryAnimation) {
+                                            return SlideTransition(
+                                              position: Tween<Offset>(
+                                                begin: Offset(0, 1),
+                                                end: Offset(0, 0),
+                                              ).animate(animation),
+                                              child: ShowDialogDepositScreen(
+                                                depositId: deposit.id,
+                                                login: deposit.login,
+                                                statusName: deposit.statusName,
+                                                date: formatDate(
+                                                    "${deposit.createdAt}"),
+                                                summa: deposit.amount,
+                                                comment: deposit.comment,
+                                                image: Image.network(
+                                                    "${deposit.operatorPhoto}"),
+                                              ),
+                                            );
+                                          },
+                                          transitionDuration:
+                                              Duration(milliseconds: 300),
+                                        );
+                                      },
                                     )),
-                                SizedBox(height: 10.h),
                               ]
                             ],
                           ),
                         )
-                      : Text('data'),
+                      : Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              for (var entry
+                                  in groupByDate(state.deposits).entries) ...[
+                                Text(
+                                  "  ${entry.key}",
+                                  style: TextStyle(
+                                    color: MainColor.darkTheme.white,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                ...entry.value
+                                    .where((deposit) => deposit.status == 4)
+                                    .map((deposit) => CardWidget(
+                                          name: deposit.login,
+                                          date: formatDate(
+                                              "${deposit.createdAt}"),
+                                          summa: deposit.amount,
+                                          onevent: () {
+                                            showGeneralDialog(
+                                              context: context,
+                                              pageBuilder: (context, animation,
+                                                  secondaryAnimation) {
+                                                return SlideTransition(
+                                                  position: Tween<Offset>(
+                                                    begin: Offset(0, 1),
+                                                    end: Offset(0, 0),
+                                                  ).animate(animation),
+                                                  child:
+                                                      ShowDialogDepositScreen(
+                                                    depositId: deposit.id,
+                                                    login: deposit.login,
+                                                    statusName:
+                                                        deposit.statusName,
+                                                    date: formatDate(
+                                                        "${deposit.createdAt}"),
+                                                    summa: deposit.amount,
+                                                    comment: deposit.comment,
+                                                    image: Image.network(
+                                                        "${deposit.operatorPhoto}"),
+                                                  ),
+                                                );
+                                              },
+                                              transitionDuration:
+                                                  Duration(milliseconds: 300),
+                                            );
+                                          },
+                                        )),
+                              ]
+                            ],
+                          ),
+                        )
                 ],
               ),
             );
@@ -117,25 +219,6 @@ class _DepositScreenState extends State<DepositScreen> {
         },
       ),
     );
-  }
-
-  String formatDate(DateTime date) {
-    const months = [
-      "январь",
-      "февраль",
-      "март",
-      "апрель",
-      "май",
-      "июнь",
-      "июль",
-      "август",
-      "сентябрь",
-      "октябрь",
-      "ноябрь",
-      "декабрь"
-    ];
-
-    return "${date.day} ${months[date.month - 1]} ${date.year}";
   }
 
   Map<String, List<DepositReplenishmentsModel>> groupByDate(
@@ -170,97 +253,89 @@ class _DepositScreenState extends State<DepositScreen> {
   }
 }
 
-class InHand extends StatelessWidget {
-  const InHand({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class CardWidget extends StatelessWidget {
-  final String? name;
-  final String? date;
-  final double? summa;
-  const CardWidget(
-      {super.key, required this.date, required this.name, required this.summa});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60.h,
-      width: MediaQuery.of(context).size.width,
-      child: OutlinedButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return ShowDialogDepositScreen();
-            },
-          );
-        },
-        style: OutlinedButton.styleFrom(
-          padding: EdgeInsets.only(left: 10.w, right: 10.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          side: BorderSide.none,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  height: 45.h,
-                  width: 50.w,
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(5.r)),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/logo.svg',
-                      width: 25,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    '$name',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white60),
-                  ),
-                  Text(
-                    '$summa',
-                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: 110.w,
-              ),
-              Column(
-                children: [
-                  Text(
-                    '$date',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.white60),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class CardWidget extends StatelessWidget {
+//   final String? name;
+//   final String? date;
+//   final double? summa;
+//   final VoidCallback onevent;
+//   const CardWidget(
+//       {super.key,
+//       required this.date,
+//       required this.name,
+//       required this.summa,
+//       required this.onevent});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 60.h,
+//       width: MediaQuery.of(context).size.width,
+//       child: OutlinedButton(
+//         onPressed: onevent,
+//         style: OutlinedButton.styleFrom(
+//           padding: EdgeInsets.only(left: 10.w, right: 10.w),
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(20),
+//           ),
+//           side: BorderSide.none,
+//         ),
+//         child: Padding(
+//           padding: const EdgeInsets.only(top: 4),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Center(
+//                 child: Container(
+//                   height: 45.h,
+//                   width: 50.w,
+//                   decoration: BoxDecoration(
+//                       color: MainColor.darkTheme.black12,
+//                       borderRadius: BorderRadius.circular(5.r)),
+//                   child: Center(
+//                     child: SvgPicture.asset(
+//                       'assets/images/logo.svg',
+//                       width: 25,
+//                       color: MainColor.darkTheme.white,
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 10.w,
+//               ),
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     '$name',
+//                     style: TextStyle(
+//                         fontSize: 16.sp, color: MainColor.darkTheme.white60),
+//                   ),
+//                   Text(
+//                     '$summa',
+//                     style: TextStyle(
+//                         fontSize: 16.sp, color: MainColor.darkTheme.white),
+//                   ),
+//                 ],
+//               ),
+//               SizedBox(
+//                 width: 110.w,
+//               ),
+//               Column(
+//                 children: [
+//                   Text(
+//                     '$date',
+//                     style: TextStyle(
+//                         fontSize: 14.sp, color: MainColor.darkTheme.white60),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
