@@ -1,5 +1,4 @@
-import 'package:cherry_toast/cherry_toast.dart';
-import 'package:cherry_toast/resources/arrays.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
@@ -24,6 +23,9 @@ class ShowDialogDepositScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       child: SizedBox(
@@ -32,7 +34,7 @@ class ShowDialogDepositScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 380.h,
+              height: MediaQuery.of(context).size.height - 445.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -43,20 +45,20 @@ class ShowDialogDepositScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    MainColor.darkTheme.opacityColorsTop,
-                    MainColor.darkTheme.opacityColorsButton,
+                    dynamicTheme.color303030,
+                    dynamicTheme.color202020,
                   ],
                 ),
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 25.w,
+                  left: 15.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 10.h,
+                      height: 25.h,
                     ),
                     InkWell(
                       onTap: () {
@@ -65,57 +67,45 @@ class ShowDialogDepositScreen extends StatelessWidget {
                       child: Icon(
                         Icons.close,
                         size: 26,
-                        color: MainColor.darkTheme.white,
+                        color: dynamicTheme.white,
                       ),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
                     Text(
-                      "Успешно",
+                      'Статус ',
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 14.sp,
+                          color: dynamicTheme.white,
+                          fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      "Оплата",
+                      '$statusName',
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 16.sp,
+                          color: dynamicTheme.white,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Text(
                       "$summa",
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
+                          color: dynamicTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 20.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 35.h,
                           width: 140.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: MainColor.darkTheme.containerBackground),
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                padding: EdgeInsets.all(0),
-                                side: BorderSide.none,
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                'Отклонение',
-                                style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: MainColor.darkTheme.white),
-                              )),
                         ),
                         SizedBox(
                           width: 10,
@@ -125,33 +115,58 @@ class ShowDialogDepositScreen extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: MainColor.darkTheme.containerBackground),
+                              color: dynamicTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
                               onPressed: () {
-                                CherryToast.warning(
-                                  inheritThemeColors: true,
-                                  description: const Text(
-                                    'Ошибка',
-                                  ),
-                                  animationType: AnimationType.fromTop,
-                                  action: const Text(
-                                      'Резервное копирование данных'),
-                                  actionHandler: () {},
-                                ).show(context);
+                                // CourierAcceptDeposit()
+                                //     .request("$depositId")
+                                //     .then(
+                                //       (value) async {
+                                //     if (value == true) {
+                                //       CherryToast.success(
+                                //         animationDuration:
+                                //         Duration(milliseconds: 300),
+                                //         inheritThemeColors: true,
+                                //         animationType: AnimationType.fromTop,
+                                //         title: Text('Успех!'),
+                                //         description:
+                                //         Text('Данные успешно загружены!'),
+                                //       ).show(context);
+                                //
+                                //       await context
+                                //           .read<PrecessingBlocCubit>()
+                                //           .fetchDeposits();
+                                //       Navigator.pop(context);
+                                //     } else {
+                                //       CherryToast.warning(
+                                //         inheritThemeColors: true,
+                                //         description: const Text(
+                                //           'Ошибка',
+                                //         ),
+                                //         animationType: AnimationType.fromTop,
+                                //         action: const Text(
+                                //             'Резервное копирование данных'),
+                                //         actionHandler: () {},
+                                //       ).show(context);
+                                //     }
+                                //   },
+                                // );
                               },
                               child: Text(
-                                'Принятие',
+                                'Принять',
                                 style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: MainColor.darkTheme.white),
+                                    fontSize: 16.sp, color: dynamicTheme.white),
                               )),
                         ),
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
                   ],
                 ),
               ),
@@ -159,73 +174,60 @@ class ShowDialogDepositScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 313.h,
-              color: MainColor.darkTheme.containerColor,
+              height: MediaQuery.of(context).size.height - 250.h,
+              color: dynamicTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'Имя',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    'логин',
+                    style:
+                        TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
                   ),
                   Text(
-                    "$login",
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'Статус ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
-                  ),
-                  Text(
-                    '$statusName',
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    '$login',
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'дата ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     '$date',
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'Сумма',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     "$summa",
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   Text(
                     'комментария ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     "$comment",
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                 ],
               ),

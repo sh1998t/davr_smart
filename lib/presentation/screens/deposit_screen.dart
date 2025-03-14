@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,22 +35,25 @@ class _DepositScreenState extends State<DepositScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MainColor.darkTheme.appBarBackgroundColor,
+        backgroundColor: dynamicTheme.appBarBackgroundColor,
         centerTitle: true,
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
           "Выручка",
           style: TextStyle(
-              color: MainColor.darkTheme.white,
+              color: dynamicTheme.white,
               fontSize: 18.sp,
               fontFamily: 'Regular',
               fontWeight: FontWeight.w700),
         ),
       ),
-      backgroundColor: Color(0xFF25364A),
+      backgroundColor: dynamicTheme.backgroundColor,
       body: BlocBuilder<DepositCubit, DepositState>(
         builder: (context, state) {
           if (state is DepositLoading) {
@@ -78,7 +82,7 @@ class _DepositScreenState extends State<DepositScreen> {
                       style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: MainColor.darkTheme.white))
+                          color: dynamicTheme.white))
                 ],
               ),
             );
@@ -92,7 +96,7 @@ class _DepositScreenState extends State<DepositScreen> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     child: CustomToggleButton(
-                      labels: ['На руках', 'Передано'],
+                      labels: ['В транзите', 'Передано'],
                       onToggle: (value) {
                         setState(() {
                           selectedIndex = value;
@@ -111,7 +115,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                 Text(
                                   "  ${entry.key}",
                                   style: TextStyle(
-                                    color: MainColor.darkTheme.white,
+                                    color: dynamicTheme.white,
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -126,21 +130,26 @@ class _DepositScreenState extends State<DepositScreen> {
                                           context: context,
                                           pageBuilder: (context, animation,
                                               secondaryAnimation) {
-                                            return SlideTransition(
-                                              position: Tween<Offset>(
-                                                begin: Offset(0, 1),
-                                                end: Offset(0, 0),
-                                              ).animate(animation),
-                                              child: ShowDialogDepositScreen(
-                                                depositId: deposit.id,
-                                                login: deposit.login,
-                                                statusName: deposit.statusName,
-                                                date: formatDate(
-                                                    "${deposit.createdAt}"),
-                                                summa: deposit.amount,
-                                                comment: deposit.comment,
-                                                image: Image.network(
-                                                    "${deposit.operatorPhoto}"),
+                                            return Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 30.h),
+                                              child: SlideTransition(
+                                                position: Tween<Offset>(
+                                                  begin: Offset(0, 1),
+                                                  end: Offset(0, 0),
+                                                ).animate(animation),
+                                                child: ShowDialogDepositScreen(
+                                                  depositId: deposit.id,
+                                                  login: deposit.login,
+                                                  statusName:
+                                                      deposit.statusName,
+                                                  date: formatDate(
+                                                      "${deposit.createdAt}"),
+                                                  summa: deposit.amount,
+                                                  comment: deposit.comment,
+                                                  image: Image.network(
+                                                      "${deposit.operatorPhoto}"),
+                                                ),
                                               ),
                                             );
                                           },
@@ -164,7 +173,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                 Text(
                                   "  ${entry.key}",
                                   style: TextStyle(
-                                    color: MainColor.darkTheme.white,
+                                    color: dynamicTheme.white,
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                   ),

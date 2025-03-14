@@ -2,6 +2,13 @@
   <library name="Dart Packages" type="DartPackagesLibraryType">
     <properties>
       <option name="packageNameToDirsMap">
+        <entry key="adaptive_theme">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/adaptive_theme-3.7.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="ai_barcode_scanner">
           <value>
             <list>
@@ -775,6 +782,7 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/adaptive_theme-3.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/ai_barcode_scanner-6.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/another_flutter_splash_screen-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/args-2.6.0/lib" />

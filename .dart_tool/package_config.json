@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "adaptive_theme",
+      "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/adaptive_theme-3.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "ai_barcode_scanner",
       "rootUri": "file:///Users/davrsmart/.pub-cache/hosted/pub.dev/ai_barcode_scanner-6.0.1",
       "packageUri": "lib/",
@@ -668,7 +674,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-13T05:11:26.999338Z",
+  "generated": "2025-03-14T04:20:56.376712Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/davrsmart/development/flutter",

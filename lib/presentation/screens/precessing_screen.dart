@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +8,7 @@ import 'package:intl/intl.dart';
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
-import '../widgets/precessing_widget_dialog.dart';
+import '../widgets/widget_dialog.dart';
 
 class PrecessingScreen extends StatefulWidget {
   static String name = 'precessing_screen';
@@ -28,24 +29,29 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
 
   String formatDate(String date) {
     DateTime parsedDate = DateTime.parse(date);
-    return DateFormat('dd.MM.yyyy').format(parsedDate);
+    return DateFormat('dd.MM.yyyy HH:mm').format(parsedDate);
   }
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MainColor.darkTheme.appBarBackgroundColor,
+        backgroundColor: dynamicTheme.appBarBackgroundColor,
         centerTitle: true,
         actions: [
           Padding(
             padding: EdgeInsets.only(bottom: 12.h),
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  AdaptiveTheme.of(context).toggleThemeMode();
+                },
                 icon: Icon(
                   Icons.notifications,
                   size: 28,
-                  color: MainColor.darkTheme.white,
+                  color: dynamicTheme.white,
                 )),
           )
         ],
@@ -54,13 +60,13 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         title: Text(
           "Обработка поступления",
           style: TextStyle(
-              color: MainColor.darkTheme.white,
+              color: dynamicTheme.white,
               fontSize: 18.sp,
               fontFamily: 'Regular',
               fontWeight: FontWeight.w700),
         ),
       ),
-      backgroundColor: Color(0xFF25364A),
+      backgroundColor: dynamicTheme.backgroundColor,
       body: BlocBuilder<PrecessingBlocCubit, PrecessingBlocState>(
         builder: (context, state) {
           if (state is PrecessingLoading) {
@@ -89,7 +95,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                       style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: MainColor.darkTheme.white))
+                          color: dynamicTheme.white))
                 ],
               ),
             );
@@ -104,7 +110,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                       Text(
                         "  ${entry.key}",
                         style: TextStyle(
-                          color: MainColor.darkTheme.white,
+                          color: dynamicTheme.white,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -124,7 +130,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                                       begin: Offset(0, 1),
                                       end: Offset(0, 0),
                                     ).animate(animation),
-                                    child: PrecessingWidgetDialog(
+                                    child: WidgetDialog(
                                       depositId: deposit.id,
                                       login: deposit.login,
                                       statusName: deposit.statusName,

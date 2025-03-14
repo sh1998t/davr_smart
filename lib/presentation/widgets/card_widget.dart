@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,6 +19,9 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return SizedBox(
       height: 60.h,
       width: MediaQuery.of(context).size.width,
@@ -49,7 +53,7 @@ class CardWidget extends StatelessWidget {
                         child: SvgPicture.asset(
                           'assets/images/logo.svg',
                           width: 25,
-                          color: MainColor.darkTheme.white,
+                          color: dynamicTheme.white,
                         ),
                       ),
                     ),
@@ -67,7 +71,7 @@ class CardWidget extends StatelessWidget {
                       Text(
                         '$name',
                         style: TextStyle(
-                            fontSize: 18.sp, color: MainColor.darkTheme.white),
+                            fontSize: 18.sp, color: dynamicTheme.white),
                       ),
                       SizedBox(
                         height: 6.h,
@@ -75,8 +79,7 @@ class CardWidget extends StatelessWidget {
                       Text(
                         '$date',
                         style: TextStyle(
-                            fontSize: 14.sp,
-                            color: MainColor.darkTheme.white60),
+                            fontSize: 14.sp, color: dynamicTheme.white60),
                       ),
                     ],
                   ),
@@ -88,8 +91,8 @@ class CardWidget extends StatelessWidget {
                 children: [
                   Text(
                     '$summa',
-                    style: TextStyle(
-                        fontSize: 18.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 18.sp, color: dynamicTheme.white),
                   ),
                 ],
               ),

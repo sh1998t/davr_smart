@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:intl/intl.dart';
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
+import '../widgets/widget_dialog.dart';
 
 class HistoryScreen extends StatefulWidget {
   static String name = 'history_screen';
@@ -32,22 +34,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MainColor.darkTheme.appBarBackgroundColor,
+        backgroundColor: dynamicTheme.appBarBackgroundColor,
         centerTitle: true,
         leading: Text(''),
         toolbarHeight: 40.h,
         title: Text(
           "История",
           style: TextStyle(
-              color: MainColor.darkTheme.white,
+              color: dynamicTheme.white,
               fontSize: 18.sp,
               fontFamily: 'Regular',
               fontWeight: FontWeight.w700),
         ),
       ),
-      backgroundColor: Color(0xFF25364A),
+      backgroundColor: dynamicTheme.backgroundColor,
       body: BlocBuilder<DepositCubit, DepositState>(
         builder: (context, state) {
           if (state is DepositLoading) {
@@ -77,7 +82,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: MainColor.darkTheme.white))
+                          color: dynamicTheme.white))
                 ],
               ),
             );
@@ -93,7 +98,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     Text(
                       "  ${entry.key}",
                       style: TextStyle(
-                        color: MainColor.darkTheme.white,
+                        color: dynamicTheme.white,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w600,
                       ),
@@ -105,7 +110,33 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               name: deposit.login,
                               date: formatDate("${deposit.createdAt}"),
                               summa: deposit.amount,
-                              onevent: () {},
+                              onevent: () {
+                                showGeneralDialog(
+                                  context: context,
+                                  pageBuilder:
+                                      (context, animation, secondaryAnimation) {
+                                    return SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: Offset(0, 1),
+                                        end: Offset(0, 0),
+                                      ).animate(animation),
+                                      child: WidgetDialog(
+                                        depositId: deposit.id,
+                                        login: deposit.login,
+                                        statusName: deposit.statusName,
+                                        date:
+                                            formatDate("${deposit.createdAt}"),
+                                        summa: deposit.amount,
+                                        comment: deposit.comment,
+                                        image: Image.network(
+                                            "${deposit.operatorPhoto}"),
+                                      ),
+                                    );
+                                  },
+                                  transitionDuration:
+                                      Duration(milliseconds: 300),
+                                );
+                              },
                             )),
                   ]
                 ],

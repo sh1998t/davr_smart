@@ -14,21 +14,29 @@ class MainColor {
     opacityColorsButton: Color(0xFF202020),
     containerBackground: Color(0xFF0F0F0F),
     containerColor: Color(0xff1D1D1D),
+    deepPurple: Colors.deepPurple,
+    grey600: Colors.grey[600]!,
+    color303030: Color(0xFF303030),
+    color202020: Color(0xFF202020),
   );
 
   static final lightTheme = ThemeColors(
-    white: Color(0xffFFFFFF),
-    black: Color(0xff000000),
+    white: Color(0xff000000),
+    black: Color(0xffFFFFFF),
     hintText: Color(0xFF757575),
-    backgroundColor: Color(0xFFF5F5F5),
-    appBarBackgroundColor: Color(0xFFFFFFFF),
-    black12: Colors.black12.withOpacity(0.08),
-    white60: Colors.white70,
-    white38: Colors.white54,
-    opacityColorsTop: Color(0xFFE0E0E0),
-    opacityColorsButton: Color(0xFFEEEEEE),
+    backgroundColor: Color(0xFFF5F6F5),
+    appBarBackgroundColor: Color(0xFFE0E0E0),
+    black12: Colors.grey[300],
+    white60: Colors.black54,
+    white38: Colors.black38,
+    opacityColorsTop: Color(0xFFD0D0D0),
+    opacityColorsButton: Color(0xFFE0E0E0),
     containerBackground: Color(0xFFFFFFFF),
-    containerColor: Color(0xFFEFEFEF),
+    containerColor: Color(0xFFF0F0F0),
+    deepPurple: Color(0xff572da6),
+    grey600: Color(0xFFE0E0E0),
+    color303030: Color(0xFFD0D0D0),
+    color202020: Color(0xFFE0E0E0),
   );
 }
 
@@ -38,26 +46,32 @@ class ThemeColors {
   final Color hintText;
   final Color backgroundColor;
   final Color appBarBackgroundColor;
-  final Color black12;
+  final Color? black12;
   final Color white60;
   final Color white38;
   final Color opacityColorsTop;
   final Color opacityColorsButton;
   final Color containerBackground;
   final Color containerColor;
-
-  ThemeColors({
-    required this.white,
-    required this.black,
-    required this.hintText,
-    required this.backgroundColor,
-    required this.appBarBackgroundColor,
-    required this.black12,
-    required this.white60,
-    required this.white38,
-    required this.opacityColorsTop,
-    required this.opacityColorsButton,
-    required this.containerBackground,
-    required this.containerColor,
-  });
+  final Color deepPurple;
+  final Color grey600;
+  final Color color303030;
+  Color color202020;
+  ThemeColors(
+      {required this.white,
+      required this.black,
+      required this.hintText,
+      required this.backgroundColor,
+      required this.appBarBackgroundColor,
+      required this.black12,
+      required this.white60,
+      required this.white38,
+      required this.opacityColorsTop,
+      required this.opacityColorsButton,
+      required this.containerBackground,
+      required this.containerColor,
+      required this.deepPurple,
+      required this.grey600,
+      required this.color202020,
+      required this.color303030});
 }

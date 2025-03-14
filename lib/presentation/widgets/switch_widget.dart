@@ -1,4 +1,7 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../ core/colors.dart';
 
 class CustomToggleButton extends StatefulWidget {
   final List<String> labels;
@@ -34,10 +37,13 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Container(
       height: 48,
       decoration: BoxDecoration(
-        color: Colors.grey[600],
+        color: dynamicTheme.grey600,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -49,7 +55,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.deepPurple : Colors.grey[600],
+                  color: isSelected
+                      ? dynamicTheme.deepPurple
+                      : dynamicTheme.grey600,
                   borderRadius: BorderRadius.horizontal(
                     left: index == 0 ? Radius.circular(10) : Radius.zero,
                     right: index == widget.labels.length - 1
@@ -60,7 +68,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                 child: Text(
                   widget.labels[index],
                   style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
+                    color: isSelected ? dynamicTheme.white : dynamicTheme.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),

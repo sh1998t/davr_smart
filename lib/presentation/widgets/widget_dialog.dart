@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,16 @@ import 'package:incasator/%20core/colors.dart';
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/network/courier_accept_deposit.dart';
 
-class PrecessingWidgetDialog extends StatelessWidget {
+class WidgetDialog extends StatelessWidget {
+  const WidgetDialog(
+      {super.key,
+      this.depositId,
+      this.login,
+      this.statusName,
+      this.date,
+      this.summa,
+      this.image,
+      this.comment});
   final int? depositId;
   final String? login;
   final String? statusName;
@@ -16,18 +26,11 @@ class PrecessingWidgetDialog extends StatelessWidget {
   final double? summa;
   final Widget? image;
   final String? comment;
-  const PrecessingWidgetDialog(
-      {super.key,
-      required this.depositId,
-      required this.login,
-      required this.statusName,
-      required this.date,
-      required this.summa,
-      required this.image,
-      required this.comment});
-
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       child: SizedBox(
@@ -36,7 +39,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 380.h,
+              height: MediaQuery.of(context).size.height - 445.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -47,8 +50,8 @@ class PrecessingWidgetDialog extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFF303030),
-                    Color(0xFF202020),
+                    dynamicTheme.color303030,
+                    dynamicTheme.color202020,
                   ],
                 ),
               ),
@@ -69,35 +72,38 @@ class PrecessingWidgetDialog extends StatelessWidget {
                       child: Icon(
                         Icons.close,
                         size: 26,
-                        color: MainColor.darkTheme.white,
+                        color: dynamicTheme.white,
                       ),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
                     Text(
-                      "Успешно",
+                      'Статус',
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 24.sp,
+                          color: dynamicTheme.white,
+                          fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      "Оплата",
+                      '$statusName',
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
-                          fontSize: 20.sp,
+                          fontSize: 16.sp,
+                          color: dynamicTheme.white,
                           fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Text(
                       "$summa",
                       style: TextStyle(
-                          color: MainColor.darkTheme.white,
+                          color: dynamicTheme.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 15.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +113,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: MainColor.darkTheme.containerBackground),
+                              color: dynamicTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 padding: EdgeInsets.all(0),
@@ -115,10 +121,9 @@ class PrecessingWidgetDialog extends StatelessWidget {
                               ),
                               onPressed: () {},
                               child: Text(
-                                'Отклонение',
+                                'Отклонить',
                                 style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: MainColor.darkTheme.white),
+                                    fontSize: 16.sp, color: dynamicTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -129,7 +134,7 @@ class PrecessingWidgetDialog extends StatelessWidget {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: MainColor.darkTheme.containerBackground),
+                              color: dynamicTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
@@ -171,26 +176,23 @@ class PrecessingWidgetDialog extends StatelessWidget {
                                 );
                               },
                               child: Text(
-                                'Принятие',
+                                'Принять',
                                 style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: MainColor.darkTheme.white),
+                                    fontSize: 16.sp, color: dynamicTheme.white),
                               )),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 12,
                     ),
                     Center(
-                      child: Card(
-                        child: SizedBox(
-                          height: 80.h,
-                          width: 100.w,
-                          child: image,
-                        ),
-                      ),
-                    )
+                        child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            onPressed: () {},
+                            child: Text('Документ'))),
                   ],
                 ),
               ),
@@ -198,73 +200,61 @@ class PrecessingWidgetDialog extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 313.h,
-              color: MainColor.darkTheme.containerColor,
+              height: MediaQuery.of(context).size.height - 250.h,
+              color: dynamicTheme.containerColor,
               child: Column(
+                spacing: 5,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'логин',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    'Логин',
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     '$login',
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 10.h,
                   ),
                   Text(
-                    'Статус ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
-                  ),
-                  Text(
-                    '$statusName',
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'дата ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    'Дата ',
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     '$date',
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 10.h,
                   ),
                   Text(
                     'Сумма',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     "$summa",
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 10.h,
                   ),
                   Text(
-                    'комментария ',
-                    style: TextStyle(
-                        fontSize: 14.sp, color: MainColor.darkTheme.white38),
+                    'Комментария ',
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
                     "$comment",
-                    style: TextStyle(
-                        fontSize: 16.sp, color: MainColor.darkTheme.white),
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                 ],
               ),
