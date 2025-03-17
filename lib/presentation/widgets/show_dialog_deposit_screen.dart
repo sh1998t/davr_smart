@@ -286,7 +286,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                       .read<DepositCubit>()
                                       .fetchDeposits();
                                   Navigator.pop(context);
-                                }
+                                } else if (onValue == false) {}
                               });
                             },
                             child: Text(

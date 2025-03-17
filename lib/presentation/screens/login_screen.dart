@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 final password = passwordController.text;
                                 await context
                                     .read<AuthBlocCubit>()
-                                    .login("davrsmart123", "davrsmart321");
+                                    .login("shavkat123", "shavkat321");
 
                                 Navigator.push(
                                   context,
