@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
+import '../widgets/diolog_widget.dart';
 import '../widgets/switch_widget.dart';
 
 class DepositScreen extends StatefulWidget {
@@ -29,10 +30,11 @@ class _DepositScreenState extends State<DepositScreen> {
 
   String formatDate(String date) {
     DateTime parsedDate = DateTime.parse(date);
-    return DateFormat('dd.MM.yyyy').format(parsedDate);
+    return DateFormat('dd.MM.yyyy HH:mm').format(parsedDate);
   }
 
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
@@ -109,6 +111,7 @@ class _DepositScreenState extends State<DepositScreen> {
                           padding: EdgeInsets.symmetric(vertical: 10.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               for (var entry
                                   in groupByDate(state.deposits).entries) ...[
@@ -121,43 +124,48 @@ class _DepositScreenState extends State<DepositScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 5.h),
-                                ...entry.value.map((deposit) => CardWidget(
-                                      name: deposit.login,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      onevent: () {
-                                        showGeneralDialog(
-                                          context: context,
-                                          pageBuilder: (context, animation,
-                                              secondaryAnimation) {
-                                            return Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 30.h),
-                                              child: SlideTransition(
-                                                position: Tween<Offset>(
-                                                  begin: Offset(0, 1),
-                                                  end: Offset(0, 0),
-                                                ).animate(animation),
-                                                child: ShowDialogDepositScreen(
-                                                  depositId: deposit.id,
-                                                  login: deposit.login,
-                                                  statusName:
-                                                      deposit.statusName,
-                                                  date: formatDate(
-                                                      "${deposit.createdAt}"),
-                                                  summa: deposit.amount,
-                                                  comment: deposit.comment,
-                                                  image: Image.network(
-                                                      "${deposit.operatorPhoto}"),
-                                                ),
-                                              ),
+                                ...entry.value
+                                    .where((deposit) => deposit.status == 3)
+                                    .map((deposit) => CardWidget(
+                                          name: deposit.login,
+                                          date: formatDate(
+                                              "${deposit.createdAt}"),
+                                          summa: deposit.amount,
+                                          onevent: () {
+                                            showGeneralDialog(
+                                              context: context,
+                                              pageBuilder: (context, animation,
+                                                  secondaryAnimation) {
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 30),
+                                                  child: SlideTransition(
+                                                    position: Tween<Offset>(
+                                                      begin: Offset(0, 1),
+                                                      end: Offset(0, 0),
+                                                    ).animate(animation),
+                                                    child:
+                                                        ShowDialogDepositScreen(
+                                                      depositId: deposit.id,
+                                                      login: deposit.login,
+                                                      statusName:
+                                                          deposit.statusName,
+                                                      date: formatDate(
+                                                          "${deposit.createdAt}"),
+                                                      summa: deposit.amount,
+                                                      comment: deposit.comment,
+                                                      image: Image.network(
+                                                          "${deposit.operatorPhoto}"),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              transitionDuration:
+                                                  Duration(milliseconds: 300),
                                             );
                                           },
-                                          transitionDuration:
-                                              Duration(milliseconds: 300),
-                                        );
-                                      },
-                                    )),
+                                        )),
                               ]
                             ],
                           ),
@@ -180,7 +188,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                 ),
                                 SizedBox(height: 5.h),
                                 ...entry.value
-                                    .where((deposit) => deposit.status == 4)
+                                    .where((deposit) => deposit.status == 1)
                                     .map((deposit) => CardWidget(
                                           name: deposit.login,
                                           date: formatDate(
@@ -191,23 +199,27 @@ class _DepositScreenState extends State<DepositScreen> {
                                               context: context,
                                               pageBuilder: (context, animation,
                                                   secondaryAnimation) {
-                                                return SlideTransition(
-                                                  position: Tween<Offset>(
-                                                    begin: Offset(0, 1),
-                                                    end: Offset(0, 0),
-                                                  ).animate(animation),
-                                                  child:
-                                                      ShowDialogDepositScreen(
-                                                    depositId: deposit.id,
-                                                    login: deposit.login,
-                                                    statusName:
-                                                        deposit.statusName,
-                                                    date: formatDate(
-                                                        "${deposit.createdAt}"),
-                                                    summa: deposit.amount,
-                                                    comment: deposit.comment,
-                                                    image: Image.network(
-                                                        "${deposit.operatorPhoto}"),
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 30),
+                                                  child: SlideTransition(
+                                                    position: Tween<Offset>(
+                                                      begin: Offset(0, 1),
+                                                      end: Offset(0, 0),
+                                                    ).animate(animation),
+                                                    child: DiologWidget(
+                                                      depositId: deposit.id,
+                                                      login: deposit.login,
+                                                      statusName:
+                                                          deposit.statusName,
+                                                      date: formatDate(
+                                                          "${deposit.createdAt}"),
+                                                      summa: deposit.amount,
+                                                      comment: deposit.comment,
+                                                      image: Image.network(
+                                                          "${deposit.operatorPhoto}"),
+                                                    ),
                                                   ),
                                                 );
                                               },
@@ -261,90 +273,3 @@ class _DepositScreenState extends State<DepositScreen> {
     return months[month - 1];
   }
 }
-
-// class CardWidget extends StatelessWidget {
-//   final String? name;
-//   final String? date;
-//   final double? summa;
-//   final VoidCallback onevent;
-//   const CardWidget(
-//       {super.key,
-//       required this.date,
-//       required this.name,
-//       required this.summa,
-//       required this.onevent});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 60.h,
-//       width: MediaQuery.of(context).size.width,
-//       child: OutlinedButton(
-//         onPressed: onevent,
-//         style: OutlinedButton.styleFrom(
-//           padding: EdgeInsets.only(left: 10.w, right: 10.w),
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(20),
-//           ),
-//           side: BorderSide.none,
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.only(top: 4),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Center(
-//                 child: Container(
-//                   height: 45.h,
-//                   width: 50.w,
-//                   decoration: BoxDecoration(
-//                       color: MainColor.darkTheme.black12,
-//                       borderRadius: BorderRadius.circular(5.r)),
-//                   child: Center(
-//                     child: SvgPicture.asset(
-//                       'assets/images/logo.svg',
-//                       width: 25,
-//                       color: MainColor.darkTheme.white,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 width: 10.w,
-//               ),
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.start,
-//                 children: [
-//                   Text(
-//                     '$name',
-//                     style: TextStyle(
-//                         fontSize: 16.sp, color: MainColor.darkTheme.white60),
-//                   ),
-//                   Text(
-//                     '$summa',
-//                     style: TextStyle(
-//                         fontSize: 16.sp, color: MainColor.darkTheme.white),
-//                   ),
-//                 ],
-//               ),
-//               SizedBox(
-//                 width: 110.w,
-//               ),
-//               Column(
-//                 children: [
-//                   Text(
-//                     '$date',
-//                     style: TextStyle(
-//                         fontSize: 14.sp, color: MainColor.darkTheme.white60),
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

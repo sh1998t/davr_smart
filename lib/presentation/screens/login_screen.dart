@@ -43,9 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           } else if (state is AuthError) {
             print('${state.message}');
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Error: ${state.message}")),
-            );
           }
         },
         builder: (context, state) {
@@ -132,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 final password = passwordController.text;
                                 await context
                                     .read<AuthBlocCubit>()
-                                    .login(login, password);
+                                    .login("davrsmart123", "davrsmart321");
 
                                 Navigator.push(
                                   context,

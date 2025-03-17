@@ -20,11 +20,35 @@ class PrecessingScreen extends StatefulWidget {
 }
 
 class _PrecessingScreenState extends State<PrecessingScreen> {
-  DateTime selectedDate = DateTime.now();
+  late ScrollController _scrollController;
+
   @override
   void initState() {
     super.initState();
-    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<PrecessingBlocCubit>().fetchDeposits();
+    });
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset >=
+            _scrollController.position.maxScrollExtent - 50 &&
+        !_scrollController.position.outOfRange) {
+      final state = context.read<PrecessingBlocCubit>().state;
+      if (state is PrecessingData && state.currentPage < state.pageCount) {
+        context.read<PrecessingBlocCubit>().loadMore();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener); // Listenerni o‘chirish
+    _scrollController.dispose();
+    super.dispose();
   }
 
   String formatDate(String date) {
@@ -70,14 +94,10 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
       body: BlocBuilder<PrecessingBlocCubit, PrecessingBlocState>(
         builder: (context, state) {
           if (state is PrecessingLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else if (state is PrecessingError) {
-            return Center(
-              child: Text('${state.message}'),
-            );
-          } else if (state is PrecessingData && state.deposits.isEmpty) {
+            return Center(child: Text('${state.message}'));
+          } else if (state is PrecessingData && state.items.isEmpty) {
             return Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,68 +108,95 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                     height: 180.h,
                     width: 200.w,
                   ),
-                  SizedBox(
-                    height: 10.h,
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Нет новых поступлений',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                      color: dynamicTheme.white,
+                    ),
                   ),
-                  Text('Нет новых поступлений',
-                      style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                          color: dynamicTheme.white))
                 ],
               ),
             );
           } else if (state is PrecessingData) {
-            return SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    for (var entry in groupByDate(state.deposits).entries) ...[
-                      Text(
-                        "  ${entry.key}",
-                        style: TextStyle(
-                          color: dynamicTheme.white,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
+            final groupedEntries = groupByDate(state.items).entries.toList();
+            return RefreshIndicator(
+              onRefresh: () async {
+                await context.read<PrecessingBlocCubit>().fetchDeposits();
+              },
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: groupedEntries.length +
+                    (state.currentPage < state.pageCount
+                        ? 1
+                        : 0), // Loading uchun
+                itemBuilder: (context, index) {
+                  if (index == groupedEntries.length &&
+                      state.currentPage < state.pageCount) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else if (index < groupedEntries.length) {
+                    final entry = groupedEntries[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.w, vertical: 5.h),
+                          child: Text(
+                            "  ${entry.key}",
+                            style: TextStyle(
+                              color: dynamicTheme.white,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 5.h),
-                      ...entry.value.map((deposit) => CardWidget(
-                            name: deposit.login,
-                            date: formatDate("${deposit.createdAt}"),
-                            summa: deposit.amount,
-                            onevent: () {
-                              showGeneralDialog(
-                                context: context,
-                                pageBuilder:
-                                    (context, animation, secondaryAnimation) {
-                                  return SlideTransition(
-                                    position: Tween<Offset>(
-                                      begin: Offset(0, 1),
-                                      end: Offset(0, 0),
-                                    ).animate(animation),
-                                    child: WidgetDialog(
-                                      depositId: deposit.id,
-                                      login: deposit.login,
-                                      statusName: deposit.statusName,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      comment: deposit.comment,
-                                      image: Image.network(
-                                          "${deposit.operatorPhoto}"),
-                                    ),
-                                  );
-                                },
-                                transitionDuration: Duration(milliseconds: 300),
-                              );
-                            },
-                          )),
-                      SizedBox(height: 10.h),
-                    ]
-                  ],
-                ),
+                        SizedBox(height: 5.h),
+                        ...entry.value.map((deposit) => CardWidget(
+                              name: deposit.login,
+                              date: formatDate("${deposit.createdAt}"),
+                              summa: deposit.amount,
+                              onevent: () {
+                                showGeneralDialog(
+                                  context: context,
+                                  pageBuilder:
+                                      (context, animation, secondaryAnimation) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(top: 30.h),
+                                      child: SlideTransition(
+                                        position: Tween<Offset>(
+                                          begin: const Offset(0, 1),
+                                          end: const Offset(0, 0),
+                                        ).animate(animation),
+                                        child: WidgetDialog(
+                                          depositId: deposit.id,
+                                          login: deposit.login,
+                                          statusName: deposit.statusName,
+                                          date: formatDate(
+                                              "${deposit.createdAt}"),
+                                          summa: deposit.amount,
+                                          comment: deposit.comment,
+                                          image: deposit.operatorPhoto,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  transitionDuration:
+                                      const Duration(milliseconds: 300),
+                                );
+                              },
+                            )),
+                        SizedBox(height: 10.h),
+                      ],
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             );
           }

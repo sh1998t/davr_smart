@@ -1,15 +1,21 @@
+import 'dart:io';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:incasator/%20core/colors.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/network/courier_accept_deposit.dart';
 
-class WidgetDialog extends StatelessWidget {
+class WidgetDialog extends StatefulWidget {
   const WidgetDialog(
       {super.key,
       this.depositId,
@@ -24,8 +30,53 @@ class WidgetDialog extends StatelessWidget {
   final String? statusName;
   final String? date;
   final double? summa;
-  final Widget? image;
+  final String? image;
   final String? comment;
+
+  @override
+  State<WidgetDialog> createState() => _WidgetDialogState();
+}
+
+class _WidgetDialogState extends State<WidgetDialog> {
+  Future<void> convertImageToPdf() async {
+    if (widget.image == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Iltimos, avval rasm tanlang!")),
+      );
+      return;
+    }
+
+    // String yo‘lni XFile ga aylantirish
+    print("Image path: ${widget.image}");
+    final XFile imageFile = XFile(widget.image!);
+
+    final pdf = pw.Document();
+    final imageBytes = pw.MemoryImage(File(imageFile.path).readAsBytesSync());
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pw.Center(child: pw.Image(imageBytes));
+        },
+      ),
+    );
+
+    final directory = await getExternalStorageDirectory();
+    final file = File("${directory!.path}/image_to_pdf.pdf");
+    await file.writeAsBytes(await pdf.save());
+
+    final result = await OpenFile.open(file.path);
+    if (result.type != ResultType.done) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("PDF ochishda xatolik: ${result.message}")),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("PDF saqlandi va ochildi: ${file.path}")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
@@ -39,7 +90,7 @@ class WidgetDialog extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 445.h,
+              height: MediaQuery.of(context).size.height * 0.35,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -63,7 +114,7 @@ class WidgetDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 25.h,
+                      height: 10.h,
                     ),
                     InkWell(
                       onTap: () {
@@ -86,7 +137,7 @@ class WidgetDialog extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      '$statusName',
+                      '${widget.statusName}',
                       style: TextStyle(
                           fontSize: 16.sp,
                           color: dynamicTheme.white,
@@ -96,7 +147,7 @@ class WidgetDialog extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      "$summa",
+                      "${widget.summa}",
                       style: TextStyle(
                           color: dynamicTheme.white,
                           fontSize: 20.sp,
@@ -142,7 +193,7 @@ class WidgetDialog extends StatelessWidget {
                               ),
                               onPressed: () {
                                 CourierAcceptDeposit()
-                                    .request("$depositId")
+                                    .request("${widget.depositId}")
                                     .then(
                                   (value) async {
                                     if (value == true) {
@@ -187,12 +238,25 @@ class WidgetDialog extends StatelessWidget {
                       height: 12,
                     ),
                     Center(
+                      child: Container(
+                        height: 35.h,
+                        width: 140.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: dynamicTheme.containerBackground),
                         child: OutlinedButton(
                             style: OutlinedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {},
-                            child: Text('Документ'))),
+                              padding: EdgeInsets.all(0),
+                              side: BorderSide.none,
+                            ),
+                            onPressed: convertImageToPdf,
+                            child: Text(
+                              'Документ',
+                              style: TextStyle(
+                                  fontSize: 16.sp, color: dynamicTheme.white),
+                            )),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -200,7 +264,7 @@ class WidgetDialog extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 250.h,
+              height: MediaQuery.of(context).size.height * 0.518.h,
               color: dynamicTheme.containerColor,
               child: Column(
                 spacing: 5,
@@ -213,7 +277,7 @@ class WidgetDialog extends StatelessWidget {
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white38),
                   ),
                   Text(
-                    '$login',
+                    '${widget.login}',
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
@@ -226,7 +290,7 @@ class WidgetDialog extends StatelessWidget {
                         TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
-                    '$date',
+                    '${widget.date}',
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
@@ -239,7 +303,7 @@ class WidgetDialog extends StatelessWidget {
                         TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
-                    "$summa",
+                    "${widget.summa}",
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
@@ -252,7 +316,7 @@ class WidgetDialog extends StatelessWidget {
                         TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
                   ),
                   Text(
-                    "$comment",
+                    "${widget.comment}",
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),

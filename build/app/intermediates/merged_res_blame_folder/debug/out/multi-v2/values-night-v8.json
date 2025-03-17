@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.incasator.app-mergeDebugResources-45:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.incasator.app-mergeDebugResources-47:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values-night/styles.xml",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/6ddfe7bc5a026c54878de2bc1391ef46/transformed/appcompat-1.1.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/f3e01c95a04b87be1a2f2ed87103c6d5/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

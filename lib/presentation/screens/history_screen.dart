@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
+import 'package:incasator/presentation/widgets/diolog_widget.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
-import '../widgets/widget_dialog.dart';
 
 class HistoryScreen extends StatefulWidget {
   static String name = 'history_screen';
@@ -24,7 +24,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
+    context.read<PrecessingBlocCubit>().fetchDeposits();
   }
 
   String formatDate(String date) {
@@ -120,7 +120,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                         begin: Offset(0, 1),
                                         end: Offset(0, 0),
                                       ).animate(animation),
-                                      child: WidgetDialog(
+                                      child: DiologWidget(
                                         depositId: deposit.id,
                                         login: deposit.login,
                                         statusName: deposit.statusName,

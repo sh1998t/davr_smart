@@ -3,16 +3,37 @@ import '../../ core/base_api_requrest.dart';
 import '../model/deposit_model.dart';
 
 class PrecessingApi extends BaseApiRequest {
-  Future<List<DepositReplenishmentsModel>> request({int? page}) async {
-    var endPoint = ApiConst.new_deposit;
+  static const int limit = 20; // Har bir sahifadagi elementlar soni
+
+  Future<Map<String, dynamic>> request({int? page}) async {
+    final currentPage = page ?? 1; // Agar page kiritilmasa, 1-sahifa
+    var endPoint =
+        '${ApiConst.new_deposit}?page=$currentPage&limit=$limit'; // Pagination qo'shildi
+
+    // API so'rovini yuborish
     final response = await super.getRequest(endPoint);
-    if (response.statusCode != 200) {
-      throw Exception('Server xatosi: success false qaytdi');
+
+    // Xatolikni tekshirish
+    if (response?.statusCode != 200) {
+      throw Exception('Server xatosi: ${response?.statusCode}');
     }
+
+    // Natijani tayyorlash
+    Map<String, dynamic> replenishmentList = {};
+    var pagination = response?.data['pagination'] ?? {};
+    replenishmentList['totalCount'] = pagination['totalCount'] ?? 0;
+    replenishmentList['pageCount'] = pagination['totalPages'] ?? 0;
+    replenishmentList['currentPage'] = pagination['currentPage'] ?? 0;
+    replenishmentList['perPage'] = pagination['limit'] ?? 0;
+
+    List<DepositReplenishmentsModel> replenishments = [];
     var data = response?.data['data'] ?? [];
-    return data
-        .map<DepositReplenishmentsModel>(
-            (item) => DepositReplenishmentsModel.fromJson(item))
-        .toList();
+    for (final item in data) {
+      replenishments.add(DepositReplenishmentsModel.fromJson(item));
+    }
+
+    replenishmentList['items'] = replenishments;
+
+    return replenishmentList;
   }
 }

@@ -5,5 +5,6 @@ class ApiConst {
   static const String new_deposit = "/client/new-deposits?";
   static const String Courier_Accept_Deposit = "/client/accept-deposit";
   static const String Get_Accepted_deposit = "/admin/deposit-incasator";
-  static const String Bank_id = "/admin/static-bank";
+  static const String Bank_id = "/admin/bank";
+  static const String Deposit_Send = "/client/update-coureir-deposit";
 }

@@ -1,18 +1,48 @@
 part of 'precessing_bloc_cubit.dart';
 
 @immutable
-sealed class PrecessingBlocState {}
+abstract class PrecessingBlocState {}
 
-final class PrecessingBlocInitial extends PrecessingBlocState {}
+class PrecessingBlocInitial extends PrecessingBlocState {}
 
 class PrecessingLoading extends PrecessingBlocState {}
 
 class PrecessingData extends PrecessingBlocState {
-  final List<DepositReplenishmentsModel> deposits;
-  PrecessingData(this.deposits);
+  final List<DepositReplenishmentsModel> items;
+  final int totalCount;
+  final int pageCount;
+  final int currentPage;
+  final int perPage;
+
+  PrecessingData({
+    required Map<String, dynamic> data,
+  })  : items = data['items'] ?? [],
+        totalCount = data['totalCount'] ?? 0,
+        pageCount = data['pageCount'] ?? 0,
+        currentPage = data['currentPage'] ?? 1,
+        perPage = data['perPage'] ?? 0;
+
+  PrecessingData copyWith({
+    List<DepositReplenishmentsModel>? items,
+    int? totalCount,
+    int? pageCount,
+    int? currentPage,
+    int? perPage,
+  }) {
+    return PrecessingData(
+      data: {
+        'items': items ?? this.items,
+        'totalCount': totalCount ?? this.totalCount,
+        'pageCount': pageCount ?? this.pageCount,
+        'currentPage': currentPage ?? this.currentPage,
+        'perPage': perPage ?? this.perPage,
+      },
+    );
+  }
 }
 
-final class PrecessingError extends PrecessingBlocState {
+class PrecessingError extends PrecessingBlocState {
   final String message;
+
   PrecessingError(this.message);
 }

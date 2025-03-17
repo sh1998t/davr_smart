@@ -10,6 +10,7 @@ import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/presentation/screens/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'data/bloc/collect_cubit.dart';
 import 'data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import 'data/network/deposit_api.dart';
 
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
                 create: (context) =>
                     DepositCubit(DepositReplenishmentsListRequest()),
               ),
+              BlocProvider(create: (context) => CollectCubit()),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

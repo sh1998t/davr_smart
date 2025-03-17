@@ -13,8 +13,10 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--
-     Required to query activities that can process text, see:
+ Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
@@ -104,6 +106,17 @@
                 android:name="photopicker_activity:0:required"
                 android:value="" />
         </service>
+
+        <provider
+            android:name="com.crazecoder.openfile.FileProvider"
+            android:authorities="com.example.incasator.fileProvider.com.crazecoder.openfile"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:requestLegacyExternalStorage="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
         <!--
         Service for holding metadata. Cannot be instantiated.
         Metadata will be merged from other manifests.
@@ -157,6 +170,9 @@
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.incasator.androidx-startup"
             android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
             <meta-data
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"
                 android:value="androidx.startup" />
