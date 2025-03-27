@@ -1,48 +1,32 @@
 part of 'precessing_bloc_cubit.dart';
 
 @immutable
-abstract class PrecessingBlocState {}
+abstract class ProcessingState extends Equatable {
+  const ProcessingState();
 
-class PrecessingBlocInitial extends PrecessingBlocState {}
-
-class PrecessingLoading extends PrecessingBlocState {}
-
-class PrecessingData extends PrecessingBlocState {
-  final List<DepositReplenishmentsModel> items;
-  final int totalCount;
-  final int pageCount;
-  final int currentPage;
-  final int perPage;
-
-  PrecessingData({
-    required Map<String, dynamic> data,
-  })  : items = data['items'] ?? [],
-        totalCount = data['totalCount'] ?? 0,
-        pageCount = data['pageCount'] ?? 0,
-        currentPage = data['currentPage'] ?? 1,
-        perPage = data['perPage'] ?? 0;
-
-  PrecessingData copyWith({
-    List<DepositReplenishmentsModel>? items,
-    int? totalCount,
-    int? pageCount,
-    int? currentPage,
-    int? perPage,
-  }) {
-    return PrecessingData(
-      data: {
-        'items': items ?? this.items,
-        'totalCount': totalCount ?? this.totalCount,
-        'pageCount': pageCount ?? this.pageCount,
-        'currentPage': currentPage ?? this.currentPage,
-        'perPage': perPage ?? this.perPage,
-      },
-    );
-  }
+  @override
+  List<Object> get props => [];
 }
 
-class PrecessingError extends PrecessingBlocState {
+class ProcessingInitial extends ProcessingState {}
+
+class ProcessingLoading extends ProcessingState {}
+
+class ProcessingLoaded extends ProcessingState {
+  final Map<String, dynamic> replenishmentList;
+  final int currentPage;
+
+  const ProcessingLoaded(this.replenishmentList, this.currentPage);
+
+  @override
+  List<Object> get props => [replenishmentList, currentPage];
+}
+
+class ProcessingError extends ProcessingState {
   final String message;
 
-  PrecessingError(this.message);
+  const ProcessingError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

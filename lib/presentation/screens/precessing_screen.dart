@@ -20,33 +20,61 @@ class PrecessingScreen extends StatefulWidget {
 }
 
 class _PrecessingScreenState extends State<PrecessingScreen> {
-  late ScrollController _scrollController;
+  final ScrollController _scrollController = ScrollController();
+  bool _isLoadingMore = false;
+  List<DepositReplenishmentsModel> _allDeposits = [];
+  int _currentPage = 0;
+  int _totalPages = 0;
+  int _totalCount = 0;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<PrecessingBlocCubit>().fetchDeposits();
-    });
+    _scrollController.addListener(_onScroll);
+    context.read<ProcessingCubit>().fetchProcessing();
   }
 
-  void _scrollListener() {
-    if (_scrollController.offset >=
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent - 50 &&
-        !_scrollController.position.outOfRange) {
-      final state = context.read<PrecessingBlocCubit>().state;
-      if (state is PrecessingData && state.currentPage < state.pageCount) {
-        context.read<PrecessingBlocCubit>().loadMore();
+        !_isLoadingMore) {
+      print('Scroll oxiriga yaqinlashdi');
+      _loadMoreData();
+    }
+  }
+
+  void _loadMoreData() async {
+    if (!mounted ||
+        _isLoadingMore ||
+        _currentPage >= _totalPages ||
+        _allDeposits.length >= _totalCount) {
+      print('Yuklash tugadi: Total ${_allDeposits.length}/$_totalCount');
+      return;
+    }
+
+    setState(() => _isLoadingMore = true);
+    final cubit = context.read<ProcessingCubit>();
+    final nextPage = _currentPage + 1;
+
+    print(
+        'Joriy: $_currentPage, Keyingi: $nextPage, Jami sahifalar: $_totalPages, Total: $_totalCount');
+
+    try {
+      print('Yuklash boshlandi: Page $nextPage');
+      await cubit.fetchProcessing(page: nextPage);
+      print('Yuklash tugadi: Page $nextPage');
+      await Future.delayed(const Duration(seconds: 2));
+    } catch (e) {
+      print('Xato: $e');
+    } finally {
+      if (mounted) {
+        setState(() => _isLoadingMore = false);
       }
     }
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_scrollListener); // Listenerni o‘chirish
     _scrollController.dispose();
     super.dispose();
   }
@@ -56,166 +84,14 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
     return DateFormat('dd.MM.yyyy HH:mm').format(parsedDate);
   }
 
-  @override
-  Widget build(BuildContext context) {
-    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
-        ? MainColor.darkTheme
-        : MainColor.lightTheme;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: dynamicTheme.appBarBackgroundColor,
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 12.h),
-            child: IconButton(
-                onPressed: () {
-                  AdaptiveTheme.of(context).toggleThemeMode();
-                },
-                icon: Icon(
-                  Icons.notifications,
-                  size: 28,
-                  color: dynamicTheme.white,
-                )),
-          )
-        ],
-        leading: Text(''),
-        toolbarHeight: 40.h,
-        title: Text(
-          "Обработка поступления",
-          style: TextStyle(
-              color: dynamicTheme.white,
-              fontSize: 18.sp,
-              fontFamily: 'Regular',
-              fontWeight: FontWeight.w700),
-        ),
-      ),
-      backgroundColor: dynamicTheme.backgroundColor,
-      body: BlocBuilder<PrecessingBlocCubit, PrecessingBlocState>(
-        builder: (context, state) {
-          if (state is PrecessingLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is PrecessingError) {
-            return Center(child: Text('${state.message}'));
-          } else if (state is PrecessingData && state.items.isEmpty) {
-            return Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/noData.png',
-                    height: 180.h,
-                    width: 200.w,
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    'Нет новых поступлений',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                      color: dynamicTheme.white,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else if (state is PrecessingData) {
-            final groupedEntries = groupByDate(state.items).entries.toList();
-            return RefreshIndicator(
-              onRefresh: () async {
-                await context.read<PrecessingBlocCubit>().fetchDeposits();
-              },
-              child: ListView.builder(
-                controller: _scrollController,
-                itemCount: groupedEntries.length +
-                    (state.currentPage < state.pageCount
-                        ? 1
-                        : 0), // Loading uchun
-                itemBuilder: (context, index) {
-                  if (index == groupedEntries.length &&
-                      state.currentPage < state.pageCount) {
-                    return const Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  } else if (index < groupedEntries.length) {
-                    final entry = groupedEntries[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 5.h),
-                          child: Text(
-                            "  ${entry.key}",
-                            style: TextStyle(
-                              color: dynamicTheme.white,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 5.h),
-                        ...entry.value.map((deposit) => CardWidget(
-                              name: deposit.login,
-                              date: formatDate("${deposit.createdAt}"),
-                              summa: deposit.amount,
-                              onevent: () {
-                                showGeneralDialog(
-                                  context: context,
-                                  pageBuilder:
-                                      (context, animation, secondaryAnimation) {
-                                    return Padding(
-                                      padding: EdgeInsets.only(top: 30.h),
-                                      child: SlideTransition(
-                                        position: Tween<Offset>(
-                                          begin: const Offset(0, 1),
-                                          end: const Offset(0, 0),
-                                        ).animate(animation),
-                                        child: WidgetDialog(
-                                          depositId: deposit.id,
-                                          login: deposit.login,
-                                          statusName: deposit.statusName,
-                                          date: formatDate(
-                                              "${deposit.createdAt}"),
-                                          summa: deposit.amount,
-                                          comment: deposit.comment,
-                                          image: deposit.operatorPhoto,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  transitionDuration:
-                                      const Duration(milliseconds: 300),
-                                );
-                              },
-                            )),
-                        SizedBox(height: 10.h),
-                      ],
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
-              ),
-            );
-          }
-          return Container();
-        },
-      ),
-    );
-  }
-
   Map<String, List<DepositReplenishmentsModel>> groupByDate(
       List<DepositReplenishmentsModel> deposits) {
     Map<String, List<DepositReplenishmentsModel>> grouped = {};
-
     for (var deposit in deposits) {
       String formattedDate =
           "${deposit.createdAt.day} ${getMonthName(deposit.createdAt.month)}";
       grouped.putIfAbsent(formattedDate, () => []).add(deposit);
     }
-
     return grouped;
   }
 
@@ -235,5 +111,166 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
       "декабрь"
     ];
     return months[month - 1];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: dynamicTheme.appBarBackgroundColor,
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 12.h),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications,
+                  size: 28, color: dynamicTheme.white),
+            ),
+          ),
+        ],
+        leading: const SizedBox(),
+        toolbarHeight: 40.h,
+        title: Text(
+          "Обработка поступления",
+          style: TextStyle(
+            color: dynamicTheme.white,
+            fontSize: 18.sp,
+            fontFamily: 'Regular',
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+      backgroundColor: dynamicTheme.backgroundColor,
+      body: BlocListener<ProcessingCubit, ProcessingState>(
+        listener: (context, state) {
+          if (state is ProcessingLoaded) {
+            setState(() {
+              _allDeposits = List<DepositReplenishmentsModel>.from(
+                  state.replenishmentList['items']);
+              _currentPage = state.currentPage;
+              _totalPages = state.replenishmentList['pageCount'] as int;
+              _totalCount = state.replenishmentList['totalCount'] as int;
+            });
+          } else if (state is ProcessingError) {
+            print('Xato: ${state.message}');
+          }
+        },
+        child: RefreshIndicator(
+          onRefresh: () async {
+            _allDeposits.clear();
+            setState(() {});
+            await context.read<ProcessingCubit>().fetchProcessing();
+          },
+          child: _buildBody(dynamicTheme),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody(ThemeColors dynamicTheme) {
+    if (_allDeposits.isEmpty && !_isLoadingMore) {
+      return BlocBuilder<ProcessingCubit, ProcessingState>(
+        builder: (context, state) {
+          if (state is ProcessingLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ProcessingError) {
+            return Center(child: Text('${state.message}'));
+          } else if (state is ProcessingLoaded && _allDeposits.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/noData.png',
+                      height: 180.h, width: 200.w),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Нет новых поступлений',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                      color: dynamicTheme.white,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+          return const SizedBox();
+        },
+      );
+    }
+
+    final groupedEntries = groupByDate(_allDeposits);
+    return ListView.builder(
+      controller: _scrollController,
+      physics: const AlwaysScrollableScrollPhysics(),
+      itemCount: groupedEntries.length + (_isLoadingMore ? 1 : 0),
+      itemBuilder: (context, index) {
+        if (index == groupedEntries.length && _isLoadingMore) {
+          return const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        final entry = groupedEntries.entries.elementAt(index);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+              child: Text(
+                "  ${entry.key}",
+                style: TextStyle(
+                  color: dynamicTheme.white,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            SizedBox(height: 5.h),
+            ...entry.value.map(
+              (deposit) => CardWidget(
+                name: deposit.login,
+                date: formatDate("${deposit.createdAt}"),
+                summa: deposit.amount,
+                onevent: () {
+                  showGeneralDialog(
+                    context: context,
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 120.h),
+                        child: SlideTransition(
+                          position: Tween<Offset>(
+                            begin: const Offset(0, 1),
+                            end: const Offset(0, 0),
+                          ).animate(animation),
+                          child: WidgetDialog(
+                            depositId: deposit.id,
+                            login: deposit?.login,
+                            statusName: deposit.statusName,
+                            date: formatDate("${deposit.createdAt}"),
+                            summa: deposit.amount,
+                            comment: deposit.comment,
+                            image: deposit.operatorPhoto,
+                          ),
+                        ),
+                      );
+                    },
+                    transitionDuration: const Duration(milliseconds: 300),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 10.h),
+          ],
+        );
+      },
+    );
   }
 }

@@ -4,12 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
-import 'package:incasator/presentation/widgets/diolog_widget.dart';
 import 'package:intl/intl.dart';
 
-import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
+import '../widgets/show_dialog_history_widget.dart';
 
 class HistoryScreen extends StatefulWidget {
   static String name = 'history_screen';
@@ -24,7 +23,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<PrecessingBlocCubit>().fetchDeposits();
+    context.read<DepositCubit>().fetchDeposits();
   }
 
   String formatDate(String date) {
@@ -88,60 +87,99 @@ class _HistoryScreenState extends State<HistoryScreen> {
             );
           } else if (state is DepositData) {
             return SingleChildScrollView(
-                child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  for (var entry in groupByDate(state.deposits).entries) ...[
-                    Text(
-                      "  ${entry.key}",
-                      style: TextStyle(
-                        color: dynamicTheme.white,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.h),
+                child: groupByDate(state.deposits)
+                        .entries
+                        .where((entry) =>
+                            entry.value.any((deposit) => deposit.status == 4))
+                        .isNotEmpty
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          for (var entry in groupByDate(state.deposits)
+                              .entries
+                              .where((entry) => entry.value
+                                  .any((deposit) => deposit.status == 4))) ...[
+                            Text(
+                              "  ${entry.key}",
+                              style: TextStyle(
+                                color: dynamicTheme.white,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(height: 5.h),
+                            ...entry.value
+                                .where((deposit) => deposit.status == 4)
+                                .map((deposit) => CardWidget(
+                                      name: deposit.login,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      onevent: () {
+                                        showGeneralDialog(
+                                          context: context,
+                                          pageBuilder: (context, animation,
+                                              secondaryAnimation) {
+                                            return Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 60.h),
+                                              child: SlideTransition(
+                                                position: Tween<Offset>(
+                                                  begin: Offset(0, 1),
+                                                  end: Offset(0, 0),
+                                                ).animate(animation),
+                                                child: ShowDialogHistoryWidget(
+                                                  depositId: deposit.id,
+                                                  login: deposit.login,
+                                                  statusName:
+                                                      deposit.statusName,
+                                                  date: formatDate(
+                                                      "${deposit.createdAt}"),
+                                                  summa: deposit.amount,
+                                                  comment: deposit.comment,
+                                                  image: Image.network(
+                                                      "${deposit.operatorPhoto}"),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          transitionDuration:
+                                              Duration(milliseconds: 300),
+                                        );
+                                      },
+                                    )),
+                          ]
+                        ],
+                      )
+                    : Center(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 100.h,
+                            ),
+                            Image.asset(
+                              'assets/images/noData.png',
+                              height: 180.h,
+                              width: 200.w,
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Text(
+                              'Нет новых поступлений',
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                                color: dynamicTheme.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 5.h),
-                    ...entry.value
-                        .where((deposit) => deposit.status == 4)
-                        .map((deposit) => CardWidget(
-                              name: deposit.login,
-                              date: formatDate("${deposit.createdAt}"),
-                              summa: deposit.amount,
-                              onevent: () {
-                                showGeneralDialog(
-                                  context: context,
-                                  pageBuilder:
-                                      (context, animation, secondaryAnimation) {
-                                    return SlideTransition(
-                                      position: Tween<Offset>(
-                                        begin: Offset(0, 1),
-                                        end: Offset(0, 0),
-                                      ).animate(animation),
-                                      child: DiologWidget(
-                                        depositId: deposit.id,
-                                        login: deposit.login,
-                                        statusName: deposit.statusName,
-                                        date:
-                                            formatDate("${deposit.createdAt}"),
-                                        summa: deposit.amount,
-                                        comment: deposit.comment,
-                                        image: Image.network(
-                                            "${deposit.operatorPhoto}"),
-                                      ),
-                                    );
-                                  },
-                                  transitionDuration:
-                                      Duration(milliseconds: 300),
-                                );
-                              },
-                            )),
-                  ]
-                ],
               ),
-            ));
+            );
           }
           return Container();
         },

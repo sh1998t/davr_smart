@@ -5,9 +5,10 @@ class MainColor {
     white: Color(0xffFFFFFF),
     black: Color(0xff000000),
     hintText: Color(0xFFC8C8C8),
-    backgroundColor: Color(0xFF25364A),
-    appBarBackgroundColor: Color(0xFF0D1B2A),
+    backgroundColor: Color(0xFF000000),
+    appBarBackgroundColor: Color(0xFF000000),
     black12: Colors.black12,
+    black38: Colors.white38,
     white60: Colors.white60,
     white38: Colors.white38,
     opacityColorsTop: Color(0xFF1D1D1D),
@@ -18,26 +19,30 @@ class MainColor {
     grey600: Colors.grey[600]!,
     color303030: Color(0xFF303030),
     color202020: Color(0xFF202020),
+    topColor: Color(0xFF343747),
+    buttonColor: Color(0xFF14171F),
   );
 
   static final lightTheme = ThemeColors(
-    white: Color(0xff000000),
-    black: Color(0xffFFFFFF),
-    hintText: Color(0xFF757575),
-    backgroundColor: Color(0xFFF5F6F5),
-    appBarBackgroundColor: Color(0xFFE0E0E0),
-    black12: Colors.grey[300],
-    white60: Colors.black54,
-    white38: Colors.black38,
-    opacityColorsTop: Color(0xFFD0D0D0),
-    opacityColorsButton: Color(0xFFE0E0E0),
-    containerBackground: Color(0xFFFFFFFF),
-    containerColor: Color(0xFFF0F0F0),
-    deepPurple: Color(0xff572da6),
-    grey600: Color(0xFFE0E0E0),
-    color303030: Color(0xFFD0D0D0),
-    color202020: Color(0xFFE0E0E0),
-  );
+      white: Color(0xff000000),
+      black: Color(0xffFFFFFF),
+      hintText: Color(0xFF757575),
+      backgroundColor: Color(0xFFF7F7F7),
+      appBarBackgroundColor: Color(0xFFF7F7F7),
+      black12: Colors.grey[300],
+      white60: Colors.black54,
+      white38: Colors.black38,
+      opacityColorsTop: Color(0xFFD0D0D0),
+      opacityColorsButton: Color(0xFFE0E0E0),
+      containerBackground: Color(0xFFFFFFFF),
+      containerColor: Color(0xFFF0F0F0),
+      deepPurple: Color(0xff572da6),
+      grey600: Color(0xFFB2B0B0),
+      color303030: Color(0xFFD0D0D0),
+      color202020: Color(0xFFE0E0E0),
+      black38: Colors.black38,
+      buttonColor: Color(0xFFFFFFFF),
+      topColor: Color(0xFFECEEF0));
 }
 
 class ThemeColors {
@@ -47,6 +52,7 @@ class ThemeColors {
   final Color backgroundColor;
   final Color appBarBackgroundColor;
   final Color? black12;
+  final Color? black38;
   final Color white60;
   final Color white38;
   final Color opacityColorsTop;
@@ -57,6 +63,9 @@ class ThemeColors {
   final Color grey600;
   final Color color303030;
   Color color202020;
+
+  final Color topColor;
+  final Color buttonColor;
   ThemeColors(
       {required this.white,
       required this.black,
@@ -64,6 +73,7 @@ class ThemeColors {
       required this.backgroundColor,
       required this.appBarBackgroundColor,
       required this.black12,
+      required this.black38,
       required this.white60,
       required this.white38,
       required this.opacityColorsTop,
@@ -73,5 +83,7 @@ class ThemeColors {
       required this.deepPurple,
       required this.grey600,
       required this.color202020,
-      required this.color303030});
+      required this.color303030,
+      required this.topColor,
+      required this.buttonColor});
 }

@@ -9,7 +9,16 @@ final class DepositLoading extends DepositState {}
 
 final class DepositData extends DepositState {
   final List<DepositReplenishmentsModel> deposits;
-  DepositData(this.deposits);
+  final int totalCount;
+  final int pageCount;
+  final int currentPage;
+
+  DepositData({
+    required this.deposits,
+    required this.totalCount,
+    required this.pageCount,
+    required this.currentPage,
+  });
 }
 
 final class DepositError extends DepositState {

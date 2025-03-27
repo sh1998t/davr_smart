@@ -54,24 +54,24 @@
 37-->[:mobile_scanner] /Users/davrsmart/projects/incasator/build/mobile_scanner/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-33
 38
 39    <permission
-39-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+39-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
 40        android:name="com.example.incasator.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-40-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+40-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 41        android:protectionLevel="signature" />
-41-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+41-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 42
 43    <uses-permission android:name="com.example.incasator.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
-43-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
-43-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+43-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+43-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 44    <!-- <uses-sdk android:minSdkVersion="14"/> -->
 45    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-45-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
-45-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:22-76
+45-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+45-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:22-76
 46
 47    <application
 48        android:name="android.app.Application"
 49        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-49-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+49-->[androidx.core:core:1.13.1] /Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 50        android:debuggable="true"
 51        android:extractNativeLibs="true"
 52        android:icon="@mipmap/ic_launcher"
@@ -174,183 +174,183 @@
 122        Metadata will be merged from other manifests.
 123        -->
 124        <service
-124-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:29:9-33:78
+124-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/5fd96481726913a3bf6e54c8a22e180d/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:29:9-33:78
 125            android:name="androidx.camera.core.impl.MetadataHolderService"
-125-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:30:13-75
+125-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/5fd96481726913a3bf6e54c8a22e180d/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:30:13-75
 126            android:enabled="false"
-126-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:31:13-36
+126-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/5fd96481726913a3bf6e54c8a22e180d/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:31:13-36
 127            android:exported="false" >
-127-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/8d9ac05214997b2af5dc4732cbab4bd0/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:32:13-37
+127-->[androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/5fd96481726913a3bf6e54c8a22e180d/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:32:13-37
 128            <meta-data
-128-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:30:13-32:89
+128-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:30:13-32:89
 129                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-129-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:31:17-103
+129-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:31:17-103
 130                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-130-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/ca27e2d69ae52327d4b9360736f7a733/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:32:17-86
+130-->[androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:32:17-86
 131        </service>
 132        <service
-132-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
+132-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
 133            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-133-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
+133-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
 134            android:directBootAware="true"
-134-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
+134-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
 135            android:exported="false" >
-135-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
+135-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
 136            <meta-data
-136-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
+136-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
 137                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
-137-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
+137-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
 138                android:value="com.google.firebase.components.ComponentRegistrar" />
-138-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/42825a2fb3d6713c05e0730e5d0b55bf/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
+138-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
 139            <meta-data
-139-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/958bca4fc1f9e87eee90b2ca4f88d4cd/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+139-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
 140                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-140-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/958bca4fc1f9e87eee90b2ca4f88d4cd/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+140-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
 141                android:value="com.google.firebase.components.ComponentRegistrar" />
-141-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/958bca4fc1f9e87eee90b2ca4f88d4cd/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+141-->[com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
 142            <meta-data
-142-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
+142-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
 143                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-143-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
+143-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
 144                android:value="com.google.firebase.components.ComponentRegistrar" />
-144-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
+144-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
 145        </service>
 146
 147        <provider
-147-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
+147-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
 148            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-148-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
+148-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
 149            android:authorities="com.example.incasator.mlkitinitprovider"
-149-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
+149-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
 150            android:exported="false"
-150-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
+150-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
 151            android:initOrder="99" />
-151-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/b49d1d7bd595393476083579cb7a20e6/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
+151-->[com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
 152
 153        <activity
-153-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/cfd64f895a5e43e042ab08fe7842d887/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+153-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
 154            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-154-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/cfd64f895a5e43e042ab08fe7842d887/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+154-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
 155            android:exported="false"
-155-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/cfd64f895a5e43e042ab08fe7842d887/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+155-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
 156            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-156-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/cfd64f895a5e43e042ab08fe7842d887/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+156-->[com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
 157
 158        <meta-data
-158-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/2d8fb55a80d1bdc40c49276f2c2f5c9f/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+158-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
 159            android:name="com.google.android.gms.version"
-159-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/2d8fb55a80d1bdc40c49276f2c2f5c9f/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+159-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
 160            android:value="@integer/google_play_services_version" />
-160-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/2d8fb55a80d1bdc40c49276f2c2f5c9f/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+160-->[com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
 161
 162        <uses-library
-162-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+162-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
 163            android:name="androidx.window.extensions"
-163-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+163-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
 164            android:required="false" />
-164-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+164-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
 165        <uses-library
-165-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+165-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
 166            android:name="androidx.window.sidecar"
-166-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+166-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
 167            android:required="false" />
-167-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/8859fd2468ade3ef2655d1f63d6737f2/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+167-->[androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
 168
 169        <provider
-169-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+169-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
 170            android:name="androidx.startup.InitializationProvider"
-170-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+170-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
 171            android:authorities="com.example.incasator.androidx-startup"
-171-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+171-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
 172            android:exported="false" >
-172-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+172-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
 173            <meta-data
-173-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+173-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 174                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-174-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+174-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
 175                android:value="androidx.startup" />
-175-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/b54c8b34dc2cec64a7baaa02a8a7a5a3/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+175-->[androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
 176            <meta-data
-176-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/40a1bd5ff2ce65cd1fad055cc690d356/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+176-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/06238db6d1b9fadfc90e00cec994ce15/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
 177                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-177-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/40a1bd5ff2ce65cd1fad055cc690d356/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+177-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/06238db6d1b9fadfc90e00cec994ce15/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
 178                android:value="androidx.startup" />
-178-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/40a1bd5ff2ce65cd1fad055cc690d356/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+178-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/06238db6d1b9fadfc90e00cec994ce15/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
 179            <meta-data
-179-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+179-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
 180                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-180-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+180-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
 181                android:value="androidx.startup" />
-181-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
 182        </provider>
 183
 184        <receiver
-184-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+184-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
 185            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-185-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
 186            android:directBootAware="false"
-186-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+186-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
 187            android:enabled="true"
-187-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+187-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
 188            android:exported="true"
-188-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
 189            android:permission="android.permission.DUMP" >
-189-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+189-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
 190            <intent-filter>
-190-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+190-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
 191                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
-191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
 192            </intent-filter>
 193            <intent-filter>
-193-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+193-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
 194                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
-194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
 195            </intent-filter>
 196            <intent-filter>
-196-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+196-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
 197                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-197-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
-197-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+197-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+197-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
 198            </intent-filter>
 199            <intent-filter>
-199-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+199-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
 200                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-200-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
-200-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/408a642162969e960684d9c16b2f116a/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+200-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+200-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
 201            </intent-filter>
 202        </receiver>
 203
 204        <service
-204-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+204-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
 205            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-205-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+205-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
 206            android:exported="false" >
-206-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+206-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
 207            <meta-data
-207-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+207-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
 208                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-208-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+208-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
 209                android:value="cct" />
-209-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/c8da7e0b028a986fea496c902974f61f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+209-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/davrsmart/.gradle/caches/transforms-3/bd972496c85734512c8df80c218b8e28/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
 210        </service>
 211        <service
-211-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+211-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
 212            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-212-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+212-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
 213            android:exported="false"
-213-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+213-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
 214            android:permission="android.permission.BIND_JOB_SERVICE" >
-214-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+214-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
 215        </service>
 216
 217        <receiver
-217-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+217-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
 218            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-218-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
+218-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
 219            android:exported="false" />
-219-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/4d17d303b0fb726a0ac392e6fd58bab6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+219-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/davrsmart/.gradle/caches/transforms-3/eb8de642df0cd0bdcf9f48a1891fcdd6/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
 220    </application>
 221
 222</manifest>

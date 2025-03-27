@@ -30,7 +30,7 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<PrecessingBlocCubit>().fetchDeposits(page: 1);
+    context.read<ProcessingCubit>().fetchProcessing();
   }
 
   @override
@@ -52,28 +52,27 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
         items: [
           TabItem(
             icon: Icon(Icons.edit_document, color: dynamicTheme.white38),
-            activeIcon: Icon(Icons.edit_document, color: dynamicTheme.white),
+            activeIcon: Icon(Icons.edit_document, color: Colors.deepPurple),
             title: '',
           ),
           TabItem(
             icon: Icon(Icons.account_balance, color: dynamicTheme.white38),
-            activeIcon: Icon(Icons.account_balance, color: dynamicTheme.white),
+            activeIcon: Icon(Icons.account_balance, color: Colors.deepPurple),
             title: '',
           ),
           TabItem(
             icon: Icon(Icons.qr_code, color: Colors.white, size: 36),
-            activeIcon:
-                Icon(Icons.qr_code, color: dynamicTheme.white, size: 36),
+            activeIcon: Icon(Icons.qr_code, color: Colors.deepPurple, size: 36),
             title: '',
           ),
           TabItem(
             icon: Icon(Icons.history, color: dynamicTheme.white38),
-            activeIcon: Icon(Icons.history, color: dynamicTheme.white),
+            activeIcon: Icon(Icons.history, color: Colors.deepPurple),
             title: '',
           ),
           TabItem(
             icon: Icon(Icons.settings, color: dynamicTheme.white38),
-            activeIcon: Icon(Icons.settings, color: dynamicTheme.white),
+            activeIcon: Icon(Icons.settings, color: Colors.deepPurple),
             title: '',
           ),
         ],

@@ -108,7 +108,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 15.w,
+                  left: 30.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,8 +208,8 @@ class _WidgetDialogState extends State<WidgetDialog> {
                                       ).show(context);
 
                                       await context
-                                          .read<PrecessingBlocCubit>()
-                                          .fetchDeposits();
+                                          .read<ProcessingCubit>()
+                                          .fetchProcessing();
                                       Navigator.pop(context);
                                     } else {
                                       CherryToast.warning(
@@ -262,9 +262,9 @@ class _WidgetDialogState extends State<WidgetDialog> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.518.h,
+              height: MediaQuery.of(context).size.height * 0.346.h,
               color: dynamicTheme.containerColor,
               child: Column(
                 spacing: 5,

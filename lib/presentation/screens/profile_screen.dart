@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/data/bloc/statistika_bloc/statistika__cubit.dart';
 
 import '../../ core/colors.dart';
+import '../../data/bloc/userme/user_me_cubit.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<StatistikaCubit>().data();
+    context.read<UserMeCubit>().fetchUserMe();
   }
 
   @override
@@ -26,18 +27,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
-        backgroundColor: Color(0xFF323747),
+        backgroundColor: dynamicTheme.backgroundColor,
         appBar: AppBar(
           centerTitle: false,
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Color(0xFF323747),
-          leading: Text(''),
+          automaticallyImplyLeading: false,
           title: Text(
-            'Статистика',
-            style: TextStyle(color: Colors.white),
+            ' Профиль',
+            style: TextStyle(
+              color: dynamicTheme.white,
+            ),
           ),
+          backgroundColor: dynamicTheme.appBarBackgroundColor,
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 12.h),
+              child: IconButton(
+                  onPressed: () {
+                    AdaptiveTheme.of(context).toggleThemeMode();
+                  },
+                  icon: Icon(
+                    Icons.dark_mode,
+                    size: 28,
+                    color: dynamicTheme.white,
+                  )),
+            )
+          ],
         ),
-        body: BlocBuilder<StatistikaCubit, StatistikaState>(
+        body:
+            BlocListener<UserMeCubit, UserMeState>(listener: (context, state) {
+          if (state is UserMeLoaded) {
+            final userId = state.userMe.id;
+            context.read<StatistikaCubit>().data(userId);
+          }
+        }, child: BlocBuilder<StatistikaCubit, StatistikaState>(
           builder: (context, state) {
             if (state is StatistikaLoading) {
               return Center(
@@ -66,336 +88,323 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               );
             } else if (state is StatistikaError) {
-              print("Error +++++ ==== = = ==${state.error}");
               return Center(
-                child: Text('${state.error}'),
+                child: Text(
+                  '${state.error}',
+                  style: TextStyle(color: dynamicTheme.white),
+                ),
               );
             } else if (state is StatistikaData) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 20),
-                      color: Color(0xFF323747),
-                      height: 100.h,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 20,
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Center(
+                      child: SizedBox(
+                        height: 80.h,
+                        width: 80.w,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100.r),
+                          child: Image.asset(
+                            'assets/images/person.png',
+                            fit: BoxFit
+                                .cover, // Tasvirni to'g'ri joylashtirish uchun
                           ),
-                          Container(
-                            height: 50.h,
-                            width: 60,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFEDEEF0),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Icon(
-                              Icons.person,
-                              size: 45,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text("${state.data.courierFullName} ",
-                                  style: TextStyle(
-                                      fontSize: 18.sp,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600)),
-                              SizedBox(height: 5.h),
-                              Text(
-                                state.data.courierUserName,
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          )
-                        ],
+                        ),
                       ),
                     ),
-                    Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(top: 30, left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(25),
-                                topLeft: Radius.circular(25)),
-                            color: Color(0xFF13171F)),
-                        height: MediaQuery.of(context).size.height - 238.2,
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Text(
+                      state.data.courierFullName,
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                      child: Card(
+                        color: Colors.white,
                         child: Column(
                           children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('courierId',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.courierId}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('courierRegionName',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.courierRegionName,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('courierStructureName',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.courierStructureName}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalAcceptedCount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalAcceptedCount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalAcceptedAmount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalAcceptedAmount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalWaitingCount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalWaitingCount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalWaitingAmount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalWaitingAmount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalConfirmedCount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalConfirmedCount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('totalConfirmedAmount',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalConfirmedAmount}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('fromDateTime',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.fromDateTime,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('toDateTime',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.toDateTime,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('courierBalance',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.courierBalance}",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('courierLastDepositDate',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.courierLastDepositDate,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10.h,
+                            Container(
+                              height: 150,
+                              padding: EdgeInsets.only(
+                                  left: 10.w, right: 10.w, top: 5),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.person),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Профиль'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.black12,
+                                  ),
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.map),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Карта'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.black12,
+                                  ),
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.notifications),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Уведомления'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             )
                           ],
-                        ))
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                      child: Card(
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              padding: EdgeInsets.only(
+                                  left: 10.w, right: 10.w, top: 5),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.person),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Профиль'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.black12,
+                                  ),
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.map),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Карта'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                      child: Card(
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 50,
+                              padding: EdgeInsets.only(
+                                  left: 10.w, right: 10.w, top: 5),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(Icons.person),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text('Профиль'),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                      child: Card(
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 50,
+                              padding: EdgeInsets.only(
+                                  left: 10.w, right: 10.w, top: 8),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 35,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.logout,
+                                              color: Colors.red,
+                                            ),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            Text(
+                                              'Выйти',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.red),
+                                            ),
+                                          ],
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Colors.black,
+                                              size: 18,
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -403,6 +412,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             return Container();
           },
-        ));
+        )));
   }
 }

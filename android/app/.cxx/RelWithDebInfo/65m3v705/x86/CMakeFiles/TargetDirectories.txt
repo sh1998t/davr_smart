@@ -1,0 +1,2 @@
+/Users/davrsmart/projects/incasator/android/app/.cxx/RelWithDebInfo/65m3v705/x86/CMakeFiles/edit_cache.dir
+/Users/davrsmart/projects/incasator/android/app/.cxx/RelWithDebInfo/65m3v705/x86/CMakeFiles/rebuild_cache.dir

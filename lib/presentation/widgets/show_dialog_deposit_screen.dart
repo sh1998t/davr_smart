@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class ShowDialogDepositScreen extends StatefulWidget {
   final String? statusName;
   final String? date;
   final double? summa;
-  final Widget? image;
+  final String? operatorImage;
   final String? comment;
   const ShowDialogDepositScreen(
       {super.key,
@@ -31,7 +32,7 @@ class ShowDialogDepositScreen extends StatefulWidget {
       required this.statusName,
       required this.date,
       required this.summa,
-      required this.image,
+      required this.operatorImage,
       required this.comment});
 
   @override
@@ -42,6 +43,15 @@ class ShowDialogDepositScreen extends StatefulWidget {
 class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
   final picker = ImagePicker();
   XFile? image;
+  String? imageUrl;
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.operatorImage != null && widget.operatorImage is String) {
+      imageUrl = "${widget.operatorImage}";
+    }
+  }
 
   Future getCamera() async {
     final XFile? pickerCamera = await picker.pickImage(
@@ -91,6 +101,71 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
     }
   }
 
+  Future<void> openImageFromUrl() async {
+    print("url :::::  ${imageUrl}");
+    if (imageUrl == null || imageUrl!.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Iltimos, avval rasm URL'sini tekshiring!")),
+      );
+      return;
+    }
+
+    try {
+      if (File(imageUrl!).existsSync()) {
+        final result = await OpenFile.open(imageUrl!);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochildi: $imageUrl")),
+          );
+        }
+        return;
+      }
+      Dio dio = Dio();
+      final response = await dio.get(
+        imageUrl!,
+        options:
+            Options(responseType: ResponseType.bytes), // Byte formatida olish
+      );
+
+      if (response.statusCode == 200) {
+        final directory = await getExternalStorageDirectory();
+        final file = File("${directory!.path}/downloaded_image.jpg");
+        await file.writeAsBytes(response.data);
+
+        final result = await OpenFile.open(file.path);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochildi: ${file.path}")),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Rasmni yuklab olishda xatolik!")),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Xatolik yuz berdi: $e")),
+      );
+    }
+  }
+
+  void clearImage() {
+    setState(() {
+      image = null;
+      imageUrl = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
@@ -104,11 +179,11 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 410.h,
+              height: MediaQuery.of(context).size.height - 429.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
+                  topLeft: Radius.circular(35),
                   topRight: Radius.circular(25),
                 ),
                 gradient: LinearGradient(
@@ -122,7 +197,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 15.w,
+                  left: 30.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +259,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
-                              onPressed: () {},
+                              onPressed: openImageFromUrl,
                               child: Text(
                                 'документ',
                                 style: TextStyle(
@@ -199,20 +274,47 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                 height: 35.h,
                                 width: 140.w,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: dynamicTheme.containerBackground),
-                                child: OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide.none,
-                                      padding: EdgeInsets.all(0),
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: dynamicTheme.containerBackground,
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Center(
+                                      child: OutlinedButton(
+                                        style: OutlinedButton.styleFrom(
+                                          side: BorderSide.none,
+                                          padding: EdgeInsets.all(0),
+                                        ),
+                                        onPressed: convertImageToPdf,
+                                        child: Text(
+                                          'документ',
+                                          style: TextStyle(
+                                            fontSize: 16.sp,
+                                            color: dynamicTheme.white,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    onPressed: convertImageToPdf,
-                                    child: Text(
-                                      'документ',
-                                      style: TextStyle(
-                                          fontSize: 16.sp,
-                                          color: dynamicTheme.white),
-                                    )),
+                                    Positioned(
+                                      right: 5.w,
+                                      top: 5.h,
+                                      child: IconButton(
+                                        padding: EdgeInsets.zero,
+                                        constraints: BoxConstraints(),
+                                        icon: Icon(
+                                          Icons.close,
+                                          size: 20.sp,
+                                          color: dynamicTheme.white,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            clearImage();
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               )
                             : Container(
                                 height: 35.h,
@@ -268,6 +370,26 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                   collectCubit.imagePaths.isNotEmpty
                                       ? collectCubit.imagePaths.last
                                       : null;
+
+                              print(bankId);
+                              if (bankId == null || bankId == 0) {
+                                CherryToast.error(
+                                  animationDuration:
+                                      Duration(milliseconds: 300),
+                                  inheritThemeColors: true,
+                                  animationType: AnimationType.fromTop,
+                                  title: Text('Xato!'),
+                                  description: Text('Bank tanlanmadi!'),
+                                ).show(context);
+
+                                debugPrint(
+                                    '❌ Bank ID null yoki bo‘sh! API so‘rov yuborilmadi.');
+                                return; // Funksiyani to‘xtatish
+                              }
+
+                              debugPrint(
+                                  '✅ Bank ID: $bankId. API so‘rov yuborilmoqda...');
+
                               DepositSend()
                                   .request(widget.depositId, chekPhoto, bankId)
                                   .then((onValue) async {
@@ -277,16 +399,26 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                         Duration(milliseconds: 300),
                                     inheritThemeColors: true,
                                     animationType: AnimationType.fromTop,
-                                    title: Text('Успех!'),
-                                    description:
-                                        Text('Данные успешно загружены!'),
+                                    title: Text('Muvaffaqiyat!'),
+                                    description: Text(
+                                        'Ma’lumotlar muvaffaqiyatli yuklandi!'),
                                   ).show(context);
 
                                   await context
                                       .read<DepositCubit>()
                                       .fetchDeposits();
                                   Navigator.pop(context);
-                                } else if (onValue == false) {}
+                                } else {
+                                  CherryToast.error(
+                                    animationDuration:
+                                        Duration(milliseconds: 300),
+                                    inheritThemeColors: true,
+                                    animationType: AnimationType.fromTop,
+                                    title: Text('Xato!'),
+                                    description: Text(
+                                        'Ma’lumotlarni yuborishda xato. Qayta urinib ko‘ring.'),
+                                  ).show(context);
+                                }
                               });
                             },
                             child: Text(
@@ -301,9 +433,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 315.h,
+              height: MediaQuery.of(context).size.height - 414.h,
               color: dynamicTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

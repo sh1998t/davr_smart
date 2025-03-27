@@ -1,20 +1,38 @@
-import 'package:cherry_toast/cherry_toast.dart';
-import 'package:cherry_toast/resources/arrays.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ShowDialogWidget extends StatefulWidget {
-  const ShowDialogWidget({
+import '../../ core/colors.dart';
+
+class ShowDialogHistoryWidget extends StatefulWidget {
+  final int? depositId;
+  final String? login;
+  final String? statusName;
+  final String? date;
+  final double? summa;
+  final Widget? image;
+  final String? comment;
+  const ShowDialogHistoryWidget({
+    required this.depositId,
+    required this.login,
+    required this.statusName,
+    required this.date,
+    required this.summa,
+    required this.image,
+    required this.comment,
     super.key,
   });
 
   @override
-  State<ShowDialogWidget> createState() => _ShowDialogWidgetState();
+  State<ShowDialogHistoryWidget> createState() => _ShowDialogWidgetState();
 }
 
-class _ShowDialogWidgetState extends State<ShowDialogWidget> {
+class _ShowDialogWidgetState extends State<ShowDialogHistoryWidget> {
   @override
   Widget build(BuildContext context) {
+    ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
+        ? MainColor.darkTheme
+        : MainColor.lightTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       child: SizedBox(
@@ -23,7 +41,7 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.378,
+              height: MediaQuery.of(context).size.height - 600,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -41,7 +59,7 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 15.w,
+                  left: 30.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,21 +81,21 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
                       height: 10.h,
                     ),
                     Text(
-                      "Успешно",
+                      "Статус",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Оплата",
+                      "${widget.statusName}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "2500000",
+                      "${widget.summa}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
@@ -102,7 +120,7 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
                               ),
                               onPressed: () {},
                               child: Text(
-                                'Отклонение',
+                                'документ',
                                 style: TextStyle(
                                     fontSize: 16.sp, color: Colors.white),
                               )),
@@ -115,28 +133,17 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
                           width: 140.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color(0xFF0F0F0F)),
+                              color: dynamicTheme.containerBackground),
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
-                              onPressed: () {
-                                CherryToast.warning(
-                                  inheritThemeColors: true,
-                                  description: const Text(
-                                    'Ошибка',
-                                  ),
-                                  animationType: AnimationType.fromTop,
-                                  action: const Text(
-                                      'Резервное копирование данных'),
-                                  actionHandler: () {},
-                                ).show(context);
-                              },
+                              onPressed: () {},
                               child: Text(
-                                'Принятие',
+                                'документ',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.white),
+                                    fontSize: 16.sp, color: dynamicTheme.white),
                               )),
                         ),
                       ],
@@ -146,9 +153,9 @@ class _ShowDialogWidgetState extends State<ShowDialogWidget> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.512,
+              height: MediaQuery.of(context).size.height - 238.h,
               color: Color(0xff1D1D1D),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

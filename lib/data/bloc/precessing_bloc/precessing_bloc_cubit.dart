@@ -1,65 +1,42 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:incasator/data/model/deposit_model.dart';
 import 'package:incasator/data/network/precessing_api.dart';
 import 'package:meta/meta.dart';
 
-import '../../model/deposit_model.dart';
-
 part 'precessing_bloc_state.dart';
 
-class PrecessingBlocCubit extends Cubit<PrecessingBlocState> {
-  final PrecessingApi request;
-  int currentPage = 1;
-  bool isFetching =
-      false; // Bir vaqtning o'zida bir nechta so'rovni oldini olish uchun
-  List<DepositReplenishmentsModel> allItems = []; // Barcha yuklangan elementlar
-
-  PrecessingBlocCubit(this.request) : super(PrecessingBlocInitial());
-
-  Future<void> fetchDeposits({int? page, bool isLoadMore = false}) async {
-    if (isFetching)
-      return; // Agar so'rov allaqachon bajarilayotgan bo'lsa, qaytib chiqamiz
-
-    isFetching = true;
-    if (!isLoadMore) {
-      emit(PrecessingLoading());
-      allItems.clear(); // Yangi yuklashda ro'yxatni tozalash
-      currentPage = 1;
-    }
-
+class ProcessingCubit extends Cubit<ProcessingState> {
+  final PrecessingApi precessingApi;
+  ProcessingCubit(this.precessingApi) : super(ProcessingInitial());
+  Map<String, dynamic> _replenishmentList = {
+    'items': <DepositReplenishmentsModel>[],
+    'totalCount': 0,
+    'pageCount': 0,
+    'currentPage': 0,
+    'perPage': 0,
+  };
+  Future<void> fetchProcessing({int? page}) async {
     try {
-      final deposits = await request.request(page: page ?? currentPage);
-      final newItems = deposits['items'] as List<DepositReplenishmentsModel>;
-
-      allItems.addAll(newItems); // Yangi elementlarni qo'shish
-
-      emit(PrecessingData(
-        data: {
-          'items': allItems,
-          'totalCount': deposits['totalCount'],
-          'pageCount': deposits['pageCount'],
-          'currentPage': deposits['currentPage'],
-          'perPage': deposits['perPage'],
-        },
-      ));
-
-      if (isLoadMore) {
-        currentPage++; // Keyingi sahifa uchun sahifani oshirish
+      if (page == null || page == 1) {
+        emit(ProcessingLoading());
       }
+      final newData = await precessingApi.request(page);
+      final newItems = List<DepositReplenishmentsModel>.from(newData['items']);
+      if (page == null || page == 1) {
+        _replenishmentList = newData;
+      } else {
+        final currentItems =
+            List<DepositReplenishmentsModel>.from(_replenishmentList['items']);
+        if (currentItems.length < (_replenishmentList['totalCount'] as int)) {
+          _replenishmentList['items'] = [...currentItems, ...newItems];
+          _replenishmentList['currentPage'] = newData['currentPage'];
+        }
+      }
+      emit(ProcessingLoaded(
+          Map.from(_replenishmentList), _replenishmentList['currentPage']));
     } catch (e) {
-      if (!isLoadMore) {
-        emit(PrecessingError(e.toString()));
-      } // Faqat birinchi yuklashda xatolik ko'rsatamiz
-    } finally {
-      isFetching = false;
-    }
-  }
-
-  void loadMore() {
-    if (state is PrecessingData) {
-      final currentState = state as PrecessingData;
-      if (currentState.currentPage < currentState.pageCount) {
-        fetchDeposits(page: currentPage + 1, isLoadMore: true);
-      }
+      emit(ProcessingError(e.toString()));
     }
   }
 }

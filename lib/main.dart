@@ -6,9 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/data/bloc/auth_bloc/auth_bloc_cubit.dart';
 import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
 import 'package:incasator/data/bloc/statistika_bloc/statistika__cubit.dart';
+import 'package:incasator/data/bloc/userme/user_me_cubit.dart';
 import 'package:incasator/data/network/auth_api.dart';
 import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/data/network/statistika_api.dart';
+import 'package:incasator/data/network/user_me.dart';
 import 'package:incasator/presentation/screens/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -53,8 +55,8 @@ class MyApp extends StatelessWidget {
               BlocProvider<AuthBlocCubit>(
                 create: (context) => AuthBlocCubit(AuthApiRequest()),
               ),
-              BlocProvider<PrecessingBlocCubit>(
-                create: (context) => PrecessingBlocCubit(PrecessingApi()),
+              BlocProvider<ProcessingCubit>(
+                create: (context) => ProcessingCubit(PrecessingApi()),
               ),
               BlocProvider<DepositCubit>(
                 create: (context) =>
@@ -63,6 +65,9 @@ class MyApp extends StatelessWidget {
               BlocProvider(create: (context) => CollectCubit()),
               BlocProvider<StatistikaCubit>(
                   create: (context) => StatistikaCubit(StatistikaApi())),
+              BlocProvider<UserMeCubit>(
+                create: (context) => UserMeCubit(UserMeRequest()),
+              ),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

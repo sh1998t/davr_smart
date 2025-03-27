@@ -1,15 +1,12 @@
 import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:incasator/%20core/colors.dart';
-import 'package:incasator/data/bloc/collect_cubit.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class DiologWidget extends StatefulWidget {
   final int? depositId;
@@ -17,8 +14,9 @@ class DiologWidget extends StatefulWidget {
   final String? statusName;
   final String? date;
   final double? summa;
-  final Widget? image;
+  final String? operatorImage;
   final String? comment;
+  final String? courierImage;
   const DiologWidget(
       {super.key,
       required this.depositId,
@@ -26,63 +24,97 @@ class DiologWidget extends StatefulWidget {
       required this.statusName,
       required this.date,
       required this.summa,
-      required this.image,
-      required this.comment});
+      required this.operatorImage,
+      required this.comment,
+      required this.courierImage});
 
   @override
   State<DiologWidget> createState() => _ShowDialogDepositScreenState();
 }
 
 class _ShowDialogDepositScreenState extends State<DiologWidget> {
-  final picker = ImagePicker();
-  XFile? image;
+  String? operatorImageUrl;
+  String? courierImageUrl;
 
-  Future getCamera() async {
-    final XFile? pickerCamera = await picker.pickImage(
-        source: ImageSource.camera, maxHeight: 1000, imageQuality: 100);
-    setState(() {
-      if (pickerCamera != null) {
-        image = XFile(pickerCamera.path);
-        context.read<CollectCubit>().addChekPhoto(image!.path);
-      } else {
-        print('No image selected.');
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
+    // OperatorImage URL ni olish
+    if (widget.operatorImage != null && widget.operatorImage is String) {
+      operatorImageUrl = "${widget.operatorImage}";
+    }
+    // CourierImage URL ni olish
+    if (widget.courierImage != null && widget.courierImage is String) {
+      courierImageUrl = "${widget.courierImage}";
+    }
   }
 
-  Future<void> convertImageToPdf() async {
-    if (image == null) {
+  // Umumiy funksiya: URL'dan rasmni yuklab ochish
+  Future<void> openImageFromUrl(String? imageUrl, String type) async {
+    print("url :::::  $imageUrl");
+    if (imageUrl == null || imageUrl.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Iltimos, avval rasm tanlang!")),
+        const SnackBar(
+            content: Text("Iltimos, avval rasm URL'sini tekshiring!")),
       );
       return;
     }
 
-    final pdf = pw.Document();
-    final imageBytes = pw.MemoryImage(File(image!.path).readAsBytesSync());
+    try {
+      // Agar URL mahalliy fayl yo'li bo'lsa
+      if (File(imageUrl).existsSync()) {
+        final result = await OpenFile.open(imageUrl);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("$type fayl ochildi: $imageUrl")),
+          );
+        }
+        return;
+      }
 
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.Center(child: pw.Image(imageBytes));
-        },
-      ),
-    );
-
-    final directory = await getExternalStorageDirectory();
-    final file = File("${directory!.path}/image_to_pdf.pdf");
-    await file.writeAsBytes(await pdf.save());
-
-    final result = await OpenFile.open(file.path);
-    if (result.type != ResultType.done) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("PDF ochishda xatolik: ${result.message}")),
+      Dio dio = Dio();
+      final response = await dio.get(
+        imageUrl,
+        options:
+            Options(responseType: ResponseType.bytes), // Byte formatida olish
       );
-    } else {
+
+      if (response.statusCode == 200) {
+        final directory = await getExternalStorageDirectory();
+        final file = File("${directory!.path}/downloaded_${type}_image.jpg");
+        await file.writeAsBytes(response.data);
+
+        final result = await OpenFile.open(file.path);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("$type fayl ochildi: ${file.path}")),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Rasmni yuklab olishda xatolik!")),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("PDF saqlandi va ochildi: ${file.path}")),
+        SnackBar(content: Text("Xatolik yuz berdi: $e")),
       );
     }
+  }
+
+  void clearImage() {
+    setState(() {
+      operatorImageUrl = null;
+      courierImageUrl = null;
+    });
   }
 
   @override
@@ -116,7 +148,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 15.w,
+                  left: 30.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,7 +210,8 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
-                              onPressed: () {},
+                              onPressed: () => openImageFromUrl(
+                                  operatorImageUrl, "Operator"),
                               child: Text(
                                 'документ',
                                 style: TextStyle(
@@ -199,7 +232,8 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                                 side: BorderSide.none,
                                 padding: EdgeInsets.all(0),
                               ),
-                              onPressed: convertImageToPdf,
+                              onPressed: () =>
+                                  openImageFromUrl(courierImageUrl, "Courier"),
                               child: Text(
                                 'документ',
                                 style: TextStyle(
@@ -216,9 +250,9 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 226.h,
+              height: MediaQuery.of(context).size.height - 352.h,
               color: dynamicTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

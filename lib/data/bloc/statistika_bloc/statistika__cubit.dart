@@ -8,10 +8,10 @@ part 'statistika__state.dart';
 class StatistikaCubit extends Cubit<StatistikaState> {
   final StatistikaApi statistikaApi;
   StatistikaCubit(this.statistikaApi) : super(StatistikaInitial());
-  Future<void> data() async {
+  Future<void> data(int userId) async {
     emit(StatistikaLoading());
     try {
-      final data = await statistikaApi.request();
+      final data = await statistikaApi.request(userId);
       emit(StatistikaData(data));
     } catch (Error) {
       emit(StatistikaError(Error.toString()));

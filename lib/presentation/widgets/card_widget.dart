@@ -22,83 +22,97 @@ class CardWidget extends StatelessWidget {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
         ? MainColor.darkTheme
         : MainColor.lightTheme;
-    return SizedBox(
-      height: 60.h,
-      width: MediaQuery.of(context).size.width,
-      child: OutlinedButton(
-        onPressed: onevent,
-        style: OutlinedButton.styleFrom(
-          padding: EdgeInsets.only(left: 10.w, right: 10.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          side: BorderSide.none,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Center(
-                    child: Container(
-                      height: 45.h,
-                      width: 50.w,
-                      decoration: BoxDecoration(
-                          color: MainColor.darkTheme.black12,
-                          borderRadius: BorderRadius.circular(5.r)),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          'assets/images/logo.svg',
-                          width: 25,
-                          color: dynamicTheme.white,
+    return Padding(
+      padding: EdgeInsets.only(left: 8.w, right: 8.w),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 3.w, right: 3.w),
+            decoration: BoxDecoration(
+                color: Color(0xFF1E1E1E),
+                borderRadius: BorderRadius.circular(15)),
+            height: 60.h,
+            width: MediaQuery.of(context).size.width,
+            child: OutlinedButton(
+              onPressed: onevent,
+              style: OutlinedButton.styleFrom(
+                padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                side: BorderSide.none,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Center(
+                          child: Container(
+                            height: 45.h,
+                            width: 50.w,
+                            decoration: BoxDecoration(
+                                color: MainColor.darkTheme.black12,
+                                borderRadius: BorderRadius.circular(5.r)),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/images/logo.svg',
+                                width: 25,
+                                color: dynamicTheme.white,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 3.h,
+                            ),
+                            Text(
+                              '$name',
+                              style: TextStyle(
+                                  fontSize: 18.sp, color: dynamicTheme.white),
+                            ),
+                            SizedBox(
+                              height: 6.h,
+                            ),
+                            Text(
+                              '$date',
+                              style: TextStyle(
+                                  fontSize: 14.sp, color: dynamicTheme.white60),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 3.h,
-                      ),
-                      Text(
-                        '$name',
-                        style: TextStyle(
-                            fontSize: 18.sp, color: dynamicTheme.white),
-                      ),
-                      SizedBox(
-                        height: 6.h,
-                      ),
-                      Text(
-                        '$date',
-                        style: TextStyle(
-                            fontSize: 14.sp, color: dynamicTheme.white60),
-                      ),
-                    ],
-                  ),
-                ],
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '$summa',
+                          style: TextStyle(
+                              fontSize: 18.sp, color: dynamicTheme.white),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '$summa',
-                    style:
-                        TextStyle(fontSize: 18.sp, color: dynamicTheme.white),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
+          SizedBox(
+            height: 8.h,
+          )
+        ],
       ),
     );
   }

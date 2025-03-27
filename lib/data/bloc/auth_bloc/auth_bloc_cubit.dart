@@ -9,12 +9,10 @@ class AuthBlocCubit extends Cubit<AuthBlocState> {
 
   AuthBlocCubit(this.apiRequest) : super(AuthBlocInitial());
 
-  Future<void> login(String login, String password) async {
+  Future<void> login(String? login, String? password) async {
     emit(AuthLoading());
     try {
       final response = await apiRequest.request(login, password);
-      final accessToken = response?.data['token'] as String;
-      emit(AuthData(accessToken));
     } catch (e) {
       emit(AuthError(e.toString()));
     }

@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,62 +54,78 @@ class _SelectBankState extends State<SelectBank> {
         : MainColor.lightTheme;
     return Container(
       height: 35.h,
-      width: 145.w,
+      width: 140.w,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: dynamicTheme.containerBackground),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(0),
-              child: DropdownButton<DropDownButtonValueModel>(
-                value: dropdownValue,
-                iconSize: 50.sp,
-                elevation: 16,
-                hint: Center(
-                  child: Text(
-                    '    Выбрать банк',
-                    style: TextStyle(color: Colors.black),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton2<DropDownButtonValueModel>(
+          isExpanded: true,
+          value: dropdownValue,
+          hint: Text(
+            'Выбрать банк',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: dynamicTheme.white,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          items: list.map<DropdownMenuItem<DropDownButtonValueModel>>(
+            (DropDownButtonValueModel item) {
+              return DropdownMenuItem<DropDownButtonValueModel>(
+                value: item,
+                child: Text(
+                  item.label,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: dynamicTheme.white,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                underline: SizedBox(height: 1, width: 180.w),
-                onChanged: (DropDownButtonValueModel? value) {
-                  if (value != null) {
-                    setState(() {
-                      dropdownValue = value;
-                      context.read<CollectCubit>().addBankId(value.value!);
-                    });
-                  }
-                },
-                items: list.map<DropdownMenuItem<DropDownButtonValueModel>>(
-                  (DropDownButtonValueModel item) {
-                    return DropdownMenuItem<DropDownButtonValueModel>(
-                      value: item,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Center(
-                            child: Text(
-                              '  ${item.label}',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ).toList(),
-                icon: const SizedBox.shrink(),
-                dropdownColor: Colors.white,
-              ),
+              );
+            },
+          ).toList(),
+          onChanged: (DropDownButtonValueModel? value) {
+            if (value != null) {
+              setState(() {
+                dropdownValue = value;
+                context.read<CollectCubit>().addBankId(value.value!);
+              });
+            }
+          },
+          buttonStyleData: ButtonStyleData(
+            height: 50,
+            width: 140.w,
+            padding: EdgeInsets.only(left: 10, right: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: dynamicTheme.black,
+                ),
+                color: dynamicTheme.containerBackground),
+            elevation: 16,
+          ),
+          dropdownStyleData: DropdownStyleData(
+            maxHeight: 200,
+            width: 145.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: dynamicTheme.containerColor,
+            ),
+            offset: const Offset(0, 0),
+            scrollbarTheme: ScrollbarThemeData(
+              radius: const Radius.circular(40),
+              thickness: MaterialStateProperty.all(6),
+              thumbVisibility: MaterialStateProperty.all(true),
             ),
           ),
-        ],
+          menuItemStyleData: const MenuItemStyleData(
+            height: 40,
+            padding: EdgeInsets.only(left: 14, right: 14),
+          ),
+        ),
       ),
     );
   }
