@@ -41,7 +41,7 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
     return Scaffold(
       body: pages[page],
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: dynamicTheme.appBarBackgroundColor,
+        backgroundColor: dynamicTheme.backgroundColor,
         cornerRadius: 5,
         style: TabStyle.fixedCircle,
         color: Colors.deepPurple,

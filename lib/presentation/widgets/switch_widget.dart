@@ -68,7 +68,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                 child: Text(
                   widget.labels[index],
                   style: TextStyle(
-                    color: isSelected ? dynamicTheme.white : dynamicTheme.black,
+                    color: isSelected ? dynamicTheme.black : dynamicTheme.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),

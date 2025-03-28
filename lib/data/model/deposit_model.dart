@@ -6,7 +6,7 @@ class DepositReplenishmentsModel {
   final String? comment;
   final String? operatorPhoto;
   final String? courierPhoto;
-  final int bankId;
+  final String? bankName;
   final String? login;
   final DateTime createdAt;
 
@@ -18,7 +18,7 @@ class DepositReplenishmentsModel {
       this.comment,
       this.operatorPhoto,
       this.courierPhoto,
-      required this.bankId,
+      required this.bankName,
       required this.createdAt,
       required this.login});
 
@@ -33,7 +33,7 @@ class DepositReplenishmentsModel {
         comment: json['comment'],
         operatorPhoto: json['operator_photo'],
         courierPhoto: json['courier_photo'],
-        bankId: json['bank_id'] ?? 0,
+        bankName: json['bank_id']?['string'] ?? 'Unknown',
         createdAt: json['created_at']?['date'] != null
             ? DateTime.parse(json['created_at']['date'])
             : DateTime(1970, 1, 1),

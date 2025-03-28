@@ -1,4 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:cherry_toast/cherry_toast.dart';
+import 'package:cherry_toast/resources/arrays.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,20 +41,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFF31435B),
-                    Color(0xFF25364A),
-                  ],
-                ),
-              ),
-            ),
             Column(
               children: [
                 SizedBox(height: 110.h),
@@ -73,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefix: Icon(
                           Icons.person,
                           size: 24.sp,
-                          color: const Color(0xFF53637A),
+                          color: dynamicTheme.white,
                         ),
                         title: "Login".tr(),
                         height: 43.h,
@@ -90,12 +78,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: "Password",
                         width: 300.w,
                         controller: passwordController,
+                        obscureText: obscurePassword,
                         prefix: IconButton(
                           icon: Icon(
                             obscurePassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: const Color(0xFF53637A),
+                            color: dynamicTheme.white,
                           ),
                           onPressed: () {
                             setState(() {
@@ -105,16 +94,31 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 50.h),
-                      SizedBox(
+                      Container(
                         height: 40.h,
                         width: MediaQuery.of(context).size.width - 150.w,
+                        decoration: BoxDecoration(
+                          color: dynamicTheme.CardColor,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: dynamicTheme.CardColor == Colors.white
+                                  ? Colors.grey.withOpacity(0.3)
+                                  : Color(0xFF1E1E1E).withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  30)), // Agar radius kerak bo'lsa
                             ),
-                            backgroundColor: const Color(0xFF209A9A),
+                            backgroundColor: dynamicTheme.CardColor,
+                            side: BorderSide.none, // Borderni olib tashlash
                           ),
                           onPressed: () async {
                             try {
@@ -131,38 +135,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               );
                             } catch (error) {
-                              String errorMessage = error.toString();
-                              if (errorMessage
-                                  .contains("Login yoki parol noto‘g‘ri")) {
-                                errorMessage = "Login yoki parol noto‘g‘ri";
-                              } else {
-                                errorMessage =
-                                    errorMessage.replaceAll("Exception: ", "");
-                              }
-
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text(
-                                      "Ошибка входа",
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    content: Text("Login yoki parol noto‘g‘ri"),
-                                    actions: <Widget>[
-                                      OutlinedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text("Закрыть"),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              String errorMessage = error
+                                  .toString()
+                                  .replaceAll("Exception: ", "");
+                              CherryToast.error(
+                                animationDuration: Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: Text('Ошибка!'),
+                                description: Text(errorMessage),
+                              ).show(context);
                             }
                           },
-                          child: Text("Sign IN"),
+                          child: Text(
+                            "Войти",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                                color: dynamicTheme.white),
+                          ),
                         ),
                       ),
                     ],

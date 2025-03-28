@@ -81,7 +81,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
 
   String formatDate(String date) {
     DateTime parsedDate = DateTime.parse(date);
-    return DateFormat('dd.MM.yyyy HH:mm').format(parsedDate);
+    return DateFormat('HH:mm').format(parsedDate);
   }
 
   Map<String, List<DepositReplenishmentsModel>> groupByDate(
@@ -123,6 +123,8 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
       appBar: AppBar(
         backgroundColor: dynamicTheme.appBarBackgroundColor,
         centerTitle: true,
+        leading: const SizedBox(),
+        toolbarHeight: 40.h,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 12.h),
@@ -133,10 +135,8 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
             ),
           ),
         ],
-        leading: const SizedBox(),
-        toolbarHeight: 40.h,
         title: Text(
-          "Обработка поступления",
+          "Поступление",
           style: TextStyle(
             color: dynamicTheme.white,
             fontSize: 18.sp,
@@ -212,18 +212,19 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
       itemCount: groupedEntries.length + (_isLoadingMore ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == groupedEntries.length && _isLoadingMore) {
-          return const Padding(
-            padding: EdgeInsets.all(16.0),
+          return Padding(
+            padding: EdgeInsets.all(16),
             child: Center(child: CircularProgressIndicator()),
           );
         }
 
         final entry = groupedEntries.entries.elementAt(index);
         return Column(
+          spacing: 0,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+              padding: EdgeInsets.only(left: 10.w, bottom: 4.h),
               child: Text(
                 "  ${entry.key}",
                 style: TextStyle(
@@ -233,7 +234,6 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 5.h),
             ...entry.value.map(
               (deposit) => CardWidget(
                 name: deposit.login,
@@ -244,7 +244,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                     context: context,
                     pageBuilder: (context, animation, secondaryAnimation) {
                       return Padding(
-                        padding: EdgeInsets.only(top: 120.h),
+                        padding: EdgeInsets.only(top: 145.h),
                         child: SlideTransition(
                           position: Tween<Offset>(
                             begin: const Offset(0, 1),
@@ -267,7 +267,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                 },
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 0.h),
           ],
         );
       },

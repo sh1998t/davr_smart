@@ -17,6 +17,7 @@ class DiologWidget extends StatefulWidget {
   final String? operatorImage;
   final String? comment;
   final String? courierImage;
+  final String? bankName;
   const DiologWidget(
       {super.key,
       required this.depositId,
@@ -26,7 +27,8 @@ class DiologWidget extends StatefulWidget {
       required this.summa,
       required this.operatorImage,
       required this.comment,
-      required this.courierImage});
+      required this.courierImage,
+      this.bankName});
 
   @override
   State<DiologWidget> createState() => _ShowDialogDepositScreenState();
@@ -39,17 +41,16 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
   @override
   void initState() {
     super.initState();
-    // OperatorImage URL ni olish
+
     if (widget.operatorImage != null && widget.operatorImage is String) {
       operatorImageUrl = "${widget.operatorImage}";
     }
-    // CourierImage URL ni olish
+
     if (widget.courierImage != null && widget.courierImage is String) {
       courierImageUrl = "${widget.courierImage}";
     }
   }
 
-  // Umumiy funksiya: URL'dan rasmni yuklab ochish
   Future<void> openImageFromUrl(String? imageUrl, String type) async {
     print("url :::::  $imageUrl");
     if (imageUrl == null || imageUrl.isEmpty) {
@@ -61,7 +62,6 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
     }
 
     try {
-      // Agar URL mahalliy fayl yo'li bo'lsa
       if (File(imageUrl).existsSync()) {
         final result = await OpenFile.open(imageUrl);
         if (result.type != ResultType.done) {
@@ -130,7 +130,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 490.h,
+              height: MediaQuery.of(context).size.height - 500.h,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -172,8 +172,8 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                     Text(
                       'Статус ',
                       style: TextStyle(
-                          fontSize: 14.sp,
-                          color: dynamicTheme.white,
+                          fontSize: 24.sp,
+                          color: Colors.deepPurple,
                           fontWeight: FontWeight.w600),
                     ),
                     Text(
@@ -194,7 +194,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 15.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -215,7 +215,9 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                               child: Text(
                                 'документ',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: dynamicTheme.white),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -237,7 +239,9 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                               child: Text(
                                 'документ',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: dynamicTheme.white),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white),
                               )),
                         )
                       ],
@@ -252,7 +256,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
             Container(
               padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 352.h,
+              height: MediaQuery.of(context).size.height - 380.h,
               color: dynamicTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -304,6 +308,19 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
                   ),
                   Text(
                     "${widget.comment}",
+                    style:
+                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    'Банк ',
+                    style:
+                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                  ),
+                  Text(
+                    "${widget.bankName}",
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),

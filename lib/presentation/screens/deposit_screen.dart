@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
+import 'package:incasator/presentation/widgets/select_bank.dart';
 import 'package:incasator/presentation/widgets/show_dialog_deposit_screen.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
-import '../widgets/diolog_widget.dart';
 import '../widgets/switch_widget.dart';
 
 class DepositScreen extends StatefulWidget {
@@ -206,6 +206,7 @@ class _DepositScreenState extends State<DepositScreen> {
             },
           ),
         ),
+        SizedBox(height: 5.h),
         Expanded(
           child: ListView.builder(
             controller: _scrollController,
@@ -234,8 +235,9 @@ class _DepositScreenState extends State<DepositScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                    padding: EdgeInsets.only(
+                      left: 10,
+                    ),
                     child: Text(
                       "  ${entry.key}",
                       style: TextStyle(
@@ -265,6 +267,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                 ).animate(animation),
                                 child: selectedIndex == 0
                                     ? ShowDialogDepositScreen(
+                                        selectBank: SelectBank(),
                                         depositId: deposit.id,
                                         login: deposit.login,
                                         statusName: deposit.statusName,
@@ -275,7 +278,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                         operatorImage:
                                             "${deposit.operatorPhoto}",
                                       )
-                                    : DiologWidget(
+                                    : ShowDialogDepositScreen(
                                         depositId: deposit.id,
                                         login: deposit.login,
                                         statusName: deposit.statusName,
@@ -286,6 +289,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                         operatorImage:
                                             "${deposit.operatorPhoto}",
                                         courierImage: "${deposit.courierPhoto}",
+                                        bankName: deposit.bankName,
                                       ),
                               ),
                             );

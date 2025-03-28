@@ -133,7 +133,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
                       'Статус',
                       style: TextStyle(
                           fontSize: 24.sp,
-                          color: dynamicTheme.white,
+                          color: Colors.deepPurple,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
@@ -174,7 +174,9 @@ class _WidgetDialogState extends State<WidgetDialog> {
                               child: Text(
                                 'Отклонить',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: dynamicTheme.white),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -229,7 +231,9 @@ class _WidgetDialogState extends State<WidgetDialog> {
                               child: Text(
                                 'Принять',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: dynamicTheme.white),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white),
                               )),
                         ),
                       ],
@@ -253,7 +257,9 @@ class _WidgetDialogState extends State<WidgetDialog> {
                             child: Text(
                               'Документ',
                               style: TextStyle(
-                                  fontSize: 16.sp, color: dynamicTheme.white),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.sp,
+                                  color: dynamicTheme.white),
                             )),
                       ),
                     ),

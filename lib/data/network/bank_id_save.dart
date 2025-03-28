@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ core/api_const.dart';
@@ -8,17 +9,26 @@ import '../../ core/base_api_requrest.dart';
 class BankIdSave extends BaseApiRequest {
   Future<bool> bankIdRequest() async {
     var url = ApiConst.Bank_id;
-    final response = await super.getRequest(url);
+    try {
+      final response = await super.getRequest(url);
 
-    if (response.statusCode != 200) {
-      throw Exception('Serverdan xato javob keldi: ${response.statusCode}');
+      if (response == null || response.statusCode != 200) {
+        final errorMessage = response?.data['message'] ?? 'Server xatosi';
+        throw Exception(errorMessage);
+      }
+
+      var data = response.data['data'] ?? [];
+
+      await _saveToSharedPreferences(data);
+
+      return true;
+    } catch (e) {
+      if (e is DioException && e.response != null) {
+        final errorMessage = e.response!.data['message'] ?? 'Tarmoq xatosi';
+        throw Exception(errorMessage);
+      }
+      throw Exception(e.toString());
     }
-
-    var data = response?.data['data'] ?? [];
-
-    await _saveToSharedPreferences(data);
-
-    return true;
   }
 
   Future<void> _saveToSharedPreferences(List<dynamic> data) async {

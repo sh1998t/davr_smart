@@ -2,10 +2,14 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:incasator/data/bloc/statistika_bloc/statistika__cubit.dart';
+import 'package:incasator/presentation/screens/statics.dart';
 
+import '../../ core/api_const.dart';
 import '../../ core/colors.dart';
 import '../../data/bloc/userme/user_me_cubit.dart';
+import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -109,8 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(100.r),
                           child: Image.asset(
                             'assets/images/person.png',
-                            fit: BoxFit
-                                .cover, // Tasvirni to'g'ri joylashtirish uchun
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -119,11 +122,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 5.h,
                     ),
                     Text(
-                      state.data.courierFullName,
+                      state.data.courierUserName,
                       style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                        fontSize: 22.sp,
+                        fontWeight: FontWeight.w700,
+                        color: dynamicTheme.white,
+                      ),
+                    ),
+                    Text(
+                      "${state.data.courierCode}",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: dynamicTheme.white,
+                      ),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -131,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: EdgeInsets.only(left: 20.w, right: 20.w),
                       child: Card(
-                        color: Colors.white,
+                        color: dynamicTheme.CardColor,
                         child: Column(
                           children: [
                             Container(
@@ -148,25 +160,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.person),
+                                            Icon(
+                                              Icons.person,
+                                              size: 20.sp,
+                                              color: dynamicTheme.white,
+                                            ),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Профиль'),
+                                            Text(
+                                              'Профиль',
+                                              style: TextStyle(
+                                                  color: dynamicTheme.white),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
                                             onPressed: () {},
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],
                                     ),
                                   ),
-                                  Divider(
-                                    color: Colors.black12,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Divider(
+                                      color: dynamicTheme.black12,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 35,
@@ -176,25 +199,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.map),
+                                            Icon(
+                                              Icons.map,
+                                              size: 20.sp,
+                                              color: dynamicTheme.white,
+                                            ),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Карта'),
+                                            Text(
+                                              'Карта',
+                                              style: TextStyle(
+                                                  color: dynamicTheme.white),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
                                             onPressed: () {},
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],
                                     ),
                                   ),
-                                  Divider(
-                                    color: Colors.black12,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Divider(
+                                      color: dynamicTheme.black12,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 35,
@@ -204,18 +238,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.notifications),
+                                            Icon(
+                                              Icons.notifications,
+                                              size: 20.sp,
+                                              color: dynamicTheme.white,
+                                            ),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Уведомления'),
+                                            Text(
+                                              'Уведомления',
+                                              style: TextStyle(
+                                                  color: dynamicTheme.white),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
                                             onPressed: () {},
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],
@@ -234,7 +276,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: EdgeInsets.only(left: 20.w, right: 20.w),
                       child: Card(
-                        color: Colors.white,
+                        color: dynamicTheme.CardColor,
                         child: Column(
                           children: [
                             Container(
@@ -251,25 +293,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.person),
+                                            Icon(Icons.bar_chart_rounded,
+                                                size: 20,
+                                                color: dynamicTheme.white),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Профиль'),
+                                            Text(
+                                              'Статистика',
+                                              style: TextStyle(
+                                                  color: dynamicTheme.white),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        StaticsScreen(),
+                                                  ));
+                                            },
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],
                                     ),
                                   ),
-                                  Divider(
-                                    color: Colors.black12,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Divider(
+                                      color: dynamicTheme.black12,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 35,
@@ -279,20 +337,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.map),
+                                            Icon(
+                                              Icons
+                                                  .account_balance_wallet_outlined,
+                                              color: dynamicTheme.white,
+                                            ),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Карта'),
+                                            Text('Баланс',
+                                                style: TextStyle(
+                                                  color: dynamicTheme.white,
+                                                )),
                                           ],
                                         ),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: Colors.black,
-                                              size: 18,
-                                            ))
+                                        Text(
+                                          "${state.data.courierBalance}   ",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 14.sp,
+                                              color:
+                                                  (state.data.courierBalance >
+                                                          0)
+                                                      ? dynamicTheme.white
+                                                      : Colors.red),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -309,7 +378,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: EdgeInsets.only(left: 20.w, right: 20.w),
                       child: Card(
-                        color: Colors.white,
+                        color: dynamicTheme.CardColor,
                         child: Column(
                           children: [
                             Container(
@@ -326,18 +395,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Icon(Icons.person),
+                                            Icon(
+                                              Icons.support,
+                                              color: dynamicTheme.white,
+                                            ),
                                             SizedBox(
                                               width: 15.w,
                                             ),
-                                            Text('Профиль'),
+                                            Text(
+                                              'Поддержка',
+                                              style: TextStyle(
+                                                  color: dynamicTheme.white),
+                                            ),
                                           ],
                                         ),
                                         IconButton(
                                             onPressed: () {},
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],
@@ -351,12 +427,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 8.h,
+                      height: 30.h,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 20.w, right: 20.w),
                       child: Card(
-                        color: Colors.white,
+                        color: dynamicTheme.CardColor,
                         child: Column(
                           children: [
                             Container(
@@ -389,10 +465,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ],
                                         ),
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () async {
+                                              const storage =
+                                                  FlutterSecureStorage();
+                                              await storage.delete(
+                                                  key: ApiConst.token);
+                                              Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginScreen()),
+                                                (Route<dynamic> route) => false,
+                                              );
+                                            },
                                             icon: Icon(
                                               Icons.arrow_forward_ios,
-                                              color: Colors.black,
+                                              color: dynamicTheme.white,
                                               size: 18,
                                             ))
                                       ],

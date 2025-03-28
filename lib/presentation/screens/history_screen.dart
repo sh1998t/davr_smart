@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
-import '../widgets/show_dialog_history_widget.dart';
+import '../widgets/diolog_widget.dart';
 
 class HistoryScreen extends StatefulWidget {
   static String name = 'history_screen';
@@ -124,13 +124,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                               secondaryAnimation) {
                                             return Padding(
                                               padding:
-                                                  EdgeInsets.only(top: 60.h),
+                                                  EdgeInsets.only(top: 187.h),
                                               child: SlideTransition(
                                                 position: Tween<Offset>(
                                                   begin: Offset(0, 1),
                                                   end: Offset(0, 0),
                                                 ).animate(animation),
-                                                child: ShowDialogHistoryWidget(
+                                                child: DiologWidget(
+                                                  bankName: deposit.bankName,
+                                                  courierImage:
+                                                      "${deposit.courierPhoto}",
                                                   depositId: deposit.id,
                                                   login: deposit.login,
                                                   statusName:
@@ -139,8 +142,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                       "${deposit.createdAt}"),
                                                   summa: deposit.amount,
                                                   comment: deposit.comment,
-                                                  image: Image.network(
-                                                      "${deposit.operatorPhoto}"),
+                                                  operatorImage:
+                                                      "${deposit.operatorPhoto}",
                                                 ),
                                               ),
                                             );

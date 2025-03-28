@@ -29,9 +29,20 @@ class CardWidget extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(left: 3.w, right: 3.w),
             decoration: BoxDecoration(
-                color: Color(0xFF1E1E1E),
-                borderRadius: BorderRadius.circular(15)),
-            height: 60.h,
+              color: dynamicTheme.CardColor,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: dynamicTheme.CardColor == Colors.white
+                      ? Colors.grey.withOpacity(0.3)
+                      : Color(0xFF1E1E1E).withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 8,
+                  offset: Offset(0, 4),
+                ),
+              ],
+            ),
+            height: 50.h,
             width: MediaQuery.of(context).size.width,
             child: OutlinedButton(
               onPressed: onevent,
@@ -52,15 +63,16 @@ class CardWidget extends StatelessWidget {
                       children: [
                         Center(
                           child: Container(
-                            height: 45.h,
-                            width: 50.w,
+                            height: 40.h,
+                            width: 40.w,
                             decoration: BoxDecoration(
-                                color: MainColor.darkTheme.black12,
-                                borderRadius: BorderRadius.circular(5.r)),
+                              color: dynamicTheme.black12,
+                              shape: BoxShape.circle,
+                            ),
                             child: Center(
                               child: SvgPicture.asset(
                                 'assets/images/logo.svg',
-                                width: 25,
+                                width: 20,
                                 color: dynamicTheme.white,
                               ),
                             ),
@@ -70,6 +82,7 @@ class CardWidget extends StatelessWidget {
                           width: 10.w,
                         ),
                         Column(
+                          spacing: 0,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -79,15 +92,19 @@ class CardWidget extends StatelessWidget {
                             Text(
                               '$name',
                               style: TextStyle(
-                                  fontSize: 18.sp, color: dynamicTheme.white),
+                                fontSize: 14.sp,
+                                color: dynamicTheme.white,
+                              ),
                             ),
                             SizedBox(
-                              height: 6.h,
+                              height: 3.h,
                             ),
                             Text(
                               '$date',
                               style: TextStyle(
-                                  fontSize: 14.sp, color: dynamicTheme.white60),
+                                fontSize: 12.sp,
+                                color: dynamicTheme.white60,
+                              ),
                             ),
                           ],
                         ),
@@ -100,7 +117,9 @@ class CardWidget extends StatelessWidget {
                         Text(
                           '$summa',
                           style: TextStyle(
-                              fontSize: 18.sp, color: dynamicTheme.white),
+                            fontSize: 15.sp,
+                            color: dynamicTheme.white,
+                          ),
                         ),
                       ],
                     ),
@@ -110,7 +129,7 @@ class CardWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 8.h,
+            height: 10.h,
           )
         ],
       ),

@@ -12,7 +12,6 @@ import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/data/bloc/collect_cubit.dart';
 import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
 import 'package:incasator/data/network/deposit_send.dart';
-import 'package:incasator/presentation/widgets/select_bank.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -23,17 +22,24 @@ class ShowDialogDepositScreen extends StatefulWidget {
   final String? statusName;
   final String? date;
   final double? summa;
+  final Widget? selectBank;
+  final String? bankName;
   final String? operatorImage;
   final String? comment;
-  const ShowDialogDepositScreen(
-      {super.key,
-      required this.depositId,
-      required this.login,
-      required this.statusName,
-      required this.date,
-      required this.summa,
-      required this.operatorImage,
-      required this.comment});
+  final String? courierImage; // Bu endi ixtiyoriy
+  const ShowDialogDepositScreen({
+    super.key,
+    required this.depositId,
+    required this.login,
+    required this.statusName,
+    required this.date,
+    required this.summa,
+    this.selectBank,
+    this.bankName,
+    required this.operatorImage,
+    required this.comment,
+    this.courierImage,
+  });
 
   @override
   State<ShowDialogDepositScreen> createState() =>
@@ -128,8 +134,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
       Dio dio = Dio();
       final response = await dio.get(
         imageUrl!,
-        options:
-            Options(responseType: ResponseType.bytes), // Byte formatida olish
+        options: Options(responseType: ResponseType.bytes),
       );
 
       if (response.statusCode == 200) {
@@ -179,7 +184,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 429.h,
+              height: (widget.bankName == null)
+                  ? (MediaQuery.of(context).size.height - 425.h)
+                  : (MediaQuery.of(context).size.height - 455.h),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -221,8 +228,8 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                     Text(
                       'Статус ',
                       style: TextStyle(
-                          fontSize: 14.sp,
-                          color: dynamicTheme.white,
+                          fontSize: 24.sp,
+                          color: Colors.deepPurple,
                           fontWeight: FontWeight.w600),
                     ),
                     Text(
@@ -243,7 +250,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 15.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -263,7 +270,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                               child: Text(
                                 'документ',
                                 style: TextStyle(
-                                    fontSize: 16.sp, color: dynamicTheme.white),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white),
                               )),
                         ),
                         SizedBox(
@@ -289,6 +298,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                         child: Text(
                                           'документ',
                                           style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                             fontSize: 16.sp,
                                             color: dynamicTheme.white,
                                           ),
@@ -333,6 +343,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                     child: Text(
                                       'Камера',
                                       style: TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           fontSize: 16.sp,
                                           color: dynamicTheme.white),
                                     )),
@@ -340,13 +351,13 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 8,
                     ),
                     Center(
-                      child: SelectBank(),
+                      child: widget.selectBank,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 8,
                     ),
                     Center(
                       child: Container(
@@ -371,7 +382,6 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                       ? collectCubit.imagePaths.last
                                       : null;
 
-                              print(bankId);
                               if (bankId == null || bankId == 0) {
                                 CherryToast.error(
                                   animationDuration:
@@ -379,16 +389,11 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                   inheritThemeColors: true,
                                   animationType: AnimationType.fromTop,
                                   title: Text('Xato!'),
-                                  description: Text('Bank tanlanmadi!'),
+                                  description: Text(""),
                                 ).show(context);
 
-                                debugPrint(
-                                    '❌ Bank ID null yoki bo‘sh! API so‘rov yuborilmadi.');
-                                return; // Funksiyani to‘xtatish
+                                return;
                               }
-
-                              debugPrint(
-                                  '✅ Bank ID: $bankId. API so‘rov yuborilmoqda...');
 
                               DepositSend()
                                   .request(widget.depositId, chekPhoto, bankId)
@@ -424,7 +429,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                             child: Text(
                               'Подтвердить',
                               style: TextStyle(
-                                  fontSize: 16.sp, color: dynamicTheme.white),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.sp,
+                                  color: dynamicTheme.white),
                             )),
                       ),
                     )
@@ -435,12 +442,14 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
             Container(
               padding: EdgeInsets.only(left: 30),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 414.h,
+              height: (widget.bankName == null)
+                  ? (MediaQuery.of(context).size.height - 418.h)
+                  : (MediaQuery.of(context).size.height - 385.h),
               color: dynamicTheme.containerColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   Text(
                     'логин',
                     style:
@@ -452,7 +461,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 15.h,
                   ),
                   Text(
                     'дата ',
@@ -465,7 +474,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 15.h,
                   ),
                   Text(
                     'Сумма',
@@ -478,7 +487,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 15.h,
                   ),
                   Text(
                     'комментария ',
@@ -490,6 +499,27 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                     style:
                         TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
                   ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  (widget.bankName == null)
+                      ? Text('')
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Bank ',
+                              style: TextStyle(
+                                  fontSize: 14.sp, color: dynamicTheme.white38),
+                            ),
+                            Text(
+                              "${widget.bankName}",
+                              style: TextStyle(
+                                  fontSize: 16.sp, color: dynamicTheme.white),
+                            ),
+                          ],
+                        )
                 ],
               ),
             ),
