@@ -2,11 +2,9 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:incasator/data/bloc/statistika_bloc/statistika__cubit.dart';
 import 'package:incasator/presentation/screens/statics.dart';
 
-import '../../ core/api_const.dart';
 import '../../ core/colors.dart';
 import '../../data/bloc/userme/user_me_cubit.dart';
 import 'login_screen.dart';
@@ -432,10 +430,120 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: EdgeInsets.only(left: 20.w, right: 20.w),
                       child: Card(
-                        color: dynamicTheme.CardColor,
-                        child: Column(
-                          children: [
-                            Container(
+                          color: dynamicTheme.CardColor,
+                          child: InkWell(
+                            onTap: () async {
+                              // const storage = FlutterSecureStorage();
+                              // await storage.delete(key: ApiConst.token);
+                              showBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return Container(
+                                    height: 200.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: dynamicTheme.black,
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(16.r),
+                                            topLeft: Radius.circular(16.r))),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 25.h,
+                                        ),
+                                        Text(
+                                          'выйти из системы',
+                                          style: TextStyle(
+                                              fontSize: 20.sp,
+                                              color: dynamicTheme.white,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    color: Color(0xFFE0E0E6),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.r)),
+                                                height: 45.h,
+                                                width: 145.w,
+                                                child: Center(
+                                                  child: Text(
+                                                    'Закрывать',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall!
+                                                        .copyWith(
+                                                          fontSize: 17.sp,
+                                                          color: dynamicTheme
+                                                              .white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 15.w,
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoginScreen()),
+                                                  (Route<dynamic> route) =>
+                                                      false,
+                                                );
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    color: Colors.red,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.r)),
+                                                height: 45.h,
+                                                width: 145.w,
+                                                child: Center(
+                                                  child: Text(
+                                                    'Выйти',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall!
+                                                        .copyWith(
+                                                          fontSize: 17.sp,
+                                                          color: dynamicTheme
+                                                              .white,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(
                               height: 50,
                               padding: EdgeInsets.only(
                                   left: 10.w, right: 10.w, top: 8),
@@ -464,34 +572,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             ),
                                           ],
                                         ),
-                                        IconButton(
-                                            onPressed: () async {
-                                              const storage =
-                                                  FlutterSecureStorage();
-                                              await storage.delete(
-                                                  key: ApiConst.token);
-                                              Navigator.pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        LoginScreen()),
-                                                (Route<dynamic> route) => false,
-                                              );
-                                            },
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: dynamicTheme.white,
-                                              size: 18,
-                                            ))
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: dynamicTheme.white,
+                                          size: 18,
+                                        )
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-                            )
-                          ],
-                        ),
-                      ),
+                            ),
+                          )),
                     ),
                   ],
                 ),

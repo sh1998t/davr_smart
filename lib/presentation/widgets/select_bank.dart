@@ -61,6 +61,7 @@ class _SelectBankState extends State<SelectBank> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<DropDownButtonValueModel>(
           isExpanded: true,
+          iconStyleData: IconStyleData(iconDisabledColor: dynamicTheme.white),
           value: dropdownValue,
           hint: Text(
             'Выбрать банк',

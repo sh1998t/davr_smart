@@ -40,6 +40,7 @@
 			<string>UIInterfaceOrientationPortraitUpsideDown</string>
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
+			<key>keychain-access-groups</key>
 		</array>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>

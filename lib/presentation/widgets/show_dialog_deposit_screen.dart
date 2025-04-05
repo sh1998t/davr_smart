@@ -10,11 +10,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/data/bloc/collect_cubit.dart';
-import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
-import 'package:incasator/data/network/deposit_send.dart';
+import 'package:incasator/presentation/widgets/select_bank.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
+
+import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
+import '../../data/network/deposit_send.dart';
 
 class ShowDialogDepositScreen extends StatefulWidget {
   final int? depositId;
@@ -26,7 +28,7 @@ class ShowDialogDepositScreen extends StatefulWidget {
   final String? bankName;
   final String? operatorImage;
   final String? comment;
-  final String? courierImage; // Bu endi ixtiyoriy
+  final String? courierImage;
   const ShowDialogDepositScreen({
     super.key,
     required this.depositId,
@@ -176,356 +178,335 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
         ? MainColor.darkTheme
         : MainColor.lightTheme;
-    return Dialog(
-      insetPadding: EdgeInsets.zero,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Container(
-              height: (widget.bankName == null)
-                  ? (MediaQuery.of(context).size.height - 425.h)
-                  : (MediaQuery.of(context).size.height - 455.h),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  topRight: Radius.circular(25),
+    return Column(
+      children: [
+        Container(
+          height: 270.h,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(26.r),
+              topRight: Radius.circular(26.r),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                dynamicTheme.color303030,
+                dynamicTheme.color202020,
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 30.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10.h,
                 ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    dynamicTheme.color303030,
-                    dynamicTheme.color202020,
-                  ],
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.close,
+                    size: 26,
+                    color: dynamicTheme.white,
+                  ),
                 ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: 30.w,
+                SizedBox(
+                  height: 10.h,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Text(
+                  'Статус ',
+                  style: TextStyle(
+                      fontSize: 24.sp,
+                      color: Colors.deepPurple,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  '${widget.statusName}',
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: dynamicTheme.white,
+                      fontWeight: FontWeight.w700),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "${widget.summa}",
+                  style: TextStyle(
+                      color: dynamicTheme.white,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.close,
-                        size: 26,
-                        color: dynamicTheme.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      'Статус ',
-                      style: TextStyle(
-                          fontSize: 24.sp,
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      '${widget.statusName}',
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          color: dynamicTheme.white,
-                          fontWeight: FontWeight.w700),
+                    Container(
+                      height: 35.h,
+                      width: 140.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground),
+                      child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            padding: EdgeInsets.all(0),
+                          ),
+                          onPressed: openImageFromUrl,
+                          child: Text(
+                            'документ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp,
+                                color: dynamicTheme.white),
+                          )),
                     ),
                     SizedBox(
-                      height: 10,
+                      width: 10,
                     ),
-                    Text(
-                      "${widget.summa}",
-                      style: TextStyle(
-                          color: dynamicTheme.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 35.h,
-                          width: 140.w,
-                          decoration: BoxDecoration(
+                    image != null
+                        ? Container(
+                            height: 35.h,
+                            width: 140.w,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: dynamicTheme.containerBackground),
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                side: BorderSide.none,
-                                padding: EdgeInsets.all(0),
-                              ),
-                              onPressed: openImageFromUrl,
-                              child: Text(
-                                'документ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp,
-                                    color: dynamicTheme.white),
-                              )),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        image != null
-                            ? Container(
-                                height: 35.h,
-                                width: 140.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: dynamicTheme.containerBackground,
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Center(
-                                      child: OutlinedButton(
-                                        style: OutlinedButton.styleFrom(
-                                          side: BorderSide.none,
-                                          padding: EdgeInsets.all(0),
-                                        ),
-                                        onPressed: convertImageToPdf,
-                                        child: Text(
-                                          'документ',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.sp,
-                                            color: dynamicTheme.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      right: 5.w,
-                                      top: 5.h,
-                                      child: IconButton(
-                                        padding: EdgeInsets.zero,
-                                        constraints: BoxConstraints(),
-                                        icon: Icon(
-                                          Icons.close,
-                                          size: 20.sp,
-                                          color: dynamicTheme.white,
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            clearImage();
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : Container(
-                                height: 35.h,
-                                width: 140.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: dynamicTheme.containerBackground),
-                                child: OutlinedButton(
+                              color: dynamicTheme.containerBackground,
+                            ),
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: OutlinedButton(
                                     style: OutlinedButton.styleFrom(
                                       side: BorderSide.none,
                                       padding: EdgeInsets.all(0),
                                     ),
-                                    onPressed: () {
-                                      getCamera();
-                                    },
+                                    onPressed: convertImageToPdf,
                                     child: Text(
-                                      'Камера',
+                                      'документ',
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.sp,
-                                          color: dynamicTheme.white),
-                                    )),
-                              ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Center(
-                      child: widget.selectBank,
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Center(
-                      child: Container(
-                        height: 35.h,
-                        width: 140.w,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: dynamicTheme.containerBackground),
-                        child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide.none,
-                              padding: EdgeInsets.all(0),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16.sp,
+                                        color: dynamicTheme.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 104.w,
+                                  top: 0.h,
+                                  bottom: 12.h,
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    constraints: BoxConstraints(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      size: 20.sp,
+                                      color: dynamicTheme.white,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        clearImage();
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                            onPressed: () {
-                              final collectCubit = context.read<CollectCubit>();
-
-                              final bankId = collectCubit.bankIds.isNotEmpty
-                                  ? collectCubit.bankIds.last
-                                  : null;
-                              final chekPhoto =
-                                  collectCubit.imagePaths.isNotEmpty
-                                      ? collectCubit.imagePaths.last
-                                      : null;
-
-                              if (bankId == null || bankId == 0) {
-                                CherryToast.error(
-                                  animationDuration:
-                                      Duration(milliseconds: 300),
-                                  inheritThemeColors: true,
-                                  animationType: AnimationType.fromTop,
-                                  title: Text('Xato!'),
-                                  description: Text(""),
-                                ).show(context);
-
-                                return;
-                              }
-
-                              DepositSend()
-                                  .request(widget.depositId, chekPhoto, bankId)
-                                  .then((onValue) async {
-                                if (onValue == true) {
-                                  CherryToast.success(
-                                    animationDuration:
-                                        Duration(milliseconds: 300),
-                                    inheritThemeColors: true,
-                                    animationType: AnimationType.fromTop,
-                                    title: Text('Muvaffaqiyat!'),
-                                    description: Text(
-                                        'Ma’lumotlar muvaffaqiyatli yuklandi!'),
-                                  ).show(context);
-
-                                  await context
-                                      .read<DepositCubit>()
-                                      .fetchDeposits();
-                                  Navigator.pop(context);
-                                } else {
-                                  CherryToast.error(
-                                    animationDuration:
-                                        Duration(milliseconds: 300),
-                                    inheritThemeColors: true,
-                                    animationType: AnimationType.fromTop,
-                                    title: Text('Xato!'),
-                                    description: Text(
-                                        'Ma’lumotlarni yuborishda xato. Qayta urinib ko‘ring.'),
-                                  ).show(context);
-                                }
-                              });
-                            },
-                            child: Text(
-                              'Подтвердить',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16.sp,
-                                  color: dynamicTheme.white),
-                            )),
-                      ),
-                    )
+                          )
+                        : Container(
+                            height: 35.h,
+                            width: 140.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: dynamicTheme.containerBackground),
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide.none,
+                                  padding: EdgeInsets.all(0),
+                                ),
+                                onPressed: () {
+                                  getCamera();
+                                },
+                                child: Text(
+                                  'Камера',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.sp,
+                                      color: dynamicTheme.white),
+                                )),
+                          ),
                   ],
                 ),
-              ),
+                SizedBox(
+                  height: 8,
+                ),
+                Center(
+                  child: SelectBank(),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Center(
+                  child: Container(
+                    height: 35.h,
+                    width: 140.w,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: dynamicTheme.containerBackground),
+                    child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide.none,
+                          padding: EdgeInsets.all(0),
+                        ),
+                        onPressed: () async {
+                          final collectCubit = context.read<CollectCubit>();
+
+                          final bankId = collectCubit.bankIds.isNotEmpty
+                              ? collectCubit.bankIds.last
+                              : null;
+                          print(bankId);
+                          if (bankId == null || bankId <= 0) {
+                            CherryToast.error(
+                              animationDuration:
+                                  const Duration(milliseconds: 300),
+                              inheritThemeColors: true,
+                              animationType: AnimationType.fromTop,
+                              title: const Text('Ошибка!'),
+                              description: const Text(
+                                  "Пожалуйста, выберите банк. ID банка не найден."),
+                            ).show(context);
+                          } else {
+                            try {
+                              bool isSuccess = await DepositSend().request(
+                                widget.depositId,
+                                bankId,
+                              );
+
+                              if (isSuccess) {
+                                CherryToast.success(
+                                  animationDuration:
+                                      const Duration(milliseconds: 300),
+                                  inheritThemeColors: true,
+                                  animationType: AnimationType.fromTop,
+                                  title: const Text('Успешный!'),
+                                  description:
+                                      const Text('Данные успешно загружены!'),
+                                ).show(context);
+
+                                await context
+                                    .read<DepositCubit>()
+                                    .fetchDeposits();
+                                Navigator.pop(context);
+                              }
+                            } catch (e) {
+                              CherryToast.error(
+                                animationDuration:
+                                    const Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: const Text('Ошибка!'),
+                                description: Text(e.toString()),
+                              ).show(context);
+                            }
+                          }
+                        },
+                        child: Text(
+                          'Подтвердить',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: dynamicTheme.white),
+                        )),
+                  ),
+                )
+              ],
             ),
-            Container(
-              padding: EdgeInsets.only(left: 30),
-              width: MediaQuery.of(context).size.width,
-              height: (widget.bankName == null)
-                  ? (MediaQuery.of(context).size.height - 418.h)
-                  : (MediaQuery.of(context).size.height - 385.h),
-              color: dynamicTheme.containerColor,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 15),
-                  Text(
-                    'логин',
-                    style:
-                        TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    '${widget.login}',
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Text(
-                    'дата ',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    '${widget.date}',
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Text(
-                    'Сумма',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    "${widget.summa}",
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  Text(
-                    'комментария ',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    "${widget.comment}",
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  (widget.bankName == null)
-                      ? Text('')
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Bank ',
-                              style: TextStyle(
-                                  fontSize: 14.sp, color: dynamicTheme.white38),
-                            ),
-                            Text(
-                              "${widget.bankName}",
-                              style: TextStyle(
-                                  fontSize: 16.sp, color: dynamicTheme.white),
-                            ),
-                          ],
-                        )
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        Container(
+          padding: EdgeInsets.only(left: 30, bottom: 0),
+          width: MediaQuery.of(context).size.width,
+          height: 245.h,
+          color: dynamicTheme.containerColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 15),
+              Text(
+                'логин',
+                style: TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                '${widget.login}',
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                'дата ',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                '${widget.date}',
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                'Сумма',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                "${widget.summa}",
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                'комментария ',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                "${widget.comment}",
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              (widget.bankName == null)
+                  ? Text('')
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Bank ',
+                          style: TextStyle(
+                              fontSize: 14.sp, color: dynamicTheme.white38),
+                        ),
+                        Text(
+                          "${widget.bankName}",
+                          style: TextStyle(
+                              fontSize: 16.sp, color: dynamicTheme.white),
+                        ),
+                      ],
+                    )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

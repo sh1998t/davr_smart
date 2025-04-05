@@ -240,29 +240,31 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                 date: formatDate("${deposit.createdAt}"),
                 summa: deposit.amount,
                 onevent: () {
-                  showGeneralDialog(
-                    context: context,
-                    pageBuilder: (context, animation, secondaryAnimation) {
-                      return Padding(
-                        padding: EdgeInsets.only(top: 145.h),
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 1),
-                            end: const Offset(0, 0),
-                          ).animate(animation),
-                          child: WidgetDialog(
-                            depositId: deposit.id,
-                            login: deposit?.login,
-                            statusName: deposit.statusName,
-                            date: formatDate("${deposit.createdAt}"),
-                            summa: deposit.amount,
-                            comment: deposit.comment,
-                            image: deposit.operatorPhoto,
+                  Scaffold.of(context).showBottomSheet(
+                    elevation: 0,
+                    (BuildContext context) {
+                      return Container(
+                        height: 480.h,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(35.r),
+                            topRight: Radius.circular(35.r),
+                            bottomLeft: Radius.circular(0.r),
+                            bottomRight: Radius.circular(0.r),
                           ),
+                        ),
+                        child: WidgetDialog(
+                          depositId: deposit.id,
+                          login: deposit.login,
+                          statusName: deposit.statusName,
+                          date: formatDate("${deposit.createdAt}"),
+                          summa: deposit.amount,
+                          comment: deposit.comment,
+                          image: deposit.operatorPhoto,
                         ),
                       );
                     },
-                    transitionDuration: const Duration(milliseconds: 300),
                   );
                 },
               ),

@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		t1IAGACwWaqmJ5EiO+NOJKgP/3k=
+		oWTFfKiCsxR+QpJJYfxbS7cuqxc=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		gvrVU1RDYw2cqeh7egsYi3AhBEE=
+		7JE8C25D0p52RiHrqt3Yk5vg76c=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		Jk3gyDY/4LzW/Dx2Xk0XTIAEemg=
+		1catP4K2TXkKIEB2T70IVdwxPwI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		4cBUSgz6RCNneV51jdeHnsyON40=
+		BcpZzeUR2juuLWMnKSIXG/gEJ7w=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -83,10 +83,6 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/images/check.jpg</key>
 		<data>
 		xY12ZhWU4UWkHnUMyFf1TpRzcOk=
-		</data>
-		<key>Frameworks/App.framework/flutter_assets/assets/images/davr_smart.gif</key>
-		<data>
-		tsnQnwlHj6jG6MoqBXw1KM6NOvE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/images.png</key>
 		<data>
@@ -110,7 +106,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/statistics.png</key>
 		<data>
-		1Xzq2D4EAcn/sTvF1xXlzPlsDJM=
+		9O86vp4rxcdZ0Yiz3kTq18fFZ4M=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -122,7 +118,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		dH6/Joq4W5Wt0E2qoZZoiJi7Ba4=
+		XcuDqotk6cpMsWnhBOy8reel218=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -450,7 +446,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		howI8GKTmz2lLfowThvLfs12oqc=
+		6dAA7nW3JYTucMxd2aN6scvLf7U=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -458,7 +454,7 @@
 		</data>
 		<key>Runner.debug.dylib</key>
 		<data>
-		rkimxWH+7GaH+M7dphXML/gcL00=
+		/VS9H32GNlu1QJwJj2tsVzKjQ1Y=
 		</data>
 		<key>__preview.dylib</key>
 		<data>
@@ -549,7 +545,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7AvSpFPaIEY1if/ghtfMiBPFdCqw8ZXOtM1KWENfcVg=
+			yVz6MYv/tS83Op9baaDgUSZyQTYrwajANjRrrSgNr/g=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -563,21 +559,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ANb+UbOmWkTgI9nnCVbjhLM6vbGl9BL5P434a3FaoIk=
+			HIOAufFv+WryE2JfenkpQDfXF3sq9/AXui2XotpE9Oc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6kYmSFWCBItZ1wfs8IgQO+P+YIFqSpa8ZDYC18JA4a8=
+			FDkiPR68V2TBZJu1AQqHw9ATPk6JDOzzQ1LGH8SAVZs=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yYkH96m859O+OwHtGAqE+iWad/JBvxEkip6bc0UfE5A=
+			Iqs77bx2KsWEsxEUj1fZq8nN8+geoVTCCTR2FBlPwEk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -613,13 +609,6 @@
 			<key>hash2</key>
 			<data>
 			8VH+OgUQoeWZy6h/5i4hogQvO+pXDw+gJo5eym4KjtQ=
-			</data>
-		</dict>
-		<key>Frameworks/App.framework/flutter_assets/assets/images/davr_smart.gif</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jhNinT7l/OP/MhAVDH6dOI2jHUxZ980oY30DVPMuS1A=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/images.png</key>
@@ -661,7 +650,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rXeR7eah2jXmEjNnVXiAlBL/OLPfNDzAx+pIOMmdXPc=
+			pdT86cNkkM34I7CWoAoZN4wrAV2cQCVqKA+Oci4oUhI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -682,7 +671,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qrMivRcv7d8Cyfh5+xI8HCzs38FYQAbhxJiRTOpVx2g=
+			AHeKprr1JO9ly8HShPZl2Myxtzwo9oBknDle6ofhwOg=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1256,7 +1245,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Bi6NEcPQSTcHuoQapJrJpU9wJy68+4HEJu6wDfwDZ7Q=
+			t2ZA4T61VzAUKy86EwruuZWdsdSgHtI6WuicpqHBlrI=
 			</data>
 		</dict>
 		<key>__preview.dylib</key>

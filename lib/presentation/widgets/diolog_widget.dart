@@ -122,214 +122,197 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
         ? MainColor.darkTheme
         : MainColor.lightTheme;
-    return Dialog(
-      insetPadding: EdgeInsets.zero,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height - 500.h,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25),
+    return Column(
+      children: [
+        Container(
+          height: 200.h,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(26.r),
+              topRight: Radius.circular(26.r),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                dynamicTheme.color303030,
+                dynamicTheme.color202020,
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 30.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10.h,
                 ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    dynamicTheme.color303030,
-                    dynamicTheme.color202020,
-                  ],
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.close,
+                    size: 26,
+                    color: dynamicTheme.white,
+                  ),
                 ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: 30.w,
+                SizedBox(
+                  height: 10.h,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Text(
+                  'Статус ',
+                  style: TextStyle(
+                      fontSize: 24.sp,
+                      color: Colors.deepPurple,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  '${widget.statusName}',
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: dynamicTheme.white,
+                      fontWeight: FontWeight.w700),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "${widget.summa}",
+                  style: TextStyle(
+                      color: dynamicTheme.white,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.close,
-                        size: 26,
-                        color: dynamicTheme.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      'Статус ',
-                      style: TextStyle(
-                          fontSize: 24.sp,
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      '${widget.statusName}',
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          color: dynamicTheme.white,
-                          fontWeight: FontWeight.w700),
+                    Container(
+                      height: 35.h,
+                      width: 140.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground),
+                      child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            padding: EdgeInsets.all(0),
+                          ),
+                          onPressed: () =>
+                              openImageFromUrl(operatorImageUrl, "Operator"),
+                          child: Text(
+                            'документ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp,
+                                color: dynamicTheme.white),
+                          )),
                     ),
                     SizedBox(
-                      height: 10,
+                      width: 10,
                     ),
-                    Text(
-                      "${widget.summa}",
-                      style: TextStyle(
-                          color: dynamicTheme.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 35.h,
-                          width: 140.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: dynamicTheme.containerBackground),
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                side: BorderSide.none,
-                                padding: EdgeInsets.all(0),
-                              ),
-                              onPressed: () => openImageFromUrl(
-                                  operatorImageUrl, "Operator"),
-                              child: Text(
-                                'документ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp,
-                                    color: dynamicTheme.white),
-                              )),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 35.h,
-                          width: 140.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: dynamicTheme.containerBackground),
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                side: BorderSide.none,
-                                padding: EdgeInsets.all(0),
-                              ),
-                              onPressed: () =>
-                                  openImageFromUrl(courierImageUrl, "Courier"),
-                              child: Text(
-                                'документ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp,
-                                    color: dynamicTheme.white),
-                              )),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    Container(
+                      height: 35.h,
+                      width: 140.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground),
+                      child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            padding: EdgeInsets.all(0),
+                          ),
+                          onPressed: () =>
+                              openImageFromUrl(courierImageUrl, "Courier"),
+                          child: Text(
+                            'документ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp,
+                                color: dynamicTheme.white),
+                          )),
+                    )
                   ],
                 ),
-              ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
             ),
-            Container(
-              padding: EdgeInsets.only(left: 30),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 380.h,
-              color: dynamicTheme.containerColor,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20),
-                  Text(
-                    'логин',
-                    style:
-                        TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    '${widget.login}',
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'дата ',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    '${widget.date}',
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'Сумма',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    "${widget.summa}",
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'комментария ',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    "${widget.comment}",
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'Банк ',
-                    style:
-                        TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
-                  ),
-                  Text(
-                    "${widget.bankName}",
-                    style:
-                        TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        Container(
+          padding: EdgeInsets.only(left: 30),
+          width: MediaQuery.of(context).size.width,
+          height: 300.h,
+          color: dynamicTheme.containerColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'логин',
+                style: TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                '${widget.login}',
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                'дата ',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                '${widget.date}',
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                'Сумма',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                "${widget.summa}",
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                'комментария ',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                "${widget.comment}",
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                'Банк ',
+                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+              ),
+              Text(
+                "${widget.bankName}",
+                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

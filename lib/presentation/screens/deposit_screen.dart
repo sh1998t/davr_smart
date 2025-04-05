@@ -7,9 +7,11 @@ import 'package:incasator/presentation/widgets/select_bank.dart';
 import 'package:incasator/presentation/widgets/show_dialog_deposit_screen.dart';
 import 'package:intl/intl.dart';
 
+import '../../data/bloc/collect_cubit.dart';
 import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
+import '../widgets/show_dialog_submitted_deposit_screen.dart';
 import '../widgets/switch_widget.dart';
 
 class DepositScreen extends StatefulWidget {
@@ -59,7 +61,6 @@ class _DepositScreenState extends State<DepositScreen> {
 
     try {
       await cubit.fetchDeposits(page: nextPage);
-
       await Future.delayed(const Duration(seconds: 2));
     } catch (e) {
       await Future.delayed(const Duration(seconds: 2));
@@ -221,23 +222,45 @@ class _DepositScreenState extends State<DepositScreen> {
               }
 
               final entry = groupedEntries.entries.elementAt(index);
+
+              // "В транзите" uchun status == 4, "Передано" uchun status == 2
               final filteredDeposits = selectedIndex == 0
                   ? entry.value.where((deposit) => deposit.status == 4).toList()
                   : entry.value
                       .where((deposit) => deposit.status == 2)
                       .toList();
 
+              // Agar filteredDeposits bo'sh bo'lsa, "Нет новых поступлений" ko'rsatish
               if (filteredDeposits.isEmpty) {
-                return const SizedBox.shrink();
+                return Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 50.h,
+                      ),
+                      Image.asset('assets/images/noData.png',
+                          height: 180.h, width: 200.w),
+                      SizedBox(height: 10.h),
+                      Text(
+                        'Нет новых поступлений',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: dynamicTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               }
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
-                      left: 10,
-                    ),
+                    padding: EdgeInsets.only(left: 10),
                     child: Text(
                       "  ${entry.key}",
                       style: TextStyle(
@@ -248,57 +271,53 @@ class _DepositScreenState extends State<DepositScreen> {
                     ),
                   ),
                   SizedBox(height: 5.h),
-                  ...filteredDeposits.map(
-                    (deposit) => CardWidget(
+                  ...filteredDeposits.map((deposit) {
+                    return CardWidget(
                       name: deposit.login,
                       date: formatDate("${deposit.createdAt}"),
                       summa: deposit.amount,
                       onevent: () {
-                        showGeneralDialog(
-                          context: context,
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 150.h),
-                              child: SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(0, 1),
-                                  end: const Offset(0, 0),
-                                ).animate(animation),
-                                child: selectedIndex == 0
-                                    ? ShowDialogDepositScreen(
-                                        selectBank: SelectBank(),
-                                        depositId: deposit.id,
-                                        login: deposit.login,
-                                        statusName: deposit.statusName,
-                                        date:
-                                            formatDate("${deposit.createdAt}"),
-                                        summa: deposit.amount,
-                                        comment: deposit.comment,
-                                        operatorImage:
-                                            "${deposit.operatorPhoto}",
-                                      )
-                                    : ShowDialogDepositScreen(
-                                        depositId: deposit.id,
-                                        login: deposit.login,
-                                        statusName: deposit.statusName,
-                                        date:
-                                            formatDate("${deposit.createdAt}"),
-                                        summa: deposit.amount,
-                                        comment: deposit.comment,
-                                        operatorImage:
-                                            "${deposit.operatorPhoto}",
-                                        courierImage: "${deposit.courierPhoto}",
-                                        bankName: deposit.bankName,
-                                      ),
+                        context.read<CollectCubit>().clear();
+                        Scaffold.of(context).showBottomSheet(
+                          elevation: 0,
+                          (BuildContext context) {
+                            return Container(
+                              height: 515.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(35.r),
+                                    topRight: Radius.circular(35.r),
+                                    bottomLeft: Radius.circular(0),
+                                    bottomRight: Radius.circular(0)),
                               ),
+                              width: MediaQuery.of(context).size.width,
+                              child: selectedIndex == 0
+                                  ? ShowDialogDepositScreen(
+                                      selectBank: SelectBank(),
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      operatorImage: "${deposit.operatorPhoto}",
+                                    )
+                                  : ShowDialogSubmittedDepositScreen(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      operatorImage: "${deposit.operatorPhoto}",
+                                      bankName: deposit.bankName,
+                                    ),
                             );
                           },
-                          transitionDuration: const Duration(milliseconds: 300),
                         );
                       },
-                    ),
-                  ),
+                    );
+                  }),
                   SizedBox(height: 10.h),
                 ],
               );

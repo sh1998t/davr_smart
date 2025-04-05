@@ -9,7 +9,7 @@ class CardWidget extends StatelessWidget {
   final String? name;
   final String? date;
   final double? summa;
-  final VoidCallback onevent;
+  final VoidCallback? onevent;
   const CardWidget(
       {super.key,
       required this.date,
@@ -49,7 +49,7 @@ class CardWidget extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 padding: EdgeInsets.only(left: 10.w, right: 10.w),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(0),
                 ),
                 side: BorderSide.none,
               ),

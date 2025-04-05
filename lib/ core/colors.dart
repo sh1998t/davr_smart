@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MainColor {
   static final darkTheme = ThemeColors(
+      outLineButtonColor: Color(0xFFE0E0E6),
       CardColor: Color(0xFF1E1E1E),
       white: Color(0xffFFFFFF),
       black: Color(0xff000000),
@@ -27,6 +28,7 @@ class MainColor {
       borderColor: Color(0xFF53637A));
 
   static final lightTheme = ThemeColors(
+      outLineButtonColor: Color(0xFFE0E0E6),
       borderColor: Colors.white,
       inputColor: Colors.white,
       CardColor: Colors.white,
@@ -74,6 +76,7 @@ class ThemeColors {
   final Color iconColor;
   final Color topColor;
   final Color buttonColor;
+  final Color outLineButtonColor;
   final Color inputColor;
   final Color borderColor;
   ThemeColors(
@@ -99,5 +102,6 @@ class ThemeColors {
       required this.CardColor,
       required this.iconColor,
       required this.borderColor,
+      required this.outLineButtonColor,
       required this.inputColor});
 }

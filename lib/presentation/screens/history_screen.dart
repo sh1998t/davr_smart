@@ -92,7 +92,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 child: groupByDate(state.deposits)
                         .entries
                         .where((entry) =>
-                            entry.value.any((deposit) => deposit.status == 4))
+                            entry.value.any((deposit) => deposit.status == 6))
                         .isNotEmpty
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +101,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           for (var entry in groupByDate(state.deposits)
                               .entries
                               .where((entry) => entry.value
-                                  .any((deposit) => deposit.status == 4))) ...[
+                                  .any((deposit) => deposit.status == 6))) ...[
                             Text(
                               "  ${entry.key}",
                               style: TextStyle(
@@ -112,44 +112,48 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             ),
                             SizedBox(height: 5.h),
                             ...entry.value
-                                .where((deposit) => deposit.status == 4)
+                                .where((deposit) => deposit.status == 6)
                                 .map((deposit) => CardWidget(
                                       name: deposit.login,
                                       date: formatDate("${deposit.createdAt}"),
                                       summa: deposit.amount,
                                       onevent: () {
-                                        showGeneralDialog(
-                                          context: context,
-                                          pageBuilder: (context, animation,
-                                              secondaryAnimation) {
-                                            return Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 187.h),
-                                              child: SlideTransition(
-                                                position: Tween<Offset>(
-                                                  begin: Offset(0, 1),
-                                                  end: Offset(0, 0),
-                                                ).animate(animation),
-                                                child: DiologWidget(
-                                                  bankName: deposit.bankName,
-                                                  courierImage:
-                                                      "${deposit.courierPhoto}",
-                                                  depositId: deposit.id,
-                                                  login: deposit.login,
-                                                  statusName:
-                                                      deposit.statusName,
-                                                  date: formatDate(
-                                                      "${deposit.createdAt}"),
-                                                  summa: deposit.amount,
-                                                  comment: deposit.comment,
-                                                  operatorImage:
-                                                      "${deposit.operatorPhoto}",
+                                        print(deposit.status);
+                                        Scaffold.of(context).showBottomSheet(
+                                          (BuildContext context) {
+                                            return Container(
+                                              height: 500.h,
+                                              decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .scaffoldBackgroundColor,
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(35.r),
+                                                  topRight:
+                                                      Radius.circular(35.r),
+                                                  bottomLeft:
+                                                      Radius.circular(0.r),
+                                                  bottomRight:
+                                                      Radius.circular(0.r),
                                                 ),
+                                              ),
+                                              child: DiologWidget(
+                                                bankName: deposit.bankName,
+                                                courierImage:
+                                                    "${deposit.courierPhoto}",
+                                                depositId: deposit.id,
+                                                login: deposit.login,
+                                                statusName: deposit.statusName,
+                                                date: formatDate(
+                                                    "${deposit.createdAt}"),
+                                                summa: deposit.amount,
+                                                comment: deposit.comment,
+                                                operatorImage:
+                                                    "${deposit.operatorPhoto}",
                                               ),
                                             );
                                           },
-                                          transitionDuration:
-                                              Duration(milliseconds: 300),
+                                          elevation: 0,
                                         );
                                       },
                                     )),

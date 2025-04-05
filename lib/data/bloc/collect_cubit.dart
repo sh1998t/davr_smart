@@ -19,6 +19,12 @@ class CollectCubit extends Cubit<CollectState> {
     emit(CollectData(bankIds: _bankIds, imagePaths: _imagePaths));
   }
 
+  void clear() {
+    _bankIds.clear();
+    _imagePaths.clear();
+    emit(CollectData(bankIds: _bankIds, imagePaths: _imagePaths));
+  }
+
   List<int> get bankIds => _bankIds;
   List<String> get imagePaths => _imagePaths;
 }

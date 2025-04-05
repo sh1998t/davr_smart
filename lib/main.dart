@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       light: ThemeData(brightness: Brightness.light),
-      dark: ThemeData(brightness: Brightness.dark),
+      // dark: ThemeData(brightness: Brightness.dark),
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => ScreenUtilInit(
         designSize: const Size(360, 690),
