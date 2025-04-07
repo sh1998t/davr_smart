@@ -18,8 +18,8 @@ io.flutter.plugins.pathprovider.path_provider_android-jetified-lifecycle-viewmod
 io.flutter.plugins.pathprovider.path_provider_android-jetified-savedstate-1.2.1-17 /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/res
 io.flutter.plugins.pathprovider.path_provider_android-lifecycle-livedata-core-2.7.0-18 /Users/davrsmart/.gradle/caches/transforms-3/d1cfba222281d2f9b19ea73ff8e1aa2f/transformed/lifecycle-livedata-core-2.7.0/res
 io.flutter.plugins.pathprovider.path_provider_android-jetified-core-ktx-1.13.1-19 /Users/davrsmart/.gradle/caches/transforms-3/e795b942619b75a750e52c0090bcfd7d/transformed/jetified-core-ktx-1.13.1/res
-io.flutter.plugins.pathprovider.path_provider_android-main-20 /Users/davrsmart/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/android/src/main/res
-io.flutter.plugins.pathprovider.path_provider_android-release-21 /Users/davrsmart/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/android/src/release/res
+io.flutter.plugins.pathprovider.path_provider_android-main-20 /Users/davrsmart/.pub-cache/hosted/pub.dev/path_provider_android-2.2.16/android/src/main/res
+io.flutter.plugins.pathprovider.path_provider_android-release-21 /Users/davrsmart/.pub-cache/hosted/pub.dev/path_provider_android-2.2.16/android/src/release/res
 io.flutter.plugins.pathprovider.path_provider_android-pngs-22 /Users/davrsmart/projects/incasator/build/path_provider_android/generated/res/pngs/release
 io.flutter.plugins.pathprovider.path_provider_android-resValues-23 /Users/davrsmart/projects/incasator/build/path_provider_android/generated/res/resValues/release
 io.flutter.plugins.pathprovider.path_provider_android-mergeReleaseResources-24 /Users/davrsmart/projects/incasator/build/path_provider_android/intermediates/incremental/release/mergeReleaseResources/merged.dir

@@ -240,18 +240,18 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                 date: formatDate("${deposit.createdAt}"),
                 summa: deposit.amount,
                 onevent: () {
-                  Scaffold.of(context).showBottomSheet(
-                    elevation: 0,
-                    (BuildContext context) {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (BuildContext context) {
                       return Container(
-                        height: 480.h,
+                        height: 600.h,
                         decoration: BoxDecoration(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(35.r),
-                            topRight: Radius.circular(35.r),
-                            bottomLeft: Radius.circular(0.r),
-                            bottomRight: Radius.circular(0.r),
+                            topLeft: Radius.circular(24.r),
+                            topRight: Radius.circular(24.r),
                           ),
                         ),
                         child: WidgetDialog(

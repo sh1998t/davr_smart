@@ -18,8 +18,8 @@ io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-lifecycle-viewmodel
 io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-savedstate-1.2.1-17 /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/res
 io.flutter.plugins.flutter_plugin_android_lifecycle-lifecycle-livedata-core-2.7.0-18 /Users/davrsmart/.gradle/caches/transforms-3/d1cfba222281d2f9b19ea73ff8e1aa2f/transformed/lifecycle-livedata-core-2.7.0/res
 io.flutter.plugins.flutter_plugin_android_lifecycle-jetified-core-ktx-1.13.1-19 /Users/davrsmart/.gradle/caches/transforms-3/e795b942619b75a750e52c0090bcfd7d/transformed/jetified-core-ktx-1.13.1/res
-io.flutter.plugins.flutter_plugin_android_lifecycle-main-20 /Users/davrsmart/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24/android/src/main/res
-io.flutter.plugins.flutter_plugin_android_lifecycle-release-21 /Users/davrsmart/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24/android/src/release/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-main-20 /Users/davrsmart/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/android/src/main/res
+io.flutter.plugins.flutter_plugin_android_lifecycle-release-21 /Users/davrsmart/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27/android/src/release/res
 io.flutter.plugins.flutter_plugin_android_lifecycle-pngs-22 /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/generated/res/pngs/release
 io.flutter.plugins.flutter_plugin_android_lifecycle-resValues-23 /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/generated/res/resValues/release
 io.flutter.plugins.flutter_plugin_android_lifecycle-mergeReleaseResources-24 /Users/davrsmart/projects/incasator/build/flutter_plugin_android_lifecycle/intermediates/incremental/release/mergeReleaseResources/merged.dir

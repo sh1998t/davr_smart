@@ -4,6 +4,23 @@
             "outputFile": "com.example.incasator.app-mergeReleaseResources-47:/values-ca/values-ca.xml",
             "map": [
                 {
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/res/values-ca/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "130",
+                        "endOffsets": "325"
+                    },
+                    "to": {
+                        "startLines": "44",
+                        "startColumns": "4",
+                        "startOffsets": "4562",
+                        "endColumns": "134",
+                        "endOffsets": "4692"
+                    }
+                },
+                {
                     "source": "/Users/davrsmart/.gradle/caches/transforms-3/fb6548ab293e8e31db70cabd03b6338e/transformed/preference-1.2.1/res/values-ca/values-ca.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
@@ -55,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/res/values-ca/values.xml",
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/res/values-ca/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -69,23 +86,6 @@
                         "startOffsets": "3561,3666,3818,3945,4054,4204,4331,4454,4697,4868,4977,5136,5267,5431,5589,5654,5722",
                         "endColumns": "104,151,126,108,149,126,122,107,170,108,158,130,163,157,64,67,86",
                         "endOffsets": "3661,3813,3940,4049,4199,4326,4449,4557,4863,4972,5131,5262,5426,5584,5649,5717,5804"
-                    }
-                },
-                {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/res/values-ca/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "130",
-                        "endOffsets": "325"
-                    },
-                    "to": {
-                        "startLines": "44",
-                        "startColumns": "4",
-                        "startOffsets": "4562",
-                        "endColumns": "134",
-                        "endOffsets": "4692"
                     }
                 }
             ]

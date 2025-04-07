@@ -23,7 +23,7 @@ class CardWidget extends StatelessWidget {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Padding(
-      padding: EdgeInsets.only(left: 8.w, right: 8.w),
+      padding: EdgeInsets.only(left: 12.w, right: 12.w),
       child: Column(
         children: [
           Container(
@@ -42,7 +42,7 @@ class CardWidget extends StatelessWidget {
                 ),
               ],
             ),
-            height: 50.h,
+            height: 55.h,
             width: MediaQuery.of(context).size.width,
             child: OutlinedButton(
               onPressed: onevent,

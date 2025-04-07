@@ -21,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/res/values-be/values.xml",
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/res/values-be/values-be.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,355,456,562,665,786",
+                        "endColumns": "97,101,99,100,105,102,120,100",
+                        "endOffsets": "148,250,350,451,557,660,781,882"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,59",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "2835,2933,3035,3135,3236,3342,3445,6270",
+                        "endColumns": "97,101,99,100,105,102,120,100",
+                        "endOffsets": "2928,3030,3130,3231,3337,3440,3561,6366"
+                    }
+                },
+                {
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/res/values-be/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/res/values-be/values.xml",
+                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/res/values-be/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -52,23 +69,6 @@
                         "startOffsets": "3566,3673,3835,3960,4070,4225,4351,4466,4716,4878,4985,5148,5276,5429,5588,5657,5719",
                         "endColumns": "106,161,124,109,154,125,114,103,161,106,162,127,152,158,68,61,78",
                         "endOffsets": "3668,3830,3955,4065,4220,4346,4461,4565,4873,4980,5143,5271,5424,5583,5652,5714,5793"
-                    }
-                },
-                {
-                    "source": "/Users/davrsmart/.gradle/caches/transforms-3/74c1895ee15d4a639000e095e1132bc7/transformed/core-1.13.1/res/values-be/values-be.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,355,456,562,665,786",
-                        "endColumns": "97,101,99,100,105,102,120,100",
-                        "endOffsets": "148,250,350,451,557,660,781,882"
-                    },
-                    "to": {
-                        "startLines": "29,30,31,32,33,34,35,59",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "2835,2933,3035,3135,3236,3342,3445,6270",
-                        "endColumns": "97,101,99,100,105,102,120,100",
-                        "endOffsets": "2928,3030,3130,3231,3337,3440,3561,6366"
                     }
                 },
                 {

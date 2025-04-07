@@ -288,6 +288,44 @@
 }
 
 # End of content from /Users/davrsmart/.gradle/caches/transforms-3/fb6548ab293e8e31db70cabd03b6338e/transformed/preference-1.2.1/proguard.txt
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/proguard.txt
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.mlkit_vision_barcode_bundled.zzeh {
+  <fields>;
+}
+
+# This prevents the names of native methods from being obfuscated and prevents
+# UnsatisfiedLinkErrors.
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/proguard.txt
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/proguard.txt
+# Annotations are implemented as attributes, so we have to explicitly keep them.
+# Catch all which encompasses attributes like RuntimeVisibleParameterAnnotations
+# and RuntimeVisibleTypeAnnotations
+-keepattributes RuntimeVisible*Annotation*
+
+# JNI is an entry point that's hard to keep track of, so there's
+# an annotation to mark fields and methods used by native code.
+
+# Keep the annotations that proguard needs to process.
+-keep class com.google.android.apps.common.proguard.UsedBy*
+
+# Just because native code accesses members of a class, does not mean that the
+# class itself needs to be annotated - only annotate classes that are
+# referenced themselves in native code.
+-keep @com.google.android.apps.common.proguard.UsedBy* class * {
+  <init>();
+}
+-keepclassmembers class * {
+    @com.google.android.apps.common.proguard.UsedBy* *;
+}
+
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/proguard.txt
 # The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/proguard.txt
 # Copyright (C) 2018 The Android Open Source Project
 #
@@ -313,45 +351,7 @@
 }
 
 # End of content from /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
-# We keep all fields for every generated proto file as the runtime uses
-# reflection over them that ProGuard cannot detect. Without this keep
-# rule, fields may be removed that would cause runtime failures.
--keepclassmembers class * extends com.google.android.gms.internal.mlkit_vision_barcode_bundled.zzed {
-  <fields>;
-}
-
-# This prevents the names of native methods from being obfuscated and prevents
-# UnsatisfiedLinkErrors.
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/proguard.txt
-# Annotations are implemented as attributes, so we have to explicitly keep them.
-# Catch all which encompasses attributes like RuntimeVisibleParameterAnnotations
-# and RuntimeVisibleTypeAnnotations
--keepattributes RuntimeVisible*Annotation*
-
-# JNI is an entry point that's hard to keep track of, so there's
-# an annotation to mark fields and methods used by native code.
-
-# Keep the annotations that proguard needs to process.
--keep class com.google.android.apps.common.proguard.UsedBy*
-
-# Just because native code accesses members of a class, does not mean that the
-# class itself needs to be annotated - only annotate classes that are
-# referenced themselves in native code.
--keep @com.google.android.apps.common.proguard.UsedBy* class * {
-  <init>();
-}
--keepclassmembers class * {
-    @com.google.android.apps.common.proguard.UsedBy* *;
-}
-
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/proguard.txt
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/proguard.txt
 # b/35135904 Ensure that proguard will not strip the mResultGuardian.
 -keepclassmembers class com.google.android.gms.common.api.internal.BasePendingResult {
   com.google.android.gms.common.api.internal.BasePendingResult$ReleasableResultGuardian mResultGuardian;
@@ -359,12 +359,12 @@
 
 
 
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/proguard.txt
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/proguard.txt
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/proguard.txt
 
 
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/proguard.txt
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/proguard.txt
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/proguard.txt
 # Needed when building against pre-Marshmallow SDK.
 -dontwarn android.security.NetworkSecurityPolicy
 
@@ -375,8 +375,9 @@
 -dontwarn sun.misc.Unsafe
 -dontwarn libcore.io.Memory
 
-# Internal Google annotations for generating Proguard keep rules.
+# Annotations used during internal SDK shrinking.
 -dontwarn com.google.android.apps.common.proguard.UsedBy*
+-dontwarn com.google.android.apps.common.proguard.SideEffectFree
 
 # Annotations referenced by the SDK but whose definitions are contained in
 # non-required dependencies.
@@ -384,6 +385,10 @@
 -dontwarn org.checkerframework.**
 -dontwarn com.google.errorprone.annotations.**
 -dontwarn org.jspecify.nullness.NullMarked
+
+# Annotations no longer exist. Suppression prevents ProGuard failures in
+# SDKs which depend on earlier versions of play-services-basement.
+-dontwarn com.google.android.gms.common.util.VisibleForTesting
 
 # Proguard flags for consumers of the Google Play services SDK
 # https://developers.google.com/android/guides/setup#add_google_play_services_to_your_project
@@ -437,7 +442,7 @@
 
 
 
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/proguard.txt
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/proguard.txt
 # The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/1017b9f6e05bab2c47a4e385584828d8/transformed/fragment-1.7.1/proguard.txt
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -675,12 +680,12 @@
 }
 
 # End of content from /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/proguard.txt
-# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/67ceff7c66806669a90a42cf716e86a6/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
+# The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/fd7327cb11e3a7e6d2c5bd812e21bcc6/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
 -keepclassmembers class * extends androidx.datastore.preferences.protobuf.GeneratedMessageLite {
     <fields>;
 }
 
-# End of content from /Users/davrsmart/.gradle/caches/transforms-3/67ceff7c66806669a90a42cf716e86a6/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
+# End of content from /Users/davrsmart/.gradle/caches/transforms-3/fd7327cb11e3a7e6d2c5bd812e21bcc6/transformed/rules/lib/META-INF/proguard/androidx.datastore_datastore-preferences-core.pro
 # The proguard configuration file for the following section is /Users/davrsmart/.gradle/caches/transforms-3/fb98ee576df5acd19763adedb64ddb5a/transformed/rules/lib/META-INF/com.android.tools/r8/coroutines.pro
 # When editing this file, update the following files as well:
 # - META-INF/proguard/coroutines.pro

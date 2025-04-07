@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: EdgeInsets.only(bottom: 12.h),
               child: IconButton(
                   onPressed: () {
-                    AdaptiveTheme.of(context).toggleThemeMode();
+                    // AdaptiveTheme.of(context).toggleThemeMode();
                   },
                   icon: Icon(
                     Icons.dark_mode,
@@ -435,11 +435,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onTap: () async {
                               // const storage = FlutterSecureStorage();
                               // await storage.delete(key: ApiConst.token);
-                              showBottomSheet(
+                              showModalBottomSheet(
                                 context: context,
+                                isScrollControlled: true,
                                 builder: (context) {
                                   return Container(
-                                    height: 200.h,
+                                    height: 220.h,
+                                    padding: EdgeInsets.only(
+                                        left: 20.w, right: 20.w, top: 8.h),
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                         color: dynamicTheme.black,
@@ -447,96 +450,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             topRight: Radius.circular(16.r),
                                             topLeft: Radius.circular(16.r))),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(
-                                          height: 25.h,
-                                        ),
                                         Text(
-                                          'выйти из системы',
+                                          'Выход',
                                           style: TextStyle(
                                               fontSize: 20.sp,
                                               color: dynamicTheme.white,
                                               fontWeight: FontWeight.w400),
                                         ),
                                         SizedBox(
-                                          height: 40.h,
+                                          height: 5.h,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xFFE0E0E6),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.r)),
-                                                height: 45.h,
-                                                width: 145.w,
-                                                child: Center(
-                                                  child: Text(
-                                                    'Закрывать',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodySmall!
-                                                        .copyWith(
-                                                          fontSize: 17.sp,
-                                                          color: dynamicTheme
-                                                              .white,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                  ),
-                                                ),
+                                        Text(
+                                          'Вы действительно хотите выйти из своей',
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              color: Colors.black45,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          'учетной записи?',
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              color: Colors.black45,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          height: 20.h,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen()),
+                                              (Route<dynamic> route) => false,
+                                            );
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Color(0xFF7A1DFF),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        12.r)),
+                                            height: 45.h,
+                                            width: 343.w,
+                                            child: Center(
+                                              child: Text(
+                                                'Подтвердеть',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall!
+                                                    .copyWith(
+                                                      fontSize: 17.sp,
+                                                      color: dynamicTheme.black,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: 15.w,
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.pushAndRemoveUntil(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          LoginScreen()),
-                                                  (Route<dynamic> route) =>
-                                                      false,
-                                                );
-                                              },
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    color: Colors.red,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.r)),
-                                                height: 45.h,
-                                                width: 145.w,
-                                                child: Center(
-                                                  child: Text(
-                                                    'Выйти',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodySmall!
-                                                        .copyWith(
-                                                          fontSize: 17.sp,
-                                                          color: dynamicTheme
-                                                              .white,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                  ),
-                                                ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10.w,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Color(0xFFECEff0),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        12.r)),
+                                            height: 45.h,
+                                            width: 343.w,
+                                            child: Center(
+                                              child: Text(
+                                                'Отмена ',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall!
+                                                    .copyWith(
+                                                      fontSize: 17.sp,
+                                                      color: dynamicTheme.white,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
                                               ),
                                             ),
-                                          ],
-                                        )
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   );

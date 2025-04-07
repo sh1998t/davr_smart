@@ -506,10 +506,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.appcompat:appcompat-resources:1.6.1@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/jars/classes.jar"
-      resolved="androidx.appcompat:appcompat-resources:1.6.1"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1"
+      name="com.google.mlkit:barcode-scanning:17.3.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/jars/classes.jar"
+      resolved="com.google.mlkit:barcode-scanning:17.3.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -519,36 +519,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.appcompat:appcompat:1.6.1@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/jars/classes.jar"
-      resolved="androidx.appcompat:appcompat:1.6.1"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.mlkit:barcode-scanning:17.2.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/jars/classes.jar"
-      resolved="com.google.mlkit:barcode-scanning:17.2.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0"
+      name="com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -584,10 +558,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.mlkit:common:18.9.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/jars/classes.jar"
-      resolved="com.google.mlkit:common:18.9.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0"
+      name="com.google.mlkit:common:18.11.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/jars/classes.jar"
+      resolved="com.google.mlkit:common:18.11.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -597,10 +571,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.gms:play-services-base:18.1.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-base:18.1.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0"
+      name="androidx.appcompat:appcompat-resources:1.6.1@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/jars/classes.jar"
+      resolved="androidx.appcompat:appcompat-resources:1.6.1"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -610,10 +584,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.mlkit:vision-interfaces:16.2.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/4fa24c8ae963dc53c121fcba382e26f6/transformed/jetified-vision-interfaces-16.2.0/jars/classes.jar"
-      resolved="com.google.mlkit:vision-interfaces:16.2.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/4fa24c8ae963dc53c121fcba382e26f6/transformed/jetified-vision-interfaces-16.2.0"
+      name="androidx.appcompat:appcompat:1.6.1@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/jars/classes.jar"
+      resolved="androidx.appcompat:appcompat:1.6.1"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -623,10 +597,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.gms:play-services-tasks:18.0.2@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-tasks:18.0.2"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2"
+      name="com.google.android.gms:play-services-base:18.5.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-base:18.5.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -636,10 +610,36 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="com.google.android.gms:play-services-basement:18.1.0@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-basement:18.1.0"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0"
+      name="com.google.mlkit:vision-interfaces:16.3.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/3c428c34bef924ebedc4a8931c78d6a0/transformed/jetified-vision-interfaces-16.3.0/jars/classes.jar"
+      resolved="com.google.mlkit:vision-interfaces:16.3.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/3c428c34bef924ebedc4a8931c78d6a0/transformed/jetified-vision-interfaces-16.3.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-tasks:18.2.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-tasks:18.2.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.android.gms:play-services-basement:18.4.0@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-basement:18.4.0"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -883,18 +883,26 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.datastore:datastore-preferences-core-jvm:1.1.1@jar"
-      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-preferences-core-jvm/1.1.1/e562d4a944240c0e67317f0b862da24aca3aabc/datastore-preferences-core-jvm-1.1.1.jar"
-      resolved="androidx.datastore:datastore-preferences-core-jvm:1.1.1"/>
+      name="androidx.datastore:datastore-preferences-external-protobuf:1.1.3@jar"
+      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-preferences-external-protobuf/1.1.3/ddd0a2d64e3c928359c993d1291e535d5d7fc9a3/datastore-preferences-external-protobuf-1.1.3.jar"
+      resolved="androidx.datastore:datastore-preferences-external-protobuf:1.1.3"/>
   <library
-      name="androidx.datastore:datastore-core-okio-jvm:1.1.1@jar"
-      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-core-okio-jvm/1.1.1/cba5887aaa9316d650b3ebc667243ed3a05f4407/datastore-core-okio-jvm-1.1.1.jar"
-      resolved="androidx.datastore:datastore-core-okio-jvm:1.1.1"/>
+      name="androidx.datastore:datastore-preferences-proto:1.1.3@jar"
+      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-preferences-proto/1.1.3/6d7430ed8d2b5f2b8675dad8d196ba5dd710921b/datastore-preferences-proto-1.1.3.jar"
+      resolved="androidx.datastore:datastore-preferences-proto:1.1.3"/>
   <library
-      name="androidx.datastore:datastore-core-android:1.1.1@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/56364fa459658ab2594452afaa710993/transformed/jetified-datastore-core-release/jars/classes.jar"
-      resolved="androidx.datastore:datastore-core-android:1.1.1"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/56364fa459658ab2594452afaa710993/transformed/jetified-datastore-core-release"
+      name="androidx.datastore:datastore-preferences-core-jvm:1.1.3@jar"
+      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-preferences-core-jvm/1.1.3/fb991f11389ccf2a5d5d4c99783ff958bc400/datastore-preferences-core-jvm-1.1.3.jar"
+      resolved="androidx.datastore:datastore-preferences-core-jvm:1.1.3"/>
+  <library
+      name="androidx.datastore:datastore-core-okio-jvm:1.1.3@jar"
+      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/androidx.datastore/datastore-core-okio-jvm/1.1.3/ce08f132812044a9778547b299fd812e34dbd602/datastore-core-okio-jvm-1.1.3.jar"
+      resolved="androidx.datastore:datastore-core-okio-jvm:1.1.3"/>
+  <library
+      name="androidx.datastore:datastore-core-android:1.1.3@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/0e5c9cf0db0514873cb51ba095e7edc6/transformed/jetified-datastore-core-release/jars/classes.jar"
+      resolved="androidx.datastore:datastore-core-android:1.1.3"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/0e5c9cf0db0514873cb51ba095e7edc6/transformed/jetified-datastore-core-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -904,10 +912,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.datastore:datastore-preferences-android:1.1.1@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/088760a15f92f5ec590c7e614fa4b319/transformed/jetified-datastore-preferences-release/jars/classes.jar"
-      resolved="androidx.datastore:datastore-preferences-android:1.1.1"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/088760a15f92f5ec590c7e614fa4b319/transformed/jetified-datastore-preferences-release"
+      name="androidx.datastore:datastore-preferences-android:1.1.3@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/5996bb40e043a21fe1c12e3a649188ca/transformed/jetified-datastore-preferences-release/jars/classes.jar"
+      resolved="androidx.datastore:datastore-preferences-android:1.1.3"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/5996bb40e043a21fe1c12e3a649188ca/transformed/jetified-datastore-preferences-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -917,10 +925,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.datastore:datastore-android:1.1.1@aar"
-      jars="/Users/davrsmart/.gradle/caches/transforms-3/1f3e4d0af5e0a56656c7fcd80e7f2826/transformed/jetified-datastore-release/jars/classes.jar"
-      resolved="androidx.datastore:datastore-android:1.1.1"
-      folder="/Users/davrsmart/.gradle/caches/transforms-3/1f3e4d0af5e0a56656c7fcd80e7f2826/transformed/jetified-datastore-release"
+      name="androidx.datastore:datastore-android:1.1.3@aar"
+      jars="/Users/davrsmart/.gradle/caches/transforms-3/1aded8abe469c17e9f922ef24d3baed3/transformed/jetified-datastore-release/jars/classes.jar"
+      resolved="androidx.datastore:datastore-android:1.1.3"
+      folder="/Users/davrsmart/.gradle/caches/transforms-3/1aded8abe469c17e9f922ef24d3baed3/transformed/jetified-datastore-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

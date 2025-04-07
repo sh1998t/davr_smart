@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 110.h),
                 Center(
                   child: Image.asset(
-                    "assets/images/logo.png",
+                    "assets/images/logo_davr.png",
                     height: 120.h,
                     width: 120.w,
                   ),

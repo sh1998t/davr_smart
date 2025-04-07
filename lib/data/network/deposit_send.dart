@@ -6,11 +6,18 @@ class DepositSend extends BaseApiRequest {
   Future<bool> request(
     int? depositId,
     int? bankId,
+    String? chekPhoto,
   ) async {
     var formMap = {
       'deposit_id': depositId ?? '',
       'bank_id': bankId ?? 0,
     };
+    if (chekPhoto != null && chekPhoto.isNotEmpty) {
+      print(chekPhoto);
+      formMap['courier_photo'] = [
+        await MultipartFile.fromFile(chekPhoto, filename: chekPhoto)
+      ];
+    }
 
     var data = FormData.fromMap(formMap);
     final endpoint = "${ApiConst.Deposit_Send}";

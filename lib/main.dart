@@ -11,7 +11,7 @@ import 'package:incasator/data/network/auth_api.dart';
 import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/data/network/statistika_api.dart';
 import 'package:incasator/data/network/user_me.dart';
-import 'package:incasator/presentation/screens/splash_screen.dart';
+import 'package:incasator/presentation/screens/login_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'data/bloc/collect_cubit.dart';
@@ -21,6 +21,7 @@ import 'data/network/deposit_api.dart';
 void main() async {
   // await initDi();
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(Duration(seconds: 3));
   await initializeDateFormatting('uz_UZ', null);
   await EasyLocalization.ensureInitialized();
 
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
       // dark: ThemeData(brightness: Brightness.dark),
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => ScreenUtilInit(
-        designSize: const Size(360, 690),
+        designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
             ),
           );
         },
-        child: const SplashScreen(),
+        child: const LoginScreen(),
       ),
     );
   }

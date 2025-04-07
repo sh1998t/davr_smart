@@ -10,18 +10,18 @@ MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/
 MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/5fd96481726913a3bf6e54c8a22e180d/transformed/jetified-camera-core-1.3.4/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:23:5-34:19
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:8:5-24:19
-MERGED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:5:5-7:19
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:5:5-7:19
 MERGED from [androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/d93116befaac2febd088249c78c91825/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
@@ -69,17 +69,17 @@ MERGED from [androidx.camera:camera-core:1.3.4] /Users/davrsmart/.gradle/caches/
 MERGED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:17:1-36:12
 MERGED from [androidx.camera:camera-lifecycle:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/b9744795a846c64ea19cae6888a1f5e5/transformed/jetified-camera-lifecycle-1.3.4/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.preference:preference:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/fb6548ab293e8e31db70cabd03b6338e/transformed/preference-1.2.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.mlkit:barcode-scanning:17.2.0] /Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:barcode-scanning:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /Users/davrsmart/.gradle/caches/transforms-3/3ca645dac20fb735f09e7c2482de838b/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:2:1-26:12
-MERGED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:16:1-24:12
-MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /Users/davrsmart/.gradle/caches/transforms-3/4fa24c8ae963dc53c121fcba382e26f6/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:2:1-26:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/davrsmart/.gradle/caches/transforms-3/3c428c34bef924ebedc4a8931c78d6a0/transformed/jetified-vision-interfaces-16.3.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/davrsmart/.gradle/caches/transforms-3/6a818668cf81c8cc871d50a53ed844cf/transformed/jetified-fragment-ktx-1.7.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/davrsmart/.gradle/caches/transforms-3/1017b9f6e05bab2c47a4e385584828d8/transformed/fragment-1.7.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.activity:activity-ktx:1.9.3] /Users/davrsmart/.gradle/caches/transforms-3/c9fbbf4e35516dfb56938a89a8189060/transformed/jetified-activity-ktx-1.9.3/AndroidManifest.xml:2:1-7:12
@@ -115,9 +115,9 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/davrsmart/.gradl
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/davrsmart/.gradle/caches/transforms-3/06238db6d1b9fadfc90e00cec994ce15/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/b871f987d03f22f506d3cd0e0ce39805/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.datastore:datastore-core-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/56364fa459658ab2594452afaa710993/transformed/jetified-datastore-core-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/088760a15f92f5ec590c7e614fa4b319/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/1f3e4d0af5e0a56656c7fcd80e7f2826/transformed/jetified-datastore-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-core-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/0e5c9cf0db0514873cb51ba095e7edc6/transformed/jetified-datastore-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/5996bb40e043a21fe1c12e3a649188ca/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/1aded8abe469c17e9f922ef24d3baed3/transformed/jetified-datastore-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/cd343f896345b0ab71d5796da7b6c741/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/davrsmart/.gradle/caches/transforms-3/1cb414aeb4d2e99dad346de320322e6d/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/davrsmart/.gradle/caches/transforms-3/691ea7010aebab9266cc2c85ade0f719/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
@@ -233,28 +233,28 @@ MERGED from [androidx.camera:camera-lifecycle:1.3.4] /Users/davrsmart/.gradle/ca
 MERGED from [androidx.camera:camera-lifecycle:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/b9744795a846c64ea19cae6888a1f5e5/transformed/jetified-camera-lifecycle-1.3.4/AndroidManifest.xml:5:5-44
 MERGED from [androidx.preference:preference:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/fb6548ab293e8e31db70cabd03b6338e/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.preference:preference:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/fb6548ab293e8e31db70cabd03b6338e/transformed/preference-1.2.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.mlkit:barcode-scanning:17.2.0] /Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:barcode-scanning:17.2.0] /Users/davrsmart/.gradle/caches/transforms-3/49c6081128a6e31d4b817a5056225078/transformed/jetified-barcode-scanning-17.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:barcode-scanning:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:barcode-scanning:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/e788c36e428f61ff0601c703878b7cc8/transformed/jetified-barcode-scanning-17.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:6:5-44
 MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /Users/davrsmart/.gradle/caches/transforms-3/3ca645dac20fb735f09e7c2482de838b/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /Users/davrsmart/.gradle/caches/transforms-3/3ca645dac20fb735f09e7c2482de838b/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:6:5-44
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /Users/davrsmart/.gradle/caches/transforms-3/4fa24c8ae963dc53c121fcba382e26f6/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /Users/davrsmart/.gradle/caches/transforms-3/4fa24c8ae963dc53c121fcba382e26f6/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/davrsmart/.gradle/caches/transforms-3/1ee6389b0f4f4c1c25b84db04113f285/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:6:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/3227164d6be08241384df8f6347a3bad/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/davrsmart/.gradle/caches/transforms-3/69dc6337af0c3e87c788c0a4d5f74948/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/davrsmart/.gradle/caches/transforms-3/3c428c34bef924ebedc4a8931c78d6a0/transformed/jetified-vision-interfaces-16.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:vision-interfaces:16.3.0] /Users/davrsmart/.gradle/caches/transforms-3/3c428c34bef924ebedc4a8931c78d6a0/transformed/jetified-vision-interfaces-16.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] /Users/davrsmart/.gradle/caches/transforms-3/55f5be125cbdda9951e37732bff2465d/transformed/jetified-play-services-tasks-18.2.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:3:5-44
 MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/davrsmart/.gradle/caches/transforms-3/6a818668cf81c8cc871d50a53ed844cf/transformed/jetified-fragment-ktx-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment-ktx:1.7.1] /Users/davrsmart/.gradle/caches/transforms-3/6a818668cf81c8cc871d50a53ed844cf/transformed/jetified-fragment-ktx-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/davrsmart/.gradle/caches/transforms-3/1017b9f6e05bab2c47a4e385584828d8/transformed/fragment-1.7.1/AndroidManifest.xml:5:5-44
@@ -325,12 +325,12 @@ MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/davrsmart/.gradle/
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/b871f987d03f22f506d3cd0e0ce39805/transformed/jetified-savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/davrsmart/.gradle/caches/transforms-3/c9123b7a3dc7f28755ddca60dc9516fb/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-core-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/56364fa459658ab2594452afaa710993/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.datastore:datastore-core-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/56364fa459658ab2594452afaa710993/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/088760a15f92f5ec590c7e614fa4b319/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/088760a15f92f5ec590c7e614fa4b319/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/1f3e4d0af5e0a56656c7fcd80e7f2826/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
-MERGED from [androidx.datastore:datastore-android:1.1.1] /Users/davrsmart/.gradle/caches/transforms-3/1f3e4d0af5e0a56656c7fcd80e7f2826/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/0e5c9cf0db0514873cb51ba095e7edc6/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/0e5c9cf0db0514873cb51ba095e7edc6/transformed/jetified-datastore-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/5996bb40e043a21fe1c12e3a649188ca/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/5996bb40e043a21fe1c12e3a649188ca/transformed/jetified-datastore-preferences-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/1aded8abe469c17e9f922ef24d3baed3/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.3] /Users/davrsmart/.gradle/caches/transforms-3/1aded8abe469c17e9f922ef24d3baed3/transformed/jetified-datastore-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/cd343f896345b0ab71d5796da7b6c741/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
 MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /Users/davrsmart/.gradle/caches/transforms-3/cd343f896345b0ab71d5796da7b6c741/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/davrsmart/.gradle/caches/transforms-3/1cb414aeb4d2e99dad346de320322e6d/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
@@ -460,25 +460,25 @@ ADDED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/cache
 	android:name
 		ADDED from [androidx.camera:camera-camera2:1.3.4] /Users/davrsmart/.gradle/caches/transforms-3/e86484132095165da3349b0026bcccde/transformed/jetified-camera-camera2-1.3.4/AndroidManifest.xml:31:17-103
 service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
-ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:9:9-15:19
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
 MERGED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:15:9-23:19
-MERGED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:15:9-23:19
 	android:exported
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:11:13-37
 	tools:targetApi
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:19:13-32
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:19:13-32
 	android:directBootAware
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:17:13-43
 	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:10:13-91
 meta-data#com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar
-ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:12:13-14:85
 	android:value
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:14:17-82
 	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/davrsmart/.gradle/caches/transforms-3/c13621c10a0dc9a16c07666fad4a81cc/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] /Users/davrsmart/.gradle/caches/transforms-3/c78ce6d5635308285ed94b5dd8d6a6ad/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.1/AndroidManifest.xml:13:17-120
 meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
 ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
 	android:value
@@ -486,35 +486,35 @@ ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/cach
 	android:name
 		ADDED from [com.google.mlkit:vision-common:17.3.0] /Users/davrsmart/.gradle/caches/transforms-3/5bfb39f4e8adcd961e2c832650f630af/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
 provider#com.google.mlkit.common.internal.MlKitInitProvider
-ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
+ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:9:9-13:38
 	android:authorities
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:11:13-69
 	android:exported
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:12:13-37
 	android:initOrder
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:13:13-35
 	android:name
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:10:13-78
 meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
-ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
+ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:20:13-22:85
 	android:value
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:22:17-82
 	android:name
-		ADDED from [com.google.mlkit:common:18.9.0] /Users/davrsmart/.gradle/caches/transforms-3/864bfd72f1d9e0a5fab539b52c239a53/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
+		ADDED from [com.google.mlkit:common:18.11.0] /Users/davrsmart/.gradle/caches/transforms-3/70a7fbdea3e4d5ba7e339144dde84216/transformed/jetified-common-18.11.0/AndroidManifest.xml:21:17-120
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:9-173
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:146-170
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:86-145
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/31df79a42589983d3d857f2196663deb/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] /Users/davrsmart/.gradle/caches/transforms-3/ee41863823381887fde3e2de43d73aaf/transformed/jetified-play-services-base-18.5.0/AndroidManifest.xml:5:19-85
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+ADDED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:9-122
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:66-119
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /Users/davrsmart/.gradle/caches/transforms-3/0657040f5480447bb141017b430c4350/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] /Users/davrsmart/.gradle/caches/transforms-3/7019b76e95ec68a87c3ea591638ea5d5/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:6:20-65
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.2.0] /Users/davrsmart/.gradle/caches/transforms-3/ace60e8e30df61681292083d41c836d5/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
 	android:required

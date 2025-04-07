@@ -160,39 +160,15 @@ class _DepositScreenState extends State<DepositScreen> {
   }
 
   Widget _buildBody(ThemeColors dynamicTheme) {
-    if (_allDeposits.isEmpty && !_isLoadingMore) {
-      return BlocBuilder<DepositCubit, DepositState>(
-        builder: (context, state) {
-          if (state is DepositLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is DepositError) {
-            return Center(child: Text('${state.message}'));
-          } else if (state is DepositData && _allDeposits.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/images/noData.png',
-                      height: 180.h, width: 200.w),
-                  SizedBox(height: 10.h),
-                  Text(
-                    'Нет новых поступлений',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                      color: dynamicTheme.white,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return const SizedBox();
-        },
-      );
-    }
-
     final groupedEntries = groupByDate(_allDeposits);
+
+    final hasAnyData = groupedEntries.entries.any((entry) {
+      final filtered = selectedIndex == 0
+          ? entry.value.where((deposit) => deposit.status == 4)
+          : entry.value.where((deposit) => deposit.status == 2);
+      return filtered.isNotEmpty;
+    });
+
     return Column(
       children: [
         SizedBox(height: 10.h),
@@ -209,37 +185,43 @@ class _DepositScreenState extends State<DepositScreen> {
         ),
         SizedBox(height: 5.h),
         Expanded(
-          child: ListView.builder(
-            controller: _scrollController,
-            physics: const AlwaysScrollableScrollPhysics(),
-            itemCount: groupedEntries.length + (_isLoadingMore ? 1 : 0),
-            itemBuilder: (context, index) {
-              if (index == groupedEntries.length && _isLoadingMore) {
-                return const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Center(child: CircularProgressIndicator()),
+          child: Builder(
+            builder: (context) {
+              if (_allDeposits.isEmpty && !_isLoadingMore) {
+                return BlocBuilder<DepositCubit, DepositState>(
+                  builder: (context, state) {
+                    if (state is DepositLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is DepositError) {
+                      return Center(child: Text('${state.message}'));
+                    }
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset('assets/images/noData.png',
+                              height: 180.h, width: 200.w),
+                          SizedBox(height: 10.h),
+                          Text(
+                            'Нет новых поступлений',
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: dynamicTheme.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 );
               }
 
-              final entry = groupedEntries.entries.elementAt(index);
-
-              // "В транзите" uchun status == 4, "Передано" uchun status == 2
-              final filteredDeposits = selectedIndex == 0
-                  ? entry.value.where((deposit) => deposit.status == 4).toList()
-                  : entry.value
-                      .where((deposit) => deposit.status == 2)
-                      .toList();
-
-              // Agar filteredDeposits bo'sh bo'lsa, "Нет новых поступлений" ko'rsatish
-              if (filteredDeposits.isEmpty) {
+              if (!hasAnyData) {
                 return Center(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 50.h,
-                      ),
                       Image.asset('assets/images/noData.png',
                           height: 180.h, width: 200.w),
                       SizedBox(height: 10.h),
@@ -256,70 +238,106 @@ class _DepositScreenState extends State<DepositScreen> {
                 );
               }
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      "  ${entry.key}",
-                      style: TextStyle(
-                        color: dynamicTheme.white,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
+              return ListView.builder(
+                controller: _scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: groupedEntries.length + (_isLoadingMore ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (index == groupedEntries.length && _isLoadingMore) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+
+                  final entry = groupedEntries.entries.elementAt(index);
+                  final filteredDeposits = selectedIndex == 0
+                      ? entry.value
+                          .where((deposit) => deposit.status == 4)
+                          .toList()
+                      : entry.value
+                          .where((deposit) => deposit.status == 2)
+                          .toList();
+
+                  if (filteredDeposits.isEmpty) return const SizedBox.shrink();
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          "  ${entry.key}",
+                          style: TextStyle(
+                            color: dynamicTheme.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 5.h),
-                  ...filteredDeposits.map((deposit) {
-                    return CardWidget(
-                      name: deposit.login,
-                      date: formatDate("${deposit.createdAt}"),
-                      summa: deposit.amount,
-                      onevent: () {
-                        context.read<CollectCubit>().clear();
-                        Scaffold.of(context).showBottomSheet(
-                          elevation: 0,
-                          (BuildContext context) {
-                            return Container(
-                              height: 515.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(35.r),
-                                    topRight: Radius.circular(35.r),
-                                    bottomLeft: Radius.circular(0),
-                                    bottomRight: Radius.circular(0)),
-                              ),
-                              width: MediaQuery.of(context).size.width,
-                              child: selectedIndex == 0
-                                  ? ShowDialogDepositScreen(
-                                      selectBank: SelectBank(),
-                                      depositId: deposit.id,
-                                      login: deposit.login,
-                                      statusName: deposit.statusName,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      comment: deposit.comment,
-                                      operatorImage: "${deposit.operatorPhoto}",
-                                    )
-                                  : ShowDialogSubmittedDepositScreen(
-                                      depositId: deposit.id,
-                                      login: deposit.login,
-                                      statusName: deposit.statusName,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      comment: deposit.comment,
-                                      operatorImage: "${deposit.operatorPhoto}",
-                                      bankName: deposit.bankName,
+                      SizedBox(height: 5.h),
+                      ...filteredDeposits.map((deposit) {
+                        print("salom curier ${deposit.courierPhoto}");
+                        return CardWidget(
+                          name: deposit.login,
+                          date: formatDate("${deposit.createdAt}"),
+                          summa: deposit.amount,
+                          onevent: () {
+                            context.read<CollectCubit>().clear();
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (BuildContext context) {
+                                return Container(
+                                  // (widget.courierPhoto != null) ? 340.h : 300.h,
+                                  height: (deposit.courierPhoto != null)
+                                      ? 575.h
+                                      : 600.h,
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor, // yoki dynamicTheme.backgroundColor
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(35.r),
+                                      topRight: Radius.circular(35.r),
                                     ),
+                                  ),
+                                  child: selectedIndex == 0
+                                      ? ShowDialogDepositScreen(
+                                          selectBank: SelectBank(),
+                                          depositId: deposit.id,
+                                          login: deposit.login,
+                                          statusName: deposit.statusName,
+                                          date: formatDate(
+                                              "${deposit.createdAt}"),
+                                          summa: deposit.amount,
+                                          comment: deposit.comment,
+                                          operatorImage:
+                                              "${deposit.operatorPhoto}",
+                                        )
+                                      : ShowDialogSubmittedDepositScreen(
+                                          depositId: deposit.id,
+                                          login: deposit.login,
+                                          statusName: deposit.statusName,
+                                          date: formatDate(
+                                              "${deposit.createdAt}"),
+                                          summa: deposit.amount,
+                                          comment: deposit.comment,
+                                          operatorImage:
+                                              "${deposit.operatorPhoto}",
+                                          bankName: deposit.bankName,
+                                          courierPhoto: deposit.courierPhoto,
+                                        ),
+                                );
+                              },
                             );
                           },
                         );
-                      },
-                    );
-                  }),
-                  SizedBox(height: 10.h),
-                ],
+                      }),
+                      SizedBox(height: 10.h),
+                    ],
+                  );
+                },
               );
             },
           ),

@@ -26,6 +26,8 @@ class ShowDialogSubmittedDepositScreen extends StatefulWidget {
   final String? bankName;
   final String? operatorImage;
   final String? comment;
+  final String? courierPhoto;
+  final double? height;
   const ShowDialogSubmittedDepositScreen({
     super.key,
     required this.depositId,
@@ -36,6 +38,8 @@ class ShowDialogSubmittedDepositScreen extends StatefulWidget {
     this.bankName,
     required this.operatorImage,
     required this.comment,
+    this.courierPhoto,
+    this.height,
   });
 
   @override
@@ -48,10 +52,14 @@ class _ShowDialogSubmittedDepositScreenState
   final picker = ImagePicker();
   XFile? image;
   String? imageUrl;
+  String? imageUrlCourier;
   @override
   void initState() {
     super.initState();
 
+    if (widget.courierPhoto != null && widget.courierPhoto is String) {
+      imageUrlCourier = "${widget.courierPhoto}";
+    }
     if (widget.operatorImage != null && widget.operatorImage is String) {
       imageUrl = "${widget.operatorImage}";
     }
@@ -101,6 +109,63 @@ class _ShowDialogSubmittedDepositScreenState
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("PDF saqlandi va ochildi: ${file.path}")),
+      );
+    }
+  }
+
+  Future<void> openImageFromUrlCourier(String url) async {
+    print("url :::::  ${url}");
+    if (url.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Iltimos, avval rasm URL'sini tekshiring!")),
+      );
+      return;
+    }
+
+    try {
+      if (File(url).existsSync()) {
+        final result = await OpenFile.open(url);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochildi: $url")),
+          );
+        }
+        return;
+      }
+      Dio dio = Dio();
+      final response = await dio.get(
+        url,
+        options: Options(responseType: ResponseType.bytes),
+      );
+
+      if (response.statusCode == 200) {
+        final directory = await getExternalStorageDirectory();
+        final file = File("${directory!.path}/downloaded_image.jpg");
+        await file.writeAsBytes(response.data);
+
+        final result = await OpenFile.open(file.path);
+        if (result.type != ResultType.done) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Fayl ochildi: ${file.path}")),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Rasmni yuklab olishda xatolik!")),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Xatolik yuz berdi: $e")),
       );
     }
   }
@@ -175,9 +240,10 @@ class _ShowDialogSubmittedDepositScreenState
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Column(
+      // (widget.courierPhoto != null) ? 200.h :
       children: [
         Container(
-          height: 230.h,
+          height: (widget.courierPhoto != null) ? 230.h : 275.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -253,180 +319,214 @@ class _ShowDialogSubmittedDepositScreenState
                           borderRadius: BorderRadius.circular(20),
                           color: dynamicTheme.containerBackground),
                       child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide.none,
+                          padding: EdgeInsets.all(0),
+                        ),
+                        onPressed: () {
+                          openImageFromUrl();
+                        },
+                        child: Text(
+                          'документ1',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: dynamicTheme.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15.w),
+                    if (widget.courierPhoto != null)
+                      Container(
+                        height: 35.h,
+                        width: 140.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground,
+                        ),
+                        child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             side: BorderSide.none,
                             padding: EdgeInsets.all(0),
                           ),
-                          onPressed: openImageFromUrl,
+                          onPressed: () {
+                            openImageFromUrlCourier(widget.courierPhoto!);
+                          },
                           child: Text(
-                            'документ',
+                            'документ2',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: dynamicTheme.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (widget.courierPhoto == null && image == null)
+                      Container(
+                        height: 35.h,
+                        width: 140.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground,
+                        ),
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            padding: EdgeInsets.all(0),
+                          ),
+                          onPressed: getCamera,
+                          child: Text(
+                            'Камера',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: dynamicTheme.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (widget.courierPhoto == null && image != null)
+                      Container(
+                        height: 35.h,
+                        width: 140.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground,
+                        ),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide.none,
+                                  padding: EdgeInsets.all(0),
+                                ),
+                                onPressed:
+                                    convertImageToPdf, // yoki kerakli funksiya
+                                child: Text(
+                                  'документ',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.sp,
+                                    color: dynamicTheme.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: 102.w,
+                              top: 0.h,
+                              bottom: 10.h,
+                              child: IconButton(
+                                padding: EdgeInsets.zero,
+                                constraints: BoxConstraints(),
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 20.sp,
+                                  color: dynamicTheme.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    clearImage();
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                if (widget.courierPhoto == null)
+                  Center(
+                    child: Container(
+                      height: 35.h,
+                      width: 140.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: dynamicTheme.containerBackground),
+                      child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            padding: EdgeInsets.all(0),
+                          ),
+                          onPressed: () async {
+                            final collectCubit = context.read<CollectCubit>();
+
+                            final chekPhoto = collectCubit.imagePaths.isNotEmpty
+                                ? collectCubit.imagePaths.last
+                                : null;
+
+                            if (image == null) {
+                              CherryToast.error(
+                                animationDuration: Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: Text('Ошибка!'),
+                                description: Text(
+                                    "Пожалуйста, сначала загрузите фото с камеры"),
+                              ).show(context);
+                              return;
+                            }
+
+                            if (chekPhoto == null || chekPhoto == 0) {
+                              CherryToast.error(
+                                animationDuration: Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: Text('Ошибка!'),
+                                description: Text("Чек не найден"),
+                              ).show(context);
+                              return;
+                            }
+
+                            try {
+                              bool isSuccess = await DepositSendFile().request(
+                                widget.depositId,
+                                chekPhoto,
+                              );
+
+                              if (isSuccess) {
+                                CherryToast.success(
+                                  animationDuration:
+                                      Duration(milliseconds: 300),
+                                  inheritThemeColors: true,
+                                  animationType: AnimationType.fromTop,
+                                  title: Text('Успешный!'),
+                                  description:
+                                      Text('Данные успешно загружены!'),
+                                ).show(context);
+
+                                await context
+                                    .read<DepositCubit>()
+                                    .fetchDeposits();
+                                Navigator.pop(context);
+                              }
+                            } catch (e) {
+                              CherryToast.error(
+                                animationDuration: Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: Text('Ошибка!'),
+                                description: Text(e
+                                    .toString()), // API'dan kelgan message chiqadi
+                              ).show(context);
+                            }
+                          },
+                          child: Text(
+                            'Подтвердить',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.sp,
                                 color: dynamicTheme.white),
                           )),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    image != null
-                        ? Container(
-                            height: 35.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: dynamicTheme.containerBackground,
-                            ),
-                            child: Stack(
-                              children: [
-                                Center(
-                                  child: OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide.none,
-                                      padding: EdgeInsets.all(0),
-                                    ),
-                                    onPressed: convertImageToPdf,
-                                    child: Text(
-                                      'документ',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.sp,
-                                        color: dynamicTheme.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 104.w,
-                                  top: 0.h,
-                                  bottom: 12.h,
-                                  child: IconButton(
-                                    padding: EdgeInsets.zero,
-                                    constraints: BoxConstraints(),
-                                    icon: Icon(
-                                      Icons.close,
-                                      size: 20.sp,
-                                      color: dynamicTheme.white,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        clearImage();
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : Container(
-                            height: 35.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: dynamicTheme.containerBackground),
-                            child: OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide.none,
-                                  padding: EdgeInsets.all(0),
-                                ),
-                                onPressed: () {
-                                  getCamera();
-                                },
-                                child: Text(
-                                  'Камера',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16.sp,
-                                      color: dynamicTheme.white),
-                                )),
-                          ),
-                  ],
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Center(
-                  child: Container(
-                    height: 35.h,
-                    width: 140.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: dynamicTheme.containerBackground),
-                    child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide.none,
-                          padding: EdgeInsets.all(0),
-                        ),
-                        onPressed: () async {
-                          final collectCubit = context.read<CollectCubit>();
-
-                          final chekPhoto = collectCubit.imagePaths.isNotEmpty
-                              ? collectCubit.imagePaths.last
-                              : null;
-
-                          if (image == null) {
-                            CherryToast.error(
-                              animationDuration: Duration(milliseconds: 300),
-                              inheritThemeColors: true,
-                              animationType: AnimationType.fromTop,
-                              title: Text('Ошибка!'),
-                              description: Text(
-                                  "Пожалуйста, сначала загрузите фото с камеры"),
-                            ).show(context);
-                            return;
-                          }
-
-                          if (chekPhoto == null || chekPhoto == 0) {
-                            CherryToast.error(
-                              animationDuration: Duration(milliseconds: 300),
-                              inheritThemeColors: true,
-                              animationType: AnimationType.fromTop,
-                              title: Text('Ошибка!'),
-                              description: Text("Чек не найден"),
-                            ).show(context);
-                            return;
-                          }
-
-                          try {
-                            bool isSuccess = await DepositSendFile().request(
-                              widget.depositId,
-                              chekPhoto,
-                            );
-
-                            if (isSuccess) {
-                              CherryToast.success(
-                                animationDuration: Duration(milliseconds: 300),
-                                inheritThemeColors: true,
-                                animationType: AnimationType.fromTop,
-                                title: Text('Успешный!'),
-                                description: Text('Данные успешно загружены!'),
-                              ).show(context);
-
-                              await context
-                                  .read<DepositCubit>()
-                                  .fetchDeposits();
-                              Navigator.pop(context);
-                            }
-                          } catch (e) {
-                            CherryToast.error(
-                              animationDuration: Duration(milliseconds: 300),
-                              inheritThemeColors: true,
-                              animationType: AnimationType.fromTop,
-                              title: Text('Ошибка!'),
-                              description: Text(e
-                                  .toString()), // API'dan kelgan message chiqadi
-                            ).show(context);
-                          }
-                        },
-                        child: Text(
-                          'Подтвердить',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.sp,
-                              color: dynamicTheme.white),
-                        )),
                   ),
-                )
+                if (widget.courierPhoto != null) Text(''),
               ],
             ),
           ),
@@ -434,7 +534,7 @@ class _ShowDialogSubmittedDepositScreenState
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: 285.h,
+          height: (widget.courierPhoto != null) ? 340.h : 300.h,
           color: dynamicTheme.containerColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -91,8 +91,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: groupByDate(state.deposits)
                         .entries
-                        .where((entry) =>
-                            entry.value.any((deposit) => deposit.status == 6))
+                        .where((entry) => entry.value.any((deposit) =>
+                            deposit.status == 6 || deposit.status == -1))
                         .isNotEmpty
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,8 +100,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         children: [
                           for (var entry in groupByDate(state.deposits)
                               .entries
-                              .where((entry) => entry.value
-                                  .any((deposit) => deposit.status == 6))) ...[
+                              .where((entry) => entry.value.any((deposit) =>
+                                  deposit.status == 6 ||
+                                  deposit.status == -1))) ...[
                             Text(
                               "  ${entry.key}",
                               style: TextStyle(
@@ -112,17 +113,23 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             ),
                             SizedBox(height: 5.h),
                             ...entry.value
-                                .where((deposit) => deposit.status == 6)
+                                .where((deposit) =>
+                                    deposit.status == 6 || deposit.status == -1)
                                 .map((deposit) => CardWidget(
                                       name: deposit.login,
                                       date: formatDate("${deposit.createdAt}"),
                                       summa: deposit.amount,
                                       onevent: () {
                                         print(deposit.status);
-                                        Scaffold.of(context).showBottomSheet(
-                                          (BuildContext context) {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          isScrollControlled:
+                                              true, // Agar kontent uzun bo'lsa, pastga siljishi mumkin bo'ladi
+                                          backgroundColor: Colors
+                                              .transparent, // Transparan fon
+                                          builder: (BuildContext context) {
                                             return Container(
-                                              height: 500.h,
+                                              height: 560.h,
                                               decoration: BoxDecoration(
                                                 color: Theme.of(context)
                                                     .scaffoldBackgroundColor,
@@ -153,7 +160,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                               ),
                                             );
                                           },
-                                          elevation: 0,
                                         );
                                       },
                                     )),

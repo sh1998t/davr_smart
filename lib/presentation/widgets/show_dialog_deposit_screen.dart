@@ -181,7 +181,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
     return Column(
       children: [
         Container(
-          height: 270.h,
+          height: 310.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -301,9 +301,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                                   ),
                                 ),
                                 Positioned(
-                                  left: 104.w,
+                                  left: 102.w,
                                   top: 0.h,
-                                  bottom: 12.h,
+                                  bottom: 10.h,
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
                                     constraints: BoxConstraints(),
@@ -369,7 +369,9 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                         ),
                         onPressed: () async {
                           final collectCubit = context.read<CollectCubit>();
-
+                          final chekPhoto = collectCubit.imagePaths.isNotEmpty
+                              ? collectCubit.imagePaths.last
+                              : null;
                           final bankId = collectCubit.bankIds.isNotEmpty
                               ? collectCubit.bankIds.last
                               : null;
@@ -389,6 +391,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
                               bool isSuccess = await DepositSend().request(
                                 widget.depositId,
                                 bankId,
+                                chekPhoto,
                               );
 
                               if (isSuccess) {
@@ -435,7 +438,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
         Container(
           padding: EdgeInsets.only(left: 30, bottom: 0),
           width: MediaQuery.of(context).size.width,
-          height: 245.h,
+          height: 290.h,
           color: dynamicTheme.containerColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

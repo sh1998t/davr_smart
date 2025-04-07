@@ -125,7 +125,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
     return Column(
       children: [
         Container(
-          height: 200.h,
+          height: 220.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -251,7 +251,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: 300.h,
+          height: 340.h,
           color: dynamicTheme.containerColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
