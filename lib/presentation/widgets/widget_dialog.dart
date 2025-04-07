@@ -15,6 +15,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../../data/network/courier_accept_deposit.dart';
+import '../../data/network/get_cancel_deposit.dart';
 
 class WidgetDialog extends StatefulWidget {
   const WidgetDialog(
@@ -232,7 +233,38 @@ class _WidgetDialogState extends State<WidgetDialog> {
                             side: BorderSide.none,
                           ),
                           onPressed: () {
-                            Navigator.pop(context);
+                            GetCancelDeposit()
+                                .request("${widget.depositId}")
+                                .then(
+                              (value) async {
+                                if (value == true) {
+                                  CherryToast.success(
+                                    animationDuration:
+                                        Duration(milliseconds: 300),
+                                    inheritThemeColors: true,
+                                    animationType: AnimationType.fromTop,
+                                    title: Text('Успех!'),
+                                    description: Text('Депозит был отклонён.'),
+                                  ).show(context);
+
+                                  await context
+                                      .read<ProcessingCubit>()
+                                      .fetchProcessing();
+                                  Navigator.pop(context);
+                                } else {
+                                  CherryToast.warning(
+                                    inheritThemeColors: true,
+                                    description: const Text(
+                                      'Ошибка',
+                                    ),
+                                    animationType: AnimationType.fromTop,
+                                    action: const Text(
+                                        'Резервное копирование данных'),
+                                    actionHandler: () {},
+                                  ).show(context);
+                                }
+                              },
+                            );
                           },
                           child: Text(
                             'Отклонить',

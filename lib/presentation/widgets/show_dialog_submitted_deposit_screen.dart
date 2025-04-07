@@ -534,7 +534,7 @@ class _ShowDialogSubmittedDepositScreenState
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: (widget.courierPhoto != null) ? 340.h : 300.h,
+          height: (widget.courierPhoto != null) ? 340.h : 320.h,
           color: dynamicTheme.containerColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

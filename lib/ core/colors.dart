@@ -46,7 +46,7 @@ class MainColor {
       containerBackground: Color(0xFFFFFFFF),
       containerColor: Color(0xFFF0F0F0),
       deepPurple: Color(0xff572da6),
-      grey600: Color(0xFFB2B0B0),
+      grey600: Color(0xFFF8F5F5),
       color303030: Color(0xFFD0D0D0).withValues(alpha: 0.9),
       color202020: Color(0xFFE0E0E0).withValues(alpha: 0.9),
       black38: Colors.black38,

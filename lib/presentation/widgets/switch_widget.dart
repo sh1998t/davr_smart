@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../ core/colors.dart';
 
@@ -69,7 +70,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                   widget.labels[index],
                   style: TextStyle(
                     color: isSelected ? dynamicTheme.black : dynamicTheme.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

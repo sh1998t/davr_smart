@@ -407,10 +407,6 @@
       jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434/a0ed11ebac55582c8b70ebc43cced6ad00a48ac/arm64_v8a_release-1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434.jar"
       resolved="io.flutter:arm64_v8a_release:1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434"/>
   <library
-      name="io.flutter:x86_64_release:1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434@jar"
-      jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434/fb6619338aae25d086828b6150fdd16e4daff694/x86_64_release-1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434.jar"
-      resolved="io.flutter:x86_64_release:1.0.0-18b71d647a292a980abb405ac7d16fe1f0b20434"/>
-  <library
       name="org.jetbrains:annotations:23.0.0@jar"
       jars="/Users/davrsmart/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar"
       resolved="org.jetbrains:annotations:23.0.0"/>

@@ -9,4 +9,5 @@ class ApiConst {
   static const String Deposit_Send = "/client/update-coureir-deposit";
   static const String Statistika = "/client/get-courier-reports";
   static const String UserMe = "/me";
+  static const String Get_Cancel_deposi = "/client/cancel-operator-deposit ";
 }
