@@ -75,13 +75,6 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
   }
 
   Future<void> convertImageToPdf() async {
-    if (image == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Iltimos, avval rasm tanlang!")),
-      );
-      return;
-    }
-
     final pdf = pw.Document();
     final imageBytes = pw.MemoryImage(File(image!.path).readAsBytesSync());
 
@@ -98,39 +91,12 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
     await file.writeAsBytes(await pdf.save());
 
     final result = await OpenFile.open(file.path);
-    if (result.type != ResultType.done) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("PDF ochishda xatolik: ${result.message}")),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("PDF saqlandi va ochildi: ${file.path}")),
-      );
-    }
   }
 
   Future<void> openImageFromUrl() async {
-    print("url :::::  ${imageUrl}");
-    if (imageUrl == null || imageUrl!.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text("Iltimos, avval rasm URL'sini tekshiring!")),
-      );
-      return;
-    }
-
     try {
       if (File(imageUrl!).existsSync()) {
         final result = await OpenFile.open(imageUrl!);
-        if (result.type != ResultType.done) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochildi: $imageUrl")),
-          );
-        }
         return;
       }
       Dio dio = Dio();
@@ -145,25 +111,8 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
         await file.writeAsBytes(response.data);
 
         final result = await OpenFile.open(file.path);
-        if (result.type != ResultType.done) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochildi: ${file.path}")),
-          );
-        }
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Rasmni yuklab olishda xatolik!")),
-        );
       }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Xatolik yuz berdi: $e")),
-      );
-    }
+    } catch (e) {}
   }
 
   void clearImage() {

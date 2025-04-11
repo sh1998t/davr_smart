@@ -121,7 +121,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: dynamicTheme.appBarBackgroundColor,
+        backgroundColor: Color(0xFFF5FAFF),
         centerTitle: true,
         leading: const SizedBox(),
         toolbarHeight: 40.h,
@@ -145,7 +145,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
           ),
         ),
       ),
-      backgroundColor: dynamicTheme.backgroundColor,
+      backgroundColor: Color(0xFFF5FAFF),
       body: BlocListener<ProcessingCubit, ProcessingState>(
         listener: (context, state) {
           if (state is ProcessingLoaded) {
@@ -224,7 +224,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 10.w, bottom: 4.h),
+              padding: EdgeInsets.only(left: 12.w, bottom: 4.h),
               child: Text(
                 "  ${entry.key}",
                 style: TextStyle(
@@ -240,6 +240,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                 date: formatDate("${deposit.createdAt}"),
                 summa: deposit.amount,
                 onevent: () {
+                  print("deposit di ==== ==== ${deposit.id}");
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,

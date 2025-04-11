@@ -13,7 +13,8 @@ import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../screens/history_screen.dart';
 
 class ButtonNavigationBarWidget extends StatefulWidget {
-  const ButtonNavigationBarWidget({super.key});
+  final int initialIndex;
+  const ButtonNavigationBarWidget({super.key, this.initialIndex = 0});
   @override
   State<ButtonNavigationBarWidget> createState() => _ButtonNavigationBarState();
 }
@@ -30,6 +31,7 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
   @override
   void initState() {
     super.initState();
+    page = widget.initialIndex;
     context.read<ProcessingCubit>().fetchProcessing();
   }
 
@@ -39,24 +41,31 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
+      // fixedCircle
       body: pages[page],
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: dynamicTheme.backgroundColor,
+        backgroundColor: Color(0xFFF5FAFF),
         cornerRadius: 5,
         style: TabStyle.fixedCircle,
         color: Colors.deepPurple,
         curveSize: 25,
         top: -25,
         initialActiveIndex: page,
-        height: 45.h,
+        height: 60.h,
         items: [
           TabItem(
-            icon: Icon(Icons.edit_document, color: dynamicTheme.white38),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 20.h),
+              child: Icon(Icons.edit_document, color: dynamicTheme.white38),
+            ),
             activeIcon: Icon(Icons.edit_document, color: Colors.deepPurple),
             title: '',
           ),
           TabItem(
-            icon: Icon(Icons.account_balance, color: dynamicTheme.white38),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 20.h),
+              child: Icon(Icons.account_balance, color: dynamicTheme.white38),
+            ),
             activeIcon: Icon(Icons.account_balance, color: Colors.deepPurple),
             title: '',
           ),
@@ -66,12 +75,18 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
             title: '',
           ),
           TabItem(
-            icon: Icon(Icons.history, color: dynamicTheme.white38),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 20.h),
+              child: Icon(Icons.history, color: dynamicTheme.white38),
+            ),
             activeIcon: Icon(Icons.history, color: Colors.deepPurple),
             title: '',
           ),
           TabItem(
-            icon: Icon(Icons.settings, color: dynamicTheme.white38),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 20.h),
+              child: Icon(Icons.settings, color: dynamicTheme.white38),
+            ),
             activeIcon: Icon(Icons.settings, color: Colors.deepPurple),
             title: '',
           ),

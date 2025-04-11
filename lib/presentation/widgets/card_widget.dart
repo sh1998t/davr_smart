@@ -23,7 +23,7 @@ class CardWidget extends StatelessWidget {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Padding(
-      padding: EdgeInsets.only(left: 12.w, right: 12.w),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: Column(
         children: [
           Container(
@@ -66,7 +66,7 @@ class CardWidget extends StatelessWidget {
                             height: 40.h,
                             width: 40.w,
                             decoration: BoxDecoration(
-                              color: dynamicTheme.black12,
+                              color: Color(0xFFF5FAFF),
                               shape: BoxShape.circle,
                             ),
                             child: Center(

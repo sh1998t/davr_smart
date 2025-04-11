@@ -4,11 +4,11 @@ import 'package:incasator/%20core/base_api_requrest.dart';
 import '../../ core/api_const.dart';
 
 class GetCancelDeposit extends BaseApiRequest {
-  Future<bool> request(String depositId) async {
-    var endPoint = ApiConst.Courier_Accept_Deposit;
+  Future<bool> request(int? id) async {
+    var endPoint = ApiConst.Get_Cancel_deposit;
     try {
-      final response =
-          await super.getFilterRequest(endPoint, {"depositId": depositId});
+      final response = await super.getFilterRequest(endPoint, {"id": id});
+      print("data  ==== ==== = == = $response");
       if (response == null || response.statusCode != 200) {
         final errorMessage = response?.data['message'] ?? 'Server xatosi';
         throw Exception(errorMessage);

@@ -55,8 +55,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
     print("url :::::  $imageUrl");
     if (imageUrl == null || imageUrl.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text("Iltimos, avval rasm URL'sini tekshiring!")),
+        const SnackBar(content: Text("")),
       );
       return;
     }
@@ -64,15 +63,7 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
     try {
       if (File(imageUrl).existsSync()) {
         final result = await OpenFile.open(imageUrl);
-        if (result.type != ResultType.done) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("$type fayl ochildi: $imageUrl")),
-          );
-        }
+
         return;
       }
 
@@ -89,19 +80,6 @@ class _ShowDialogDepositScreenState extends State<DiologWidget> {
         await file.writeAsBytes(response.data);
 
         final result = await OpenFile.open(file.path);
-        if (result.type != ResultType.done) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Fayl ochishda xatolik: ${result.message}")),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("$type fayl ochildi: ${file.path}")),
-          );
-        }
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Rasmni yuklab olishda xatolik!")),
-        );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

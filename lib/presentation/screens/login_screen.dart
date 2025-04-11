@@ -1,14 +1,13 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:incasator/data/network/auth_api.dart';
-import 'package:incasator/presentation/widgets/button_navigator_bar.dart';
+import 'package:incasator/presentation/widgets/login_input_widget.dart';
 
 import '../../ core/colors.dart';
-import '../widgets/text_from_field.dart';
+import '../../data/network/auth_api.dart';
+import '../widgets/button_navigator_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   static String name = 'login_screen';
@@ -23,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool obscurePassword = true;
+  bool obscurePassword2 = true;
 
   @override
   void dispose() {
@@ -37,87 +37,142 @@ class _LoginScreenState extends State<LoginScreen> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
-      backgroundColor: dynamicTheme.backgroundColor,
+      backgroundColor: Color(0xFF572DA6),
       body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                SizedBox(height: 110.h),
-                Center(
-                  child: Image.asset(
-                    "assets/images/logo_davr.png",
-                    height: 120.h,
-                    width: 120.w,
-                  ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 50.h),
+                child: Image.asset(
+                  'assets/images/login_image.png',
+                  width: 290.w,
+                  height: 225.h,
                 ),
-                SizedBox(height: 90.h),
-                Center(
-                  child: Column(
-                    children: [
-                      MainTextField(
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 15),
-                        prefix: Icon(
-                          Icons.person,
-                          size: 24.sp,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Container(
+                height: 520.h,
+                padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 10.h),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50.r),
+                        topRight: Radius.circular(50.r))),
+                child: Column(
+                  spacing: 0,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Text(
+                      "Assalomu aleykum",
+                      style: TextStyle(
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      "Iltimos login va parolni kiriting",
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    LoginInputWidget(
+                      hintText: 'Login',
+                      controller: loginController,
+                      suffix: Icon(Icons.person),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    LoginInputWidget(
+                      hintText: 'Parol',
+                      controller: passwordController,
+                      obscureText: obscurePassword,
+                      suffix: IconButton(
+                        icon: Icon(
+                          obscurePassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                           color: dynamicTheme.white,
                         ),
-                        title: "Login".tr(),
-                        height: 43.h,
-                        hintText: "Username",
-                        width: 300.w,
-                        controller: loginController,
+                        onPressed: () {
+                          setState(() {
+                            obscurePassword = !obscurePassword;
+                          });
+                        },
                       ),
-                      SizedBox(height: 10.h),
-                      MainTextField(
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 15),
-                        title: "Password".tr(),
-                        height: 43.h,
-                        hintText: "Password",
-                        width: 300.w,
-                        controller: passwordController,
-                        obscureText: obscurePassword,
-                        prefix: IconButton(
-                          icon: Icon(
-                            obscurePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: dynamicTheme.white,
-                          ),
-                          onPressed: () {
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Saqlab qo’yish',
+                          style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black.withValues(alpha: 0.3)),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        InkWell(
+                          onTap: () {
                             setState(() {
-                              obscurePassword = !obscurePassword;
+                              obscurePassword2 = !obscurePassword2;
                             });
                           },
+                          child: Container(
+                            height: 22.h,
+                            width: 22.w,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFE6F3FF),
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Color(0xFF3398FF))),
+                            child: obscurePassword2
+                                ? Icon(
+                                    Icons.check,
+                                    size: 16.sp,
+                                  )
+                                : Text(''),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 50.h),
-                      Container(
-                        height: 40.h,
-                        width: MediaQuery.of(context).size.width - 150.w,
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 45.h,
+                    ),
+                    Center(
+                      child: Container(
+                        height: 53.h,
+                        width: 305.w,
                         decoration: BoxDecoration(
-                          color: dynamicTheme.CardColor,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              color: dynamicTheme.CardColor == Colors.white
-                                  ? Colors.grey.withOpacity(0.3)
-                                  : Color(0xFF1E1E1E).withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 8,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
+                          borderRadius: BorderRadius.circular(15.r),
                         ),
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(
-                                  30)), // Agar radius kerak bo'lsa
+                                  15.r)), // Agar radius kerak bo'lsa
                             ),
-                            backgroundColor: dynamicTheme.CardColor,
+                            backgroundColor: Color(0xFF572DA6),
                             side: BorderSide.none, // Borderni olib tashlash
                           ),
                           onPressed: () async {
@@ -138,6 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               String errorMessage = error
                                   .toString()
                                   .replaceAll("Exception: ", "");
+                              print("error === = == = = = =${errorMessage}");
                               CherryToast.error(
                                 animationDuration: Duration(milliseconds: 300),
                                 inheritThemeColors: true,
@@ -147,21 +203,37 @@ class _LoginScreenState extends State<LoginScreen> {
                               ).show(context);
                             }
                           },
-                          child: Text(
-                            "Войти",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.sp,
-                                color: dynamicTheme.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Kirish",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.sp,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 12.w,
+                              ),
+                              Image.asset(
+                                'assets/images/Arrow_logo.png',
+                                height: 16.h,
+                                width: 16.w,
+                                fit: BoxFit.cover,
+                                color: Colors.white,
+                              )
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,7 @@ import 'package:intl/intl.dart';
 import '../../data/bloc/collect_cubit.dart';
 import '../../data/bloc/deposit_bloc/deposit_cubit.dart';
 import '../../data/model/deposit_model.dart';
-import '../widgets/card_widget.dart';
+import '../widgets/card_widget_status.dart';
 import '../widgets/show_dialog_submitted_deposit_screen.dart';
 import '../widgets/switch_widget.dart';
 
@@ -31,12 +32,29 @@ class _DepositScreenState extends State<DepositScreen> {
   int _totalPages = 0;
   int _totalCount = 0;
   int selectedIndex = 0;
+  double _height = 56.0;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_onScroll);
+    getDeviceInfo();
     context.read<DepositCubit>().fetchDeposits();
+  }
+
+  Future<void> getDeviceInfo() async {
+    try {
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      final deviceInfo = await deviceInfoPlugin.deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo) {
+        setState(() {
+          _height =
+              deviceInfo.model.toLowerCase().contains('pad') ? 66.0 : 56.0;
+        });
+      }
+    } catch (e) {
+      print("Xato: $e");
+    }
   }
 
   void _onScroll() {
@@ -119,7 +137,7 @@ class _DepositScreenState extends State<DepositScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: dynamicTheme.appBarBackgroundColor,
+        backgroundColor: Color(0xFFF5FAFF),
         centerTitle: true,
         leading: const SizedBox(),
         toolbarHeight: 40.h,
@@ -133,7 +151,7 @@ class _DepositScreenState extends State<DepositScreen> {
           ),
         ),
       ),
-      backgroundColor: dynamicTheme.backgroundColor,
+      backgroundColor: Color(0xFFF5FAFF),
       body: BlocListener<DepositCubit, DepositState>(
         listener: (context, state) {
           if (state is DepositData) {
@@ -150,7 +168,9 @@ class _DepositScreenState extends State<DepositScreen> {
         child: RefreshIndicator(
           onRefresh: () async {
             _allDeposits.clear();
-            setState(() {});
+            setState(() {
+              getDeviceInfo();
+            });
             await context.read<DepositCubit>().fetchDeposits();
           },
           child: _buildBody(dynamicTheme),
@@ -173,7 +193,7 @@ class _DepositScreenState extends State<DepositScreen> {
       children: [
         SizedBox(height: 10.h),
         Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(left: 20.w, right: 20.w),
           child: CustomToggleButton(
             labels: ['В транзите', 'Передано'],
             onToggle: (value) {
@@ -265,7 +285,7 @@ class _DepositScreenState extends State<DepositScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: EdgeInsets.only(left: 12.w),
                         child: Text(
                           "  ${entry.key}",
                           style: TextStyle(
@@ -277,62 +297,67 @@ class _DepositScreenState extends State<DepositScreen> {
                       ),
                       SizedBox(height: 5.h),
                       ...filteredDeposits.map((deposit) {
-                        print("salom curier ${deposit.courierPhoto}");
-                        return CardWidget(
-                          name: deposit.login,
-                          date: formatDate("${deposit.createdAt}"),
-                          summa: deposit.amount,
-                          onevent: () {
-                            context.read<CollectCubit>().clear();
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  // (widget.courierPhoto != null) ? 340.h : 300.h,
-                                  height: (deposit.courierPhoto != null)
-                                      ? 575.h
-                                      : 600.h,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor, // yoki dynamicTheme.backgroundColor
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(35.r),
-                                      topRight: Radius.circular(35.r),
+                        return CardWidgetStatus(
+                            height: _height,
+                            color: (deposit.status == 2)
+                                ? Color(0xFF1A237E)
+                                : Color(0xFF572DA6),
+                            name: deposit.login,
+                            date: formatDate("${deposit.createdAt}"),
+                            summa: deposit.amount,
+                            onevent: () {
+                              context.read<CollectCubit>().clear();
+                              showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    // (widget.courierPhoto != null) ? 340.h : 300.h,
+                                    height: (deposit.courierPhoto != null)
+                                        ? 575.h
+                                        : 600.h,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor, // yoki dynamicTheme.backgroundColor
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(35.r),
+                                        topRight: Radius.circular(35.r),
+                                      ),
                                     ),
-                                  ),
-                                  child: selectedIndex == 0
-                                      ? ShowDialogDepositScreen(
-                                          selectBank: SelectBank(),
-                                          depositId: deposit.id,
-                                          login: deposit.login,
-                                          statusName: deposit.statusName,
-                                          date: formatDate(
-                                              "${deposit.createdAt}"),
-                                          summa: deposit.amount,
-                                          comment: deposit.comment,
-                                          operatorImage:
-                                              "${deposit.operatorPhoto}",
-                                        )
-                                      : ShowDialogSubmittedDepositScreen(
-                                          depositId: deposit.id,
-                                          login: deposit.login,
-                                          statusName: deposit.statusName,
-                                          date: formatDate(
-                                              "${deposit.createdAt}"),
-                                          summa: deposit.amount,
-                                          comment: deposit.comment,
-                                          operatorImage:
-                                              "${deposit.operatorPhoto}",
-                                          bankName: deposit.bankName,
-                                          courierPhoto: deposit.courierPhoto,
-                                        ),
-                                );
-                              },
-                            );
-                          },
-                        );
+                                    child: selectedIndex == 0
+                                        ? ShowDialogDepositScreen(
+                                            selectBank: SelectBank(),
+                                            depositId: deposit.id,
+                                            login: deposit.login,
+                                            statusName: deposit.statusName,
+                                            date: formatDate(
+                                                "${deposit.createdAt}"),
+                                            summa: deposit.amount,
+                                            comment: deposit.comment,
+                                            operatorImage:
+                                                "${deposit.operatorPhoto}",
+                                          )
+                                        : ShowDialogSubmittedDepositScreen(
+                                            depositId: deposit.id,
+                                            login: deposit.login,
+                                            statusName: deposit.statusName,
+                                            date: formatDate(
+                                                "${deposit.createdAt}"),
+                                            summa: deposit.amount,
+                                            comment: deposit.comment,
+                                            operatorImage:
+                                                "${deposit.operatorPhoto}",
+                                            bankName: deposit.bankName,
+                                            courierPhoto: deposit.courierPhoto,
+                                          ),
+                                  );
+                                },
+                              );
+                            },
+                            statusName: (deposit.status == 2)
+                                ? 'Передано'
+                                : deposit.statusName);
                       }),
                       SizedBox(height: 10.h),
                     ],

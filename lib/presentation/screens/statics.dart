@@ -27,11 +27,11 @@ class _ProfileScreenState extends State<StaticsScreen> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
-        backgroundColor: dynamicTheme.topColor,
+        backgroundColor: Color(0xFFF5FAFF),
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: dynamicTheme.white),
-          backgroundColor: dynamicTheme.appBarBackgroundColor,
+          backgroundColor: Color(0xFFF5FAFF),
           title: Text(
             'Статистика',
             style: TextStyle(color: dynamicTheme.white),
@@ -124,9 +124,11 @@ class _ProfileScreenState extends State<StaticsScreen> {
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(top: 30, left: 15, right: 15),
-                        decoration:
-                            BoxDecoration(color: dynamicTheme.buttonColor),
+                        padding:
+                            EdgeInsets.only(top: 30, left: 20.w, right: 20.w),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF5FAFF),
+                        ),
                         height: MediaQuery.of(context).size.height - 238.2,
                         child: Column(
                           children: [

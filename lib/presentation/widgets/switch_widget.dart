@@ -57,12 +57,12 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? dynamicTheme.deepPurple
-                      : dynamicTheme.grey600,
+                      ? Color(0xFF572DA6)
+                      : Color(0xFF74740).withValues(alpha: 8),
                   borderRadius: BorderRadius.horizontal(
-                    left: index == 0 ? Radius.circular(10) : Radius.zero,
+                    left: index == 0 ? Radius.circular(10.r) : Radius.zero,
                     right: index == widget.labels.length - 1
-                        ? Radius.circular(10)
+                        ? Radius.circular(10.r)
                         : Radius.zero,
                   ),
                 ),
@@ -71,7 +71,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
                   style: TextStyle(
                     color: isSelected ? dynamicTheme.black : dynamicTheme.white,
                     fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

@@ -3,15 +3,35 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'api_const.dart';
 
 class AuthUtil {
+  static const FlutterSecureStorage _storage = FlutterSecureStorage();
+
   static Future<String?> getToken() async {
-    const storage = FlutterSecureStorage();
-    String? value = await storage.read(key: ApiConst.token);
-    return value;
+    try {
+      return await _storage.read(key: ApiConst.token);
+    } catch (e) {
+      print('Error reading token: $e');
+      return null;
+    }
   }
 
-  static Future<String?> setToken(String? token) async {
-    const FlutterSecureStorage storage = FlutterSecureStorage();
-    await storage.write(key: ApiConst.token, value: token);
-    return null;
+  static Future<void> setToken(String? token) async {
+    try {
+      if (token != null) {
+        await _storage.write(key: ApiConst.token, value: token);
+      } else {
+        // Agar null bo‘lsa, mavjud tokenni o‘chirish
+        await _storage.delete(key: ApiConst.token);
+      }
+    } catch (e) {
+      print('Error writing token: $e');
+    }
+  }
+
+  static Future<void> deleteToken() async {
+    try {
+      await _storage.delete(key: ApiConst.token);
+    } catch (e) {
+      print('Error deleting token: $e');
+    }
   }
 }

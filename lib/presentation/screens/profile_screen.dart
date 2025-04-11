@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
-        backgroundColor: dynamicTheme.backgroundColor,
+        backgroundColor: Color(0xFFF5FAFF),
         appBar: AppBar(
           centerTitle: false,
           automaticallyImplyLeading: false,
@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               color: dynamicTheme.white,
             ),
           ),
-          backgroundColor: dynamicTheme.appBarBackgroundColor,
+          backgroundColor: Color(0xFFF5FAFF),
           actions: [
             Padding(
               padding: EdgeInsets.only(bottom: 12.h),
@@ -283,43 +283,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   left: 10.w, right: 10.w, top: 5),
                               child: Column(
                                 children: [
-                                  SizedBox(
-                                    height: 35,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.bar_chart_rounded,
-                                                size: 20,
-                                                color: dynamicTheme.white),
-                                            SizedBox(
-                                              width: 15.w,
-                                            ),
-                                            Text(
-                                              'Статистика',
-                                              style: TextStyle(
+                                  InkWell(
+                                    child: SizedBox(
+                                      height: 35,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.bar_chart_rounded,
+                                                  size: 20,
                                                   color: dynamicTheme.white),
-                                            ),
-                                          ],
-                                        ),
-                                        IconButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        StaticsScreen(),
-                                                  ));
-                                            },
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: dynamicTheme.white,
-                                              size: 18,
-                                            ))
-                                      ],
+                                              SizedBox(
+                                                width: 15.w,
+                                              ),
+                                              Text(
+                                                'Статистика',
+                                                style: TextStyle(
+                                                    color: dynamicTheme.white),
+                                              ),
+                                            ],
+                                          ),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          StaticsScreen(),
+                                                    ));
+                                              },
+                                              icon: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: dynamicTheme.white,
+                                                size: 18,
+                                              ))
+                                        ],
+                                      ),
                                     ),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                StaticsScreen(),
+                                          ));
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(right: 5),

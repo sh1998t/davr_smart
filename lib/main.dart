@@ -11,7 +11,7 @@ import 'package:incasator/data/network/auth_api.dart';
 import 'package:incasator/data/network/precessing_api.dart';
 import 'package:incasator/data/network/statistika_api.dart';
 import 'package:incasator/data/network/user_me.dart';
-import 'package:incasator/presentation/screens/login_screen.dart';
+import 'package:incasator/presentation/screens/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'data/bloc/collect_cubit.dart';
@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
             ),
           );
         },
-        child: const LoginScreen(),
+        child: const SplashScreen(),
       ),
     );
   }
