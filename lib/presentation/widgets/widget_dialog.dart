@@ -112,14 +112,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
             ),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                dynamicTheme.color303030,
-                dynamicTheme.color202020,
-              ],
-            ),
+            color: Color(0xFFF5FAFF),
           ),
           child: Padding(
             padding: EdgeInsets.only(
@@ -317,7 +310,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
           height: 325.h,
-          color: dynamicTheme.containerColor,
+          color: dynamicTheme.black,
           child: Column(
             spacing: 5,
             crossAxisAlignment: CrossAxisAlignment.start,

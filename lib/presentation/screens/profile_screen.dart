@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,10 +18,27 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  double _height = 56.0;
   @override
   void initState() {
     super.initState();
     context.read<UserMeCubit>().fetchUserMe();
+    getDeviceInfo();
+  }
+
+  Future<void> getDeviceInfo() async {
+    try {
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      final deviceInfo = await deviceInfoPlugin.deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo) {
+        setState(() {
+          _height =
+              deviceInfo.model.toLowerCase().contains('pad') ? 66.0 : 56.0;
+        });
+      }
+    } catch (e) {
+      print("Xato: $e");
+    }
   }
 
   @override
@@ -105,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Center(
                       child: SizedBox(
-                        height: 80.h,
+                        height: (_height == 56) ? 80.h : 110.h,
                         width: 80.w,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100.r),
@@ -443,16 +461,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: dynamicTheme.CardColor,
                           child: InkWell(
                             onTap: () async {
-                              // const storage = FlutterSecureStorage();
-                              // await storage.delete(key: ApiConst.token);
                               showModalBottomSheet(
                                 context: context,
                                 isScrollControlled: true,
                                 builder: (context) {
                                   return Container(
-                                    height: 220.h,
+                                    height: 235.h,
                                     padding: EdgeInsets.only(
-                                        left: 20.w, right: 20.w, top: 8.h),
+                                        left: 20.w, right: 20.w, top: 6.h),
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                         color: dynamicTheme.black,

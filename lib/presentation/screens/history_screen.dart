@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
 import 'package:incasator/data/bloc/deposit_bloc/deposit_cubit.dart';
+import 'package:incasator/presentation/widgets/pad_widget/pad_dialog_historiy_screen.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/model/deposit_model.dart';
@@ -215,39 +216,86 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                             backgroundColor: Colors
                                                 .transparent, // Transparan fon
                                             builder: (BuildContext context) {
-                                              return Container(
-                                                height: 560.h,
-                                                decoration: BoxDecoration(
-                                                  color: Theme.of(context)
-                                                      .scaffoldBackgroundColor,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(35.r),
-                                                    topRight:
-                                                        Radius.circular(35.r),
-                                                    bottomLeft:
-                                                        Radius.circular(0.r),
-                                                    bottomRight:
-                                                        Radius.circular(0.r),
-                                                  ),
-                                                ),
-                                                child: DiologWidget(
-                                                  bankName: deposit.bankName,
-                                                  courierImage:
-                                                      "${deposit.courierPhoto}",
-                                                  depositId: deposit.id,
-                                                  login: deposit.login,
-                                                  statusName:
-                                                      deposit.statusName,
-                                                  date: formatDate(
-                                                      "${deposit.createdAt}"),
-                                                  summa: deposit.amount,
-                                                  comment: deposit.comment,
-                                                  operatorImage:
-                                                      "${deposit.operatorPhoto}",
-                                                ),
-                                              );
+                                              return (_height == 56)
+                                                  ? Container(
+                                                      height: 560.h,
+                                                      decoration: BoxDecoration(
+                                                        color: Theme.of(context)
+                                                            .scaffoldBackgroundColor,
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  35.r),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  35.r),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  0.r),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0.r),
+                                                        ),
+                                                      ),
+                                                      child: DiologWidget(
+                                                        bankName:
+                                                            deposit.bankName,
+                                                        courierImage:
+                                                            "${deposit.courierPhoto}",
+                                                        depositId: deposit.id,
+                                                        login: deposit.login,
+                                                        statusName:
+                                                            deposit.statusName,
+                                                        date: formatDate(
+                                                            "${deposit.createdAt}"),
+                                                        summa: deposit.amount,
+                                                        comment:
+                                                            deposit.comment,
+                                                        operatorImage:
+                                                            "${deposit.operatorPhoto}",
+                                                      ),
+                                                    )
+                                                  : Container(
+                                                      height: 580.h,
+                                                      decoration: BoxDecoration(
+                                                        color: Theme.of(context)
+                                                            .scaffoldBackgroundColor,
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  35.r),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  35.r),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  0.r),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0.r),
+                                                        ),
+                                                      ),
+                                                      child:
+                                                          PadDialogHistoriyScreen(
+                                                        bankName:
+                                                            deposit.bankName,
+                                                        courierImage:
+                                                            "${deposit.courierPhoto}",
+                                                        depositId: deposit.id,
+                                                        login: deposit.login,
+                                                        statusName:
+                                                            deposit.statusName,
+                                                        date: formatDate(
+                                                            "${deposit.createdAt}"),
+                                                        summa: deposit.amount,
+                                                        comment:
+                                                            deposit.comment,
+                                                        operatorImage:
+                                                            "${deposit.operatorPhoto}",
+                                                      ),
+                                                    );
                                             },
                                           );
                                         },

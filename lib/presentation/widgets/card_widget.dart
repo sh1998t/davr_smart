@@ -5,18 +5,31 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../ core/colors.dart';
 
-class CardWidget extends StatelessWidget {
+class CardWidget extends StatefulWidget {
   final String? name;
   final String? date;
   final double? summa;
+  final double? height;
+  final double? height1;
+  final double? width;
+  final double? width1;
   final VoidCallback? onevent;
   const CardWidget(
       {super.key,
       required this.date,
       required this.name,
       required this.summa,
+      required this.height,
+      required this.height1,
+      required this.width,
+      required this.width1,
       required this.onevent});
 
+  @override
+  State<CardWidget> createState() => _CardWidgetState();
+}
+
+class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
@@ -42,10 +55,10 @@ class CardWidget extends StatelessWidget {
                 ),
               ],
             ),
-            height: 55.h,
+            height: widget.height,
             width: MediaQuery.of(context).size.width,
             child: OutlinedButton(
-              onPressed: onevent,
+              onPressed: widget.onevent,
               style: OutlinedButton.styleFrom(
                 padding: EdgeInsets.only(left: 10.w, right: 10.w),
                 shape: RoundedRectangleBorder(
@@ -60,11 +73,15 @@ class CardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
                           child: Container(
-                            height: 40.h,
-                            width: 40.w,
+                            //     height: 40.h,
+                            //     width: 40.w,
+                            height: widget.height1,
+                            width: widget.width,
                             decoration: BoxDecoration(
                               color: Color(0xFFF5FAFF),
                               shape: BoxShape.circle,
@@ -72,7 +89,8 @@ class CardWidget extends StatelessWidget {
                             child: Center(
                               child: SvgPicture.asset(
                                 'assets/images/logo.svg',
-                                width: 20,
+                                //width :20
+                                width: widget.width1,
                                 color: dynamicTheme.white,
                               ),
                             ),
@@ -90,7 +108,7 @@ class CardWidget extends StatelessWidget {
                               height: 3.h,
                             ),
                             Text(
-                              '$name',
+                              '${widget.name}',
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 color: dynamicTheme.white,
@@ -100,7 +118,7 @@ class CardWidget extends StatelessWidget {
                               height: 3.h,
                             ),
                             Text(
-                              '$date',
+                              '${widget.date}',
                               style: TextStyle(
                                 fontSize: 12.sp,
                                 color: dynamicTheme.white60,
@@ -115,7 +133,7 @@ class CardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '$summa',
+                          '${widget.summa}',
                           style: TextStyle(
                             fontSize: 15.sp,
                             color: dynamicTheme.white,

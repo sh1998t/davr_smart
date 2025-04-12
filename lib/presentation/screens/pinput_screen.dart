@@ -92,8 +92,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
   void _forgotPassword() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-          builder: (context) => LoginScreen()), // 🔹 Login screen ga o'tish
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 

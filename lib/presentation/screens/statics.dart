@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,10 +16,27 @@ class StaticsScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<StaticsScreen> {
+  double _height = 56.0;
   @override
   void initState() {
     super.initState();
     context.read<UserMeCubit>().fetchUserMe();
+    getDeviceInfo();
+  }
+
+  Future<void> getDeviceInfo() async {
+    try {
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      final deviceInfo = await deviceInfoPlugin.deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo) {
+        setState(() {
+          _height =
+              deviceInfo.model.toLowerCase().contains('pad') ? 66.0 : 56.0;
+        });
+      }
+    } catch (e) {
+      print("Xato: $e");
+    }
   }
 
   @override
@@ -80,264 +98,138 @@ class _ProfileScreenState extends State<StaticsScreen> {
               );
             } else if (state is StatistikaData) {
               return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 150.h,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: SizedBox(
-                              height: 80.h,
-                              width: 80.w,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(100.r),
-                                child: Image.asset(
-                                  'assets/images/person.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 16.w, right: 16.w),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: SizedBox(
+                          height: (_height == 56) ? 80.h : 110.h,
+                          width: 80.w,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100.r),
+                            child: Image.asset(
+                              'assets/images/person.png',
+                              fit: BoxFit.fill,
                             ),
                           ),
-                          Center(
-                            child: Text("${state.data.courierFullName} ",
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    color: dynamicTheme.white,
-                                    fontWeight: FontWeight.w600)),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          SizedBox(height: 5.h),
-                          Text(
-                            state.data.courierUserName,
+                        ),
+                      ),
+                      Center(
+                        child: Text("${state.data.courierFullName} ",
                             style: TextStyle(
                                 fontSize: 18.sp,
-                                fontWeight: FontWeight.w600,
-                                color: dynamicTheme.white),
-                          ),
-                        ],
+                                color: dynamicTheme.white,
+                                fontWeight: FontWeight.w600)),
                       ),
-                    ),
-                    Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding:
-                            EdgeInsets.only(top: 30, left: 20.w, right: 20.w),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF5FAFF),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      SizedBox(height: 5.h),
+                      Text(
+                        state.data.courierUserName,
+                        style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                            color: dynamicTheme.white),
+                      ),
+                      SizedBox(height: 15.h),
+                      Card(
+                        color: Colors.white,
+                        child: Container(
+                          height: (_height == 56) ? 465.h : 525.h,
+                          width: MediaQuery.of(context).size.width - 32.w,
+                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
+                          child: Column(
+                            spacing: 5.h,
+                            children: [
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.perm_identity,
+                                  text: 'Ид',
+                                  title: '${state.data.courierId}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.public,
+                                  text: 'Регион',
+                                  title: '${state.data.courierRegionName}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.account_tree,
+                                  text: 'Структура',
+                                  title: '${state.data.courierStructureName}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.bar_chart,
+                                  text: 'Сумма в транзите',
+                                  title: '${state.data.totalAcceptedCount}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.account_balance_wallet,
+                                  text: 'Кол в транзите',
+                                  title: '${state.data.totalAcceptedAmount}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.hourglass_bottom,
+                                  text: 'Сумма передана',
+                                  title: '${state.data.totalWaitingCount}'),
+                              //
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.attach_money,
+                                  text: 'Кол  переданных сумм',
+                                  title: '${state.data.totalWaitingAmount}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.add_circle,
+                                  text: 'Сумма подтверждённых',
+                                  title: '${state.data.totalConfirmedCount}'),
+                              RowWidgetStatics(
+                                  height: _height,
+                                  iconData: Icons.check_circle,
+                                  text: 'Кол подтверждённых',
+                                  title: '${state.data.totalConfirmedAmount}'),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.account_balance_wallet,
+                                        size: 18,
+                                        color: Colors.black,
+                                      ),
+                                      SizedBox(
+                                        width: 8.w,
+                                      ),
+                                      Text('Инкассатора  Баланс',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w600)),
+                                    ],
+                                  ),
+                                  Text(
+                                    '${state.data.courierBalance}',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        height: MediaQuery.of(context).size.height - 238.2,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Ид',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.courierId}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Регион',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.courierRegionName,
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Структура',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  state.data.courierStructureName,
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Сумма в транзите ',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalAcceptedCount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Кол в транзите ',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalAcceptedAmount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Сумма передана',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalWaitingCount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Кол  переданных сумм',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalWaitingAmount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Сумма подтверждённых',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalConfirmedCount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Кол подтверждённых',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.totalConfirmedAmount}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Инкассатора  Баланс',
-                                    style: TextStyle(
-                                        color: dynamicTheme.white,
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                  "${state.data.courierBalance}",
-                                  style: TextStyle(
-                                      color: dynamicTheme.white,
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ))
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               );
             }
@@ -345,5 +237,66 @@ class _ProfileScreenState extends State<StaticsScreen> {
             return Container();
           },
         )));
+  }
+}
+
+class RowWidgetStatics extends StatefulWidget {
+  final String text;
+  final String title;
+  final IconData? iconData;
+  final double height;
+  const RowWidgetStatics(
+      {super.key,
+      required this.text,
+      required this.title,
+      required this.height,
+      required this.iconData});
+
+  @override
+  State<RowWidgetStatics> createState() => _RowWidgetStaticsState();
+}
+
+class _RowWidgetStaticsState extends State<RowWidgetStatics> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  widget.iconData,
+                  size: 18,
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
+                Text(widget.text,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w600)),
+              ],
+            ),
+            Text(
+              widget.title,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: (widget.height == 56) ? 18.sp : 15.sp,
+                  fontWeight: FontWeight.w600),
+            )
+          ],
+        ),
+        Divider(
+          color: Colors.black45,
+        ),
+      ],
+    );
   }
 }

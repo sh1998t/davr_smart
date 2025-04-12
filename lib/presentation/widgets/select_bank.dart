@@ -106,7 +106,7 @@ class _SelectBankState extends State<SelectBank> {
                   color: dynamicTheme.black,
                 ),
                 color: dynamicTheme.containerBackground),
-            elevation: 16,
+            elevation: 0,
           ),
           dropdownStyleData: DropdownStyleData(
             maxHeight: 200,

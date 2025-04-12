@@ -1,8 +1,10 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
+import 'package:incasator/presentation/widgets/pad_widget/pad_dialog_precessing_screen.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
@@ -26,10 +28,34 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
   int _currentPage = 0;
   int _totalPages = 0;
   int _totalCount = 0;
+  double _height = 56.0;
+  double _height1 = 40.w;
+  double _width = 40.w;
+  double _width1 = 20;
+  Future<void> getDeviceInfo() async {
+    try {
+      final deviceInfoPlugin = DeviceInfoPlugin();
+      final deviceInfo = await deviceInfoPlugin.deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo) {
+        setState(() {
+          _height =
+              deviceInfo.model.toLowerCase().contains('pad') ? 66.0 : 56.0;
+          _height1 =
+              deviceInfo.model.toLowerCase().contains('pad') ? 60.h : 40.h;
+          _width = deviceInfo.model.toLowerCase().contains('pad') ? 60.w : 40.w;
+          _width1 =
+              deviceInfo.model.toLowerCase().contains('pad') ? 25.0 : 20.0;
+        });
+      }
+    } catch (e) {
+      print("Xato: $e");
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    getDeviceInfo();
     _scrollController.addListener(_onScroll);
     context.read<ProcessingCubit>().fetchProcessing();
   }
@@ -236,35 +262,60 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
             ),
             ...entry.value.map(
               (deposit) => CardWidget(
+                height1: _height1,
+                width: _width,
+                width1: _width1,
+                height: _height,
                 name: deposit.login,
                 date: formatDate("${deposit.createdAt}"),
                 summa: deposit.amount,
                 onevent: () {
-                  print("deposit di ==== ==== ${deposit.id}");
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
                     builder: (BuildContext context) {
-                      return Container(
-                        height: 600.h,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(24.r),
-                            topRight: Radius.circular(24.r),
-                          ),
-                        ),
-                        child: WidgetDialog(
-                          depositId: deposit.id,
-                          login: deposit.login,
-                          statusName: deposit.statusName,
-                          date: formatDate("${deposit.createdAt}"),
-                          summa: deposit.amount,
-                          comment: deposit.comment,
-                          image: deposit.operatorPhoto,
-                        ),
-                      );
+                      return (_height == 56)
+                          ? Container(
+                              height: 600.h,
+                              decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(24.r),
+                                  topRight: Radius.circular(24.r),
+                                ),
+                              ),
+                              child: WidgetDialog(
+                                depositId: deposit.id,
+                                login: deposit.login,
+                                statusName: deposit.statusName,
+                                date: formatDate("${deposit.createdAt}"),
+                                summa: deposit.amount,
+                                comment: deposit.comment,
+                                image: deposit.operatorPhoto,
+                              ),
+                            )
+                          : Container(
+                              height: 600.h,
+                              decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(24.r),
+                                  topRight: Radius.circular(24.r),
+                                ),
+                              ),
+                              child: PadDialogPrecessingScreen(
+                                depositId: deposit.id,
+                                login: deposit.login,
+                                statusName: deposit.statusName,
+                                date: formatDate("${deposit.createdAt}"),
+                                summa: deposit.amount,
+                                comment: deposit.comment,
+                                image: deposit.operatorPhoto,
+                              ),
+                            );
                     },
                   );
                 },

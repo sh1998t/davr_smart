@@ -137,14 +137,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
               topLeft: Radius.circular(26.r),
               topRight: Radius.circular(26.r),
             ),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                dynamicTheme.color303030,
-                dynamicTheme.color202020,
-              ],
-            ),
+            color: Color(0xFFF5FAFF),
           ),
           child: Padding(
             padding: EdgeInsets.only(
@@ -388,7 +381,7 @@ class _ShowDialogDepositScreenState extends State<ShowDialogDepositScreen> {
           padding: EdgeInsets.only(left: 30, bottom: 0),
           width: MediaQuery.of(context).size.width,
           height: 290.h,
-          color: dynamicTheme.containerColor,
+          color: dynamicTheme.black,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -21,6 +21,7 @@ class ProcessingCubit extends Cubit<ProcessingState> {
       if (page == null || page == 1) {
         emit(ProcessingLoading());
       }
+
       final newData = await precessingApi.request(page);
       final newItems = List<DepositReplenishmentsModel>.from(newData['items']);
       if (page == null || page == 1) {
