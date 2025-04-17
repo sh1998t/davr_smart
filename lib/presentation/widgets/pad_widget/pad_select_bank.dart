@@ -19,8 +19,8 @@ class PadSelectBank extends StatefulWidget {
 
 class _PadSelectBankState extends State<PadSelectBank> {
   DropDownButtonValueModel? dropdownValue;
-  List<DropDownButtonValueModel> list = []; // Bo'sh ro'yxat bilan boshlaymiz
-  final BankIdSave bankIdSave = BankIdSave(); // BankIdSave obyekti
+  List<DropDownButtonValueModel> list = [];
+  final BankIdSave bankIdSave = BankIdSave();
 
   @override
   void initState() {
@@ -53,26 +53,25 @@ class _PadSelectBankState extends State<PadSelectBank> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Container(
-      height: 40.h,
-      width: 160.w,
+      height: 50.h,
+      width: 350.w,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
+        color: Color.fromRGBO(255, 255, 255, 1),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<DropDownButtonValueModel>(
           isExpanded: true,
           iconStyleData: IconStyleData(iconDisabledColor: dynamicTheme.white),
           value: dropdownValue,
-          hint: Center(
-            child: Text(
-              'Выбрать банк',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: dynamicTheme.white,
-              ),
-              overflow: TextOverflow.ellipsis,
+          hint: Text(
+            'Выбрать банк',
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(1, 2, 6, 1),
             ),
+            overflow: TextOverflow.ellipsis,
           ),
           items: list.map<DropdownMenuItem<DropDownButtonValueModel>>(
             (DropDownButtonValueModel item) {

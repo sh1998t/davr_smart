@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/%20core/colors.dart';
+import 'package:incasator/presentation/widgets/pad_widget/pad_card_widget.dart';
 import 'package:incasator/presentation/widgets/pad_widget/pad_dialog_precessing_screen.dart';
 import 'package:intl/intl.dart';
 
@@ -41,8 +42,8 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
           _height =
               deviceInfo.model.toLowerCase().contains('pad') ? 66.0 : 56.0;
           _height1 =
-              deviceInfo.model.toLowerCase().contains('pad') ? 60.h : 40.h;
-          _width = deviceInfo.model.toLowerCase().contains('pad') ? 60.w : 40.w;
+              deviceInfo.model.toLowerCase().contains('pad') ? 30.h : 40.h;
+          _width = deviceInfo.model.toLowerCase().contains('pad') ? 50.w : 40.w;
           _width1 =
               deviceInfo.model.toLowerCase().contains('pad') ? 25.0 : 20.0;
         });
@@ -261,65 +262,125 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
               ),
             ),
             ...entry.value.map(
-              (deposit) => CardWidget(
-                height1: _height1,
-                width: _width,
-                width1: _width1,
-                height: _height,
-                name: deposit.login,
-                date: formatDate("${deposit.createdAt}"),
-                summa: deposit.amount,
-                onevent: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    builder: (BuildContext context) {
-                      return (_height == 56)
-                          ? Container(
-                              height: 600.h,
-                              decoration: BoxDecoration(
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(24.r),
-                                  topRight: Radius.circular(24.r),
-                                ),
-                              ),
-                              child: WidgetDialog(
-                                depositId: deposit.id,
-                                login: deposit.login,
-                                statusName: deposit.statusName,
-                                date: formatDate("${deposit.createdAt}"),
-                                summa: deposit.amount,
-                                comment: deposit.comment,
-                                image: deposit.operatorPhoto,
-                              ),
-                            )
-                          : Container(
-                              height: 600.h,
-                              decoration: BoxDecoration(
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(24.r),
-                                  topRight: Radius.circular(24.r),
-                                ),
-                              ),
-                              child: PadDialogPrecessingScreen(
-                                depositId: deposit.id,
-                                login: deposit.login,
-                                statusName: deposit.statusName,
-                                date: formatDate("${deposit.createdAt}"),
-                                summa: deposit.amount,
-                                comment: deposit.comment,
-                                image: deposit.operatorPhoto,
-                              ),
-                            );
-                    },
-                  );
-                },
-              ),
+              (deposit) => (_height == 56)
+                  ? CardWidget(
+                      height1: _height1,
+                      width: _width,
+                      width1: _width1,
+                      height: _height,
+                      name: deposit.login,
+                      date: formatDate("${deposit.createdAt}"),
+                      summa: deposit.amount,
+                      onevent: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (BuildContext context) {
+                            return (_height == 56)
+                                ? Container(
+                                    height: 600.h,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24.r),
+                                        topRight: Radius.circular(24.r),
+                                      ),
+                                    ),
+                                    child: WidgetDialog(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      image: deposit.operatorPhoto,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 600.h,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24.r),
+                                        topRight: Radius.circular(24.r),
+                                      ),
+                                    ),
+                                    child: PadDialogPrecessingScreen(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      image: deposit.operatorPhoto,
+                                    ),
+                                  );
+                          },
+                        );
+                      },
+                    )
+                  : PadCardWidget(
+                      height1: _height1,
+                      width: _width,
+                      width1: _width1,
+                      height: _height,
+                      name: deposit.login,
+                      date: formatDate("${deposit.createdAt}"),
+                      summa: deposit.amount,
+                      onevent: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (BuildContext context) {
+                            return (_height == 56)
+                                ? Container(
+                                    height: 600.h,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24.r),
+                                        topRight: Radius.circular(24.r),
+                                      ),
+                                    ),
+                                    child: WidgetDialog(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      image: deposit.operatorPhoto,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 600.h,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24.r),
+                                        topRight: Radius.circular(24.r),
+                                      ),
+                                    ),
+                                    child: PadDialogPrecessingScreen(
+                                      depositId: deposit.id,
+                                      login: deposit.login,
+                                      statusName: deposit.statusName,
+                                      date: formatDate("${deposit.createdAt}"),
+                                      summa: deposit.amount,
+                                      comment: deposit.comment,
+                                      image: deposit.operatorPhoto,
+                                    ),
+                                  );
+                          },
+                        );
+                      },
+                    ),
             ),
             SizedBox(height: 0.h),
           ],

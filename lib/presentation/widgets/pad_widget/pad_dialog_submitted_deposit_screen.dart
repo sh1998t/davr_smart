@@ -320,8 +320,7 @@ class _PadDialogSubmittedDepositScreen
                                   side: BorderSide.none,
                                   padding: EdgeInsets.all(0),
                                 ),
-                                onPressed:
-                                    convertImageToPdf, // yoki kerakli funksiya
+                                onPressed: convertImageToPdf,
                                 child: Text(
                                   'документ',
                                   style: TextStyle(

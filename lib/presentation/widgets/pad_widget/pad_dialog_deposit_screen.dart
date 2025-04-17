@@ -52,6 +52,7 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
   final picker = ImagePicker();
   XFile? image;
   String? imageUrl;
+
   @override
   void initState() {
     super.initState();
@@ -130,7 +131,7 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
     return Column(
       children: [
         Container(
-          height: 310.h,
+          height: 300.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Color(0xFFF5FAFF),
@@ -140,9 +141,7 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(
-              left: 30.w,
-            ),
+            padding: EdgeInsets.only(left: 30.w, right: 30.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -159,9 +158,6 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                     color: dynamicTheme.white,
                   ),
                 ),
-                SizedBox(
-                  height: 5.h,
-                ),
                 Text(
                   'Статус ',
                   style: TextStyle(
@@ -177,27 +173,17 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                       fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "${widget.summa}",
-                  style: TextStyle(
-                      color: dynamicTheme.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8.h,
+                  height: 11.h,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      height: 40.h,
-                      width: 130.w,
+                      height: 50.h,
+                      width: 225.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground),
+                          borderRadius: BorderRadius.circular(16.r),
+                          color: Color.fromRGBO(255, 255, 255, 1)),
                       child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             side: BorderSide.none,
@@ -208,50 +194,45 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                             'документ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16.sp,
-                                color: dynamicTheme.white),
+                                fontSize: 12.sp,
+                                color: Color.fromRGBO(1, 2, 6, 1)),
                           )),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 10.w,
                     ),
                     image != null
                         ? Container(
-                            height: 40.h,
-                            width: 130.w,
+                            height: 50.h,
+                            width: 80.w,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.r),
+                              borderRadius: BorderRadius.circular(12.r),
                               color: dynamicTheme.containerBackground,
                             ),
                             child: Stack(
                               children: [
-                                Center(
-                                  child: OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide.none,
-                                      padding: EdgeInsets.all(0),
-                                    ),
-                                    onPressed: convertImageToPdf,
-                                    child: Text(
-                                      'документ',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.sp,
-                                        color: dynamicTheme.white,
-                                      ),
-                                    ),
+                                OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                    side: BorderSide.none,
+                                    padding: EdgeInsets.only(left: 5.w),
+                                  ),
+                                  onPressed: convertImageToPdf,
+                                  child: Icon(
+                                    Icons.file_copy_sharp,
+                                    size: 16.sp,
+                                    color: Color.fromRGBO(1, 2, 6, 1),
                                   ),
                                 ),
                                 Positioned(
-                                  left: 100.w,
+                                  left: 50.w,
                                   top: 0.h,
-                                  bottom: 11.h,
+                                  bottom: 0.h,
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
                                     constraints: BoxConstraints(),
                                     icon: Icon(
                                       Icons.close,
-                                      size: 20.sp,
+                                      size: 16.sp,
                                       color: dynamicTheme.white,
                                     ),
                                     onPressed: () {
@@ -265,10 +246,10 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                             ),
                           )
                         : Container(
-                            height: 40.h,
-                            width: 130.w,
+                            height: 50.h,
+                            width: 80.w,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.r),
+                                borderRadius: BorderRadius.circular(12.r),
                                 color: dynamicTheme.containerBackground),
                             child: OutlinedButton(
                                 style: OutlinedButton.styleFrom(
@@ -278,32 +259,31 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                                 onPressed: () {
                                   getCamera();
                                 },
-                                child: Text(
-                                  'Камера',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16.sp,
-                                      color: dynamicTheme.white),
+                                child: Image.asset(
+                                  'assets/images/camera_icon.png',
+                                  width: 25.w,
+                                  height: 25.h,
+                                  fit: BoxFit.cover,
                                 )),
                           ),
                   ],
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 10.h,
                 ),
                 Center(
                   child: PadSelectBank(),
                 ),
                 SizedBox(
-                  height: 8,
+                  height: 10.h,
                 ),
                 Center(
                   child: Container(
-                    height: 40.h,
-                    width: 130.w,
+                    height: 50.h,
+                    width: 350.w,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: dynamicTheme.containerBackground),
+                        borderRadius: BorderRadius.circular(12.r),
+                        color: Color.fromRGBO(87, 46, 166, 1)),
                     child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           side: BorderSide.none,
@@ -369,7 +349,7 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16.sp,
-                              color: dynamicTheme.white),
+                              color: Color.fromRGBO(255, 255, 255, 1)),
                         )),
                   ),
                 )
@@ -378,54 +358,71 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 30, bottom: 0),
+          padding: EdgeInsets.only(left: 30, bottom: 0, right: 30.w),
           width: MediaQuery.of(context).size.width,
-          height: 290.h,
+          height: 300.h,
           color: dynamicTheme.black,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            spacing: 0,
             children: [
               SizedBox(height: 8),
               Text(
-                'логин',
-                style: TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
+                'Логин',
+                style: TextStyle(
+                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.login}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
                 height: 8.h,
               ),
               Text(
                 'дата ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.date}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
                 height: 8.h,
               ),
               Text(
                 'Сумма',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(fontSize: 12.sp, color: dynamicTheme.white38),
               ),
               Text(
                 "${widget.summa}",
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
                 height: 8.h,
               ),
               Text(
                 'комментария ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.comment}",
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
             ],
           ),
