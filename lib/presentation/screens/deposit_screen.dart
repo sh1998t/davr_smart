@@ -319,7 +319,7 @@ class _DepositScreenState extends State<DepositScreen> {
                                       ? Container(
                                           // (widget.courierPhoto != null) ? 340.h : 300.h,
                                           height: (deposit.courierPhoto != null)
-                                              ? 575.h
+                                              ? 580.h
                                               : 600.h,
                                           decoration: BoxDecoration(
                                             color: Theme.of(context)
@@ -361,8 +361,8 @@ class _DepositScreenState extends State<DepositScreen> {
                                         )
                                       : Container(
                                           height: (deposit.courierPhoto != null)
-                                              ? 590.h
-                                              : 600.h,
+                                              ? 540.h
+                                              : 570.h,
                                           decoration: BoxDecoration(
                                             color: Theme.of(context)
                                                 .scaffoldBackgroundColor, // yoki dynamicTheme.backgroundColor

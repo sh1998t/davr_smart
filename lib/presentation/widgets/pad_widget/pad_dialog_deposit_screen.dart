@@ -360,66 +360,77 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
         Container(
           padding: EdgeInsets.only(left: 30, bottom: 0, right: 30.w),
           width: MediaQuery.of(context).size.width,
-          height: 300.h,
+          height: 270.h,
           color: dynamicTheme.black,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            spacing: 0,
+            spacing: 0.h,
             children: [
-              SizedBox(height: 8),
+              SizedBox(height: 12.h),
               Text(
                 'Логин',
                 style: TextStyle(
-                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.login}',
                 style: TextStyle(
+                    height: 0,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: Color.fromRGBO(0, 0, 0, 1)),
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+              SizedBox(height: 15.h),
               Text(
-                'дата ',
+                'Дата ',
                 style: TextStyle(
-                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
+                    height: 0,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 12.sp,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.date}',
                 style: TextStyle(
+                    height: 0,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: Color.fromRGBO(0, 0, 0, 1)),
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+              SizedBox(height: 15.h),
               Text(
                 'Сумма',
-                style: TextStyle(fontSize: 12.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    height: 0,
+                    fontSize: 12.sp,
+                    color: dynamicTheme.white38),
               ),
               Text(
                 "${widget.summa}",
                 style: TextStyle(
+                    height: 0,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: Color.fromRGBO(0, 0, 0, 1)),
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+              SizedBox(height: 15.h),
               Text(
                 'комментария ',
                 style: TextStyle(
-                    fontSize: 12.sp, color: Color.fromRGBO(109, 109, 109, 1)),
+                    fontWeight: FontWeight.w300,
+                    height: 0,
+                    fontSize: 12.sp,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.comment}",
                 style: TextStyle(
+                    height: 0,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: Color.fromRGBO(0, 0, 0, 1)),

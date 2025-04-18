@@ -65,7 +65,6 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
     if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent - 50 &&
         !_isLoadingMore) {
-      print('Scroll oxiriga yaqinlashdi');
       _loadMoreData();
     }
   }
@@ -75,21 +74,14 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         _isLoadingMore ||
         _currentPage >= _totalPages ||
         _allDeposits.length >= _totalCount) {
-      print('Yuklash tugadi: Total ${_allDeposits.length}/$_totalCount');
       return;
     }
 
     setState(() => _isLoadingMore = true);
     final cubit = context.read<ProcessingCubit>();
     final nextPage = _currentPage + 1;
-
-    print(
-        'Joriy: $_currentPage, Keyingi: $nextPage, Jami sahifalar: $_totalPages, Total: $_totalCount');
-
     try {
-      print('Yuklash boshlandi: Page $nextPage');
       await cubit.fetchProcessing(page: nextPage);
-      print('Yuklash tugadi: Page $nextPage');
       await Future.delayed(const Duration(seconds: 2));
     } catch (e) {
       print('Xato: $e');
@@ -279,7 +271,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                           builder: (BuildContext context) {
                             return (_height == 56)
                                 ? Container(
-                                    height: 600.h,
+                                    height: 550.h,
                                     decoration: BoxDecoration(
                                       color: Theme.of(context)
                                           .scaffoldBackgroundColor,
@@ -299,10 +291,8 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                                     ),
                                   )
                                 : Container(
-                                    height: 600.h,
+                                    height: 530.h,
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .scaffoldBackgroundColor,
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(24.r),
                                         topRight: Radius.circular(24.r),
@@ -358,7 +348,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                                     ),
                                   )
                                 : Container(
-                                    height: 600.h,
+                                    height: 500.h,
                                     decoration: BoxDecoration(
                                       color: Theme.of(context)
                                           .scaffoldBackgroundColor,

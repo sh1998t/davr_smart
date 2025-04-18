@@ -1,5 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:incasator/data/network/user_me.dart';
 
+import '../data/model/user_model.dart';
 import 'api_const.dart';
 
 class AuthUtil {
@@ -33,5 +35,9 @@ class AuthUtil {
     } catch (e) {
       print('Error deleting token: $e');
     }
+  }
+
+  static Future<UserMeModel> checkIsAuth() {
+    return (UserMeRequest()).request();
   }
 }

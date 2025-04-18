@@ -168,7 +168,7 @@ class _PadDialogSubmittedDepositScreen
       // (widget.courierPhoto != null) ? 200.h :
       children: [
         Container(
-          height: (widget.courierPhoto != null) ? 230.h : 260.h,
+          height: (widget.courierPhoto != null) ? 230.h : 240.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -178,9 +178,7 @@ class _PadDialogSubmittedDepositScreen
             color: Color(0xFFF5FAFF),
           ),
           child: Padding(
-            padding: EdgeInsets.only(
-              left: 30.w,
-            ),
+            padding: EdgeInsets.only(left: 20.w, right: 20.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -217,25 +215,15 @@ class _PadDialogSubmittedDepositScreen
                 SizedBox(
                   height: 5.h,
                 ),
-                Text(
-                  "${widget.summa}",
-                  style: TextStyle(
-                      color: dynamicTheme.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      height: 40.h,
-                      width: 130.w,
+                      height: 50.h,
+                      width: 160.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground),
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(255, 255, 255, 1)),
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           side: BorderSide.none,
@@ -253,14 +241,14 @@ class _PadDialogSubmittedDepositScreen
                         ),
                       ),
                     ),
-                    SizedBox(width: 15.w),
+                    SizedBox(width: 10.w),
                     if (widget.courierPhoto != null)
                       Container(
-                        height: 40.h,
-                        width: 130.w,
+                        height: 50.h,
+                        width: 160.w,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground,
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(255, 255, 255, 1),
                         ),
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -282,11 +270,11 @@ class _PadDialogSubmittedDepositScreen
                       ),
                     if (widget.courierPhoto == null && image == null)
                       Container(
-                        height: 40.h,
-                        width: 130.w,
+                        height: 50.h,
+                        width: 160.w,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground,
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(255, 255, 255, 1),
                         ),
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -361,11 +349,11 @@ class _PadDialogSubmittedDepositScreen
                 if (widget.courierPhoto == null)
                   Center(
                     child: Container(
-                      height: 40.h,
-                      width: 130.w,
+                      height: 50.h,
+                      width: 350.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground),
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(87, 46, 166, 1)),
                       child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             side: BorderSide.none,
@@ -439,7 +427,7 @@ class _PadDialogSubmittedDepositScreen
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.sp,
-                                color: dynamicTheme.white),
+                                color: Color.fromRGBO(255, 255, 255, 1)),
                           )),
                     ),
                   ),
@@ -451,55 +439,87 @@ class _PadDialogSubmittedDepositScreen
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: (widget.courierPhoto != null) ? 358.h : 340.h,
+          height: (widget.courierPhoto != null) ? 339.h : 320.h,
           color: dynamicTheme.black,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 8),
               Text(
-                'логин',
-                style: TextStyle(fontSize: 18.sp, color: dynamicTheme.white38),
+                'Логин',
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.login}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 8.h,
+                height: 15.h,
               ),
               Text(
                 'дата ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.date}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 8.h,
+                height: 15.h,
               ),
               Text(
                 'Сумма',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.summa}",
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 8.h,
+                height: 15.h,
               ),
               Text(
                 'комментария ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.comment}",
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 8.h,
+                height: 15.h,
               ),
               (widget.bankName == null)
                   ? Text('')
@@ -510,12 +530,18 @@ class _PadDialogSubmittedDepositScreen
                         Text(
                           'Bank ',
                           style: TextStyle(
-                              fontSize: 14.sp, color: dynamicTheme.white38),
+                              height: 0,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w300,
+                              color: Color.fromRGBO(109, 109, 109, 1)),
                         ),
                         Text(
                           "${widget.bankName}",
                           style: TextStyle(
-                              fontSize: 16.sp, color: dynamicTheme.white),
+                              height: 0,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(0, 0, 0, 1)),
                         ),
                       ],
                     )

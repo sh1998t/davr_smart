@@ -106,7 +106,7 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
     return Column(
       children: [
         Container(
-          height: 275.h,
+          height: 250.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -116,9 +116,7 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
             color: Color(0xFFF5FAFF),
           ),
           child: Padding(
-            padding: EdgeInsets.only(
-              left: 30.w,
-            ),
+            padding: EdgeInsets.only(left: 20.w, right: 20.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -155,25 +153,15 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
                 SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "${widget.summa}",
-                  style: TextStyle(
-                      color: dynamicTheme.white,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: 40.h,
-                      width: 130.w,
+                      height: 50.h,
+                      width: 160.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground),
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(255, 255, 255, 1)),
                       child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             padding: EdgeInsets.all(0),
@@ -223,53 +211,19 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
                       width: 10,
                     ),
                     Container(
-                      height: 40.h,
-                      width: 130.w,
+                      height: 50.h,
+                      width: 160.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: dynamicTheme.containerBackground),
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Color.fromRGBO(255, 255, 255, 1)),
                       child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            side: BorderSide.none,
                             padding: EdgeInsets.all(0),
+                            side: BorderSide.none,
                           ),
-                          onPressed: () {
-                            CourierAcceptDeposit()
-                                .request("${widget.depositId}")
-                                .then(
-                              (value) async {
-                                if (value == true) {
-                                  CherryToast.success(
-                                    animationDuration:
-                                        Duration(milliseconds: 300),
-                                    inheritThemeColors: true,
-                                    animationType: AnimationType.fromTop,
-                                    title: Text('Успех!'),
-                                    description:
-                                        Text('Данные успешно загружены!'),
-                                  ).show(context);
-
-                                  await context
-                                      .read<ProcessingCubit>()
-                                      .fetchProcessing();
-                                  Navigator.pop(context);
-                                } else {
-                                  CherryToast.warning(
-                                    inheritThemeColors: true,
-                                    description: const Text(
-                                      'Ошибка',
-                                    ),
-                                    animationType: AnimationType.fromTop,
-                                    action: const Text(
-                                        'Резервное копирование данных'),
-                                    actionHandler: () {},
-                                  ).show(context);
-                                }
-                              },
-                            );
-                          },
+                          onPressed: openImageFromUrl,
                           child: Text(
-                            'Принять',
+                            'Документ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.sp,
@@ -281,27 +235,57 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
                 SizedBox(
                   height: 12,
                 ),
-                Center(
-                  child: Container(
-                    height: 40.h,
-                    width: 130.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: dynamicTheme.containerBackground),
-                    child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          padding: EdgeInsets.all(0),
-                          side: BorderSide.none,
-                        ),
-                        onPressed: openImageFromUrl,
-                        child: Text(
-                          'Документ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.sp,
-                              color: dynamicTheme.white),
-                        )),
-                  ),
+                Container(
+                  height: 50.h,
+                  width: 350.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      color: Color.fromRGBO(87, 46, 166, 1)),
+                  child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide.none,
+                        padding: EdgeInsets.all(0),
+                      ),
+                      onPressed: () {
+                        CourierAcceptDeposit()
+                            .request("${widget.depositId}")
+                            .then(
+                          (value) async {
+                            if (value == true) {
+                              CherryToast.success(
+                                animationDuration: Duration(milliseconds: 300),
+                                inheritThemeColors: true,
+                                animationType: AnimationType.fromTop,
+                                title: Text('Успех!'),
+                                description: Text('Данные успешно загружены!'),
+                              ).show(context);
+
+                              await context
+                                  .read<ProcessingCubit>()
+                                  .fetchProcessing();
+                              Navigator.pop(context);
+                            } else {
+                              CherryToast.warning(
+                                inheritThemeColors: true,
+                                description: const Text(
+                                  'Ошибка',
+                                ),
+                                animationType: AnimationType.fromTop,
+                                action:
+                                    const Text('Резервное копирование данных'),
+                                actionHandler: () {},
+                              ).show(context);
+                            }
+                          },
+                        );
+                      },
+                      child: Text(
+                        'Принять',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.sp,
+                            color: Color.fromRGBO(255, 255, 255, 1)),
+                      )),
                 ),
               ],
             ),
@@ -310,49 +294,74 @@ class _PadDialogPrecessingScreenState extends State<PadDialogPrecessingScreen> {
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: 325.h,
+          height: 250.h,
           color: dynamicTheme.black,
           child: Column(
-            spacing: 5,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 5),
+              SizedBox(height: 15.h),
               Text(
                 'Логин',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.login}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
-              SizedBox(
-                height: 5.h,
-              ),
+              SizedBox(height: 15.h),
               Text(
                 'Дата ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 '${widget.date}',
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 5.h,
+                height: 15.h,
               ),
               Text(
                 'Сумма',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.summa}",
-                style: TextStyle(fontSize: 16.sp, color: dynamicTheme.white),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 1)),
               ),
               SizedBox(
-                height: 5.h,
+                height: 15.h,
               ),
               Text(
                 'Комментария ',
-                style: TextStyle(fontSize: 14.sp, color: dynamicTheme.white38),
+                style: TextStyle(
+                    height: 0,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w300,
+                    color: Color.fromRGBO(109, 109, 109, 1)),
               ),
               Text(
                 "${widget.comment}",

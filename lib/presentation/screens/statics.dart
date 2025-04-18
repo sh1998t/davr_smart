@@ -45,14 +45,17 @@ class _ProfileScreenState extends State<StaticsScreen> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Scaffold(
-        backgroundColor: Color(0xFFF5FAFF),
+        backgroundColor: Color.fromRGBO(245, 250, 254, 1),
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: dynamicTheme.white),
           backgroundColor: Color(0xFFF5FAFF),
           title: Text(
-            'Статистика',
-            style: TextStyle(color: dynamicTheme.white),
+            'Статистика ',
+            style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+                color: Color.fromRGBO(1, 2, 6, 1)),
           ),
         ),
         body:
@@ -99,135 +102,80 @@ class _ProfileScreenState extends State<StaticsScreen> {
             } else if (state is StatistikaData) {
               return SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 16.w, right: 16.w),
+                  padding: EdgeInsets.only(left: 26.w, right: 16.w),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8.h,
                     children: [
-                      Center(
-                        child: SizedBox(
-                          height: (_height == 56) ? 80.h : 110.h,
-                          width: 80.w,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100.r),
-                            child: Image.asset(
-                              'assets/images/person.png',
-                              fit: BoxFit.fill,
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: (_height == 56) ? 80.h : 100.h,
+                            width: 74.w,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(70.r),
+                              child: Image.asset(
+                                'assets/images/person.png',
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Center(
-                        child: Text("${state.data.courierFullName} ",
-                            style: TextStyle(
-                                fontSize: 18.sp,
-                                color: dynamicTheme.white,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      SizedBox(height: 5.h),
-                      Text(
-                        state.data.courierUserName,
-                        style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                            color: dynamicTheme.white),
-                      ),
-                      SizedBox(height: 15.h),
-                      Card(
-                        color: Colors.white,
-                        child: Container(
-                          height: (_height == 56) ? 465.h : 525.h,
-                          width: MediaQuery.of(context).size.width - 32.w,
-                          padding: EdgeInsets.only(left: 12.w, right: 12.w),
-                          child: Column(
-                            spacing: 5.h,
+                          SizedBox(
+                            width: 15.w,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.perm_identity,
-                                  text: 'Ид',
-                                  title: '${state.data.courierId}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.public,
-                                  text: 'Регион',
-                                  title: '${state.data.courierRegionName}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.account_tree,
-                                  text: 'Структура',
-                                  title: '${state.data.courierStructureName}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.bar_chart,
-                                  text: 'Сумма в транзите',
-                                  title: '${state.data.totalAcceptedCount}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.account_balance_wallet,
-                                  text: 'Кол в транзите',
-                                  title: '${state.data.totalAcceptedAmount}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.hourglass_bottom,
-                                  text: 'Сумма передана',
-                                  title: '${state.data.totalWaitingCount}'),
-                              //
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.attach_money,
-                                  text: 'Кол  переданных сумм',
-                                  title: '${state.data.totalWaitingAmount}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.add_circle,
-                                  text: 'Сумма подтверждённых',
-                                  title: '${state.data.totalConfirmedCount}'),
-                              RowWidgetStatics(
-                                  height: _height,
-                                  iconData: Icons.check_circle,
-                                  text: 'Кол подтверждённых',
-                                  title: '${state.data.totalConfirmedAmount}'),
-
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        Icons.account_balance_wallet,
-                                        size: 18,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(
-                                        width: 8.w,
-                                      ),
-                                      Text('Инкассатора  Баланс',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.w600)),
-                                    ],
-                                  ),
-                                  Text(
-                                    '${state.data.courierBalance}',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.w600),
-                                  )
-                                ],
+                              Text("${state.data.courierFullName} ",
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      color: Color.fromRGBO(1, 2, 6, 1),
+                                      fontWeight: FontWeight.w500)),
+                              Text(
+                                state.data.courierUserName,
+                                style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color.fromRGBO(109, 109, 109, 1)),
                               ),
                             ],
-                          ),
-                        ),
-                      )
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 10.h),
+
+                      ColumnWidgetStatics(
+                          text: 'Ид', title: '${state.data.courierId}'),
+                      ColumnWidgetStatics(
+                          text: 'Регион',
+                          title: '${state.data.courierRegionName}'),
+                      ColumnWidgetStatics(
+                          text: 'Структура',
+                          title: '${state.data.courierStructureName}'),
+                      ColumnWidgetStatics(
+                          text: 'Сумма в транзите',
+                          title: '${state.data.totalAcceptedCount}'),
+                      ColumnWidgetStatics(
+                          text: 'Кол в транзите',
+                          title: '${state.data.totalAcceptedAmount}'),
+                      ColumnWidgetStatics(
+                          text: 'Сумма передана',
+                          title: '${state.data.totalWaitingCount}'),
+                      //
+                      ColumnWidgetStatics(
+                          text: 'Кол  переданных сумм',
+                          title: '${state.data.totalWaitingAmount}'),
+                      ColumnWidgetStatics(
+                          text: 'Сумма подтверждённых',
+                          title: '${state.data.totalConfirmedCount}'),
+                      ColumnWidgetStatics(
+                          text: 'Кол подтверждённых',
+                          title: '${state.data.totalConfirmedAmount}'),
+                      ColumnWidgetStatics(
+                          text: 'Инкассатора  Баланс',
+                          title: '${state.data.courierBalance}')
                     ],
                   ),
                 ),
@@ -240,61 +188,42 @@ class _ProfileScreenState extends State<StaticsScreen> {
   }
 }
 
-class RowWidgetStatics extends StatefulWidget {
+class ColumnWidgetStatics extends StatefulWidget {
   final String text;
   final String title;
-  final IconData? iconData;
-  final double height;
-  const RowWidgetStatics(
-      {super.key,
-      required this.text,
-      required this.title,
-      required this.height,
-      required this.iconData});
+
+  const ColumnWidgetStatics({
+    super.key,
+    required this.text,
+    required this.title,
+  });
 
   @override
-  State<RowWidgetStatics> createState() => _RowWidgetStaticsState();
+  State<ColumnWidgetStatics> createState() => _ColumnWidgetStaticsState();
 }
 
-class _RowWidgetStaticsState extends State<RowWidgetStatics> {
+class _ColumnWidgetStaticsState extends State<ColumnWidgetStatics> {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  widget.iconData,
-                  size: 18,
-                  color: Colors.black,
-                ),
-                SizedBox(
-                  width: 8.w,
-                ),
-                Text(widget.text,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w600)),
-              ],
-            ),
-            Text(
-              widget.title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: (widget.height == 56) ? 18.sp : 15.sp,
-                  fontWeight: FontWeight.w600),
-            )
-          ],
+        Text(
+          "${widget.text} :",
+          style: TextStyle(
+              height: 1.5.h,
+              fontSize: 11.sp,
+              fontWeight: FontWeight.w300,
+              color: Color.fromRGBO(109, 109, 109, 1)),
         ),
-        Divider(
-          color: Colors.black45,
+        Text(
+          widget.title,
+          style: TextStyle(
+              height: 0,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w500,
+              color: Color.fromRGBO(0, 0, 0, 1)),
         ),
       ],
     );
