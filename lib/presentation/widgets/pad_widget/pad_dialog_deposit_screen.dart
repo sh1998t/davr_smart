@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:cherry_toast/resources/arrays.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,75 +50,57 @@ class PadDialogDepositScreen extends StatefulWidget {
 class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
   final picker = ImagePicker();
   XFile? image;
-  String? imageUrl;
 
-  @override
-  void initState() {
-    super.initState();
+  Future<void> getCamera() async {
+    final pickerCamera = await picker.pickImage(
+      source: ImageSource.camera,
+      maxHeight: 1000,
+      imageQuality: 100,
+    );
 
-    if (widget.operatorImage != null && widget.operatorImage is String) {
-      imageUrl = "${widget.operatorImage}";
+    if (pickerCamera != null) {
+      setState(() {
+        image = pickerCamera;
+      });
+      context.read<CollectCubit>().addChekPhoto(image!.path);
     }
   }
 
-  Future getCamera() async {
-    final XFile? pickerCamera = await picker.pickImage(
-        source: ImageSource.camera, maxHeight: 1000, imageQuality: 100);
-    setState(() {
-      if (pickerCamera != null) {
-        image = XFile(pickerCamera.path);
-        context.read<CollectCubit>().addChekPhoto(image!.path);
-      } else {
-        print('No image selected.');
-      }
-    });
-  }
-
   Future<void> convertImageToPdf() async {
+    if (image == null) return;
+
     final pdf = pw.Document();
-    final imageBytes = pw.MemoryImage(File(image!.path).readAsBytesSync());
+    final imageBytes = pw.MemoryImage(await File(image!.path).readAsBytes());
 
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) {
-          return pw.Center(child: pw.Image(imageBytes));
-        },
-      ),
-    );
+    pdf.addPage(pw.Page(build: (_) => pw.Center(child: pw.Image(imageBytes))));
 
-    final directory = await getExternalStorageDirectory();
-    final file = File("${directory!.path}/image_to_pdf.pdf");
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = "${directory.path}/image_to_pdf.pdf";
+    final file = File(filePath);
     await file.writeAsBytes(await pdf.save());
 
-    final result = await OpenFile.open(file.path);
+    await OpenFile.open(filePath);
   }
 
-  Future<void> openImageFromUrl() async {
+  Future<void> openOperatorImage() async {
+    if (widget.operatorImage == null) return;
+
     try {
-      if (File(imageUrl!).existsSync()) {
-        final result = await OpenFile.open(imageUrl!);
-        return;
-      }
-      Dio dio = Dio();
-      final response = await dio.get(
-        imageUrl!,
-        options: Options(responseType: ResponseType.bytes),
-      );
+      final operatorImageUrl = widget.operatorImage!;
 
-      if (response.statusCode == 200) {
-        final directory = await getExternalStorageDirectory();
-        final file = File("${directory!.path}/downloaded_image.jpg");
-        await file.writeAsBytes(response.data);
-
-        final result = await OpenFile.open(file.path);
-      }
-    } catch (e) {}
+      print(operatorImageUrl);
+      await OpenFile.open(operatorImageUrl);
+    } catch (e) {
+      CherryToast.error(
+        title: const Text("Ошибка"),
+        description: Text("Не удалось открыть изображение: $e"),
+      ).show(context);
+    }
   }
 
   void clearImage() {
     setState(() {
       image = null;
-      imageUrl = null;
     });
   }
 
@@ -189,7 +170,10 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                             side: BorderSide.none,
                             padding: EdgeInsets.all(0),
                           ),
-                          onPressed: openImageFromUrl,
+                          onPressed: () {
+                            openOperatorImage();
+                            print(" salom  ${widget.operatorImage}");
+                          },
                           child: Text(
                             'документ',
                             style: TextStyle(
@@ -216,7 +200,10 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                                     side: BorderSide.none,
                                     padding: EdgeInsets.only(left: 5.w),
                                   ),
-                                  onPressed: convertImageToPdf,
+                                  onPressed: () {
+                                    convertImageToPdf();
+                                    print('object');
+                                  },
                                   child: Icon(
                                     Icons.file_copy_sharp,
                                     size: 16.sp,

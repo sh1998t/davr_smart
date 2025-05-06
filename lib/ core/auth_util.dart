@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:incasator/data/network/user_me.dart';
 
-import '../data/model/user_model.dart';
+import '../data/model/statistika_model.dart';
+import '../data/network/statistika_api.dart';
 import 'api_const.dart';
 
 class AuthUtil {
@@ -37,7 +37,7 @@ class AuthUtil {
     }
   }
 
-  static Future<UserMeModel> checkIsAuth() {
-    return (UserMeRequest()).request();
+  static Future<CourierData> checkIsAuth() {
+    return (StatistikaApi()).request(3);
   }
 }

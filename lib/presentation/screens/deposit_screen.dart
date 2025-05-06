@@ -317,7 +317,6 @@ class _DepositScreenState extends State<DepositScreen> {
                                 builder: (BuildContext context) {
                                   return (_height == 56)
                                       ? Container(
-                                          // (widget.courierPhoto != null) ? 340.h : 300.h,
                                           height: (deposit.courierPhoto != null)
                                               ? 580.h
                                               : 600.h,

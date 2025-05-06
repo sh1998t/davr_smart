@@ -269,45 +269,26 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           builder: (BuildContext context) {
-                            return (_height == 56)
-                                ? Container(
-                                    height: 550.h,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .scaffoldBackgroundColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(24.r),
-                                        topRight: Radius.circular(24.r),
-                                      ),
-                                    ),
-                                    child: WidgetDialog(
-                                      depositId: deposit.id,
-                                      login: deposit.login,
-                                      statusName: deposit.statusName,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      comment: deposit.comment,
-                                      image: deposit.operatorPhoto,
-                                    ),
-                                  )
-                                : Container(
-                                    height: 530.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(24.r),
-                                        topRight: Radius.circular(24.r),
-                                      ),
-                                    ),
-                                    child: PadDialogPrecessingScreen(
-                                      depositId: deposit.id,
-                                      login: deposit.login,
-                                      statusName: deposit.statusName,
-                                      date: formatDate("${deposit.createdAt}"),
-                                      summa: deposit.amount,
-                                      comment: deposit.comment,
-                                      image: deposit.operatorPhoto,
-                                    ),
-                                  );
+                            return Container(
+                              height: 550.h,
+                              decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(24.r),
+                                  topRight: Radius.circular(24.r),
+                                ),
+                              ),
+                              child: WidgetDialog(
+                                depositId: deposit.id,
+                                login: deposit.login,
+                                statusName: deposit.statusName,
+                                date: formatDate("${deposit.createdAt}"),
+                                summa: deposit.amount,
+                                comment: deposit.comment,
+                                image: deposit.operatorPhoto,
+                              ),
+                            );
                           },
                         );
                       },

@@ -105,7 +105,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
     return Column(
       children: [
         Container(
-          height: 275.h,
+          height: 250.h,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -309,7 +309,7 @@ class _WidgetDialogState extends State<WidgetDialog> {
         Container(
           padding: EdgeInsets.only(left: 30),
           width: MediaQuery.of(context).size.width,
-          height: 325.h,
+          height: 300.h,
           color: dynamicTheme.black,
           child: Column(
             spacing: 5,

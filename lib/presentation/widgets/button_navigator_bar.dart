@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/presentation/screens/deposit_screen.dart';
-import 'package:incasator/presentation/screens/login_screen.dart';
 import 'package:incasator/presentation/screens/precessing_screen.dart';
 import 'package:incasator/presentation/screens/profile_screen.dart';
 import 'package:incasator/presentation/screens/qr_code_scaner.dart';
 
-import '../../ core/auth_util.dart';
 import '../../ core/colors.dart';
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import '../screens/history_screen.dart';
@@ -39,12 +37,12 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    AuthUtil.checkIsAuth().then((value) {}).catchError((error) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
-      );
-    });
+    // AuthUtil.checkIsAuth().then((value) {}).catchError((error) {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const LoginScreen()),
+    //   );
+    // });
 
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
         ? MainColor.darkTheme

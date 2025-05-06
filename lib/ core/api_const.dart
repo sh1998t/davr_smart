@@ -1,5 +1,5 @@
 class ApiConst {
-  static const String base_Url = "https://newapi.davrsmart.uz/api/v1";
+  static const String base_Url = "https://prodapi.davrsmart.uz/api/v1";
   static const String token = "token";
   static const String login = "/login";
   static const String new_deposit = "/client/new-deposits";
@@ -11,3 +11,6 @@ class ApiConst {
   static const String UserMe = "/me";
   static const String Get_Cancel_deposit = "/client/cancel-operator-deposit";
 }
+//https://newapi.davrsmart.uz/api/v1
+// prod api
+//https://prodapi.davrsmart.uz/api/v1
