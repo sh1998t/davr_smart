@@ -1,52 +1,64 @@
-import 'dart:async';
-
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
+import '../main.dart';
+import '../presentation/screens/login_screen.dart';
 import 'api_const.dart';
 import 'auth_util.dart';
 
 class BaseApiRequest {
-  Future<Dio> initRequest(List<Map<String, String>>? headers) async {
+  late Dio dio;
+
+  BaseApiRequest() {
     final options = BaseOptions(
       baseUrl: ApiConst.base_Url,
       connectTimeout: const Duration(seconds: 45),
       receiveTimeout: const Duration(seconds: 45),
+      validateStatus: (status) => true, // MUHIM!
     );
-    final dio = Dio(options);
-    if (headers!.isNotEmpty) {
-      for (var element in headers) {
-        element.forEach((key, value) {
-          dio.options.headers[key] = value;
-        });
-      }
-    } else {}
-    final token = await AuthUtil.getToken();
-    dio.options.headers['Authorization'] = "Bearer $token";
-    return dio;
+
+    dio = Dio(options);
+
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = await AuthUtil.getToken();
+        if (token != null) {
+          options.headers['Authorization'] = "Bearer $token";
+        }
+        handler.next(options);
+      },
+      onResponse: (response, handler) async {
+        if (response.statusCode == 401) {
+          await AuthUtil.deleteToken();
+
+          navigatorKey.currentState?.pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => const LoginScreen()),
+            (route) => false,
+          );
+        }
+        handler.next(response);
+      },
+      onError: (error, handler) {
+        handler.next(error);
+      },
+    ));
   }
 
-  Future getRequest(String url) async {
-    final dio = await initRequest([]);
-    return dio.get(
-      url,
-    );
+  Future<Response> getRequest(String url) async {
+    return await dio.get(url);
   }
 
-  Future getFilterRequest(
+  Future<Response> getFilterRequest(
       String url, Map<String, dynamic>? queryParameters) async {
-    final dio = await initRequest([]);
-    return dio.get(url, queryParameters: queryParameters);
+    return await dio.get(url, queryParameters: queryParameters);
   }
 
-  Future postRequest(String url, Object? data) async {
-    final dio = await initRequest([]);
-    return dio.post(url, data: data);
+  Future<Response> postRequest(String url, Object? data) async {
+    return await dio.post(url, data: data);
   }
 
-  Future postMultipartRequest(String url, Object? data) async {
-    final dio = await initRequest([
-      {"Content-Type": "multipart/form-data"}
-    ]);
-    return dio.post(url, data: data);
+  Future<Response> postMultipartRequest(String url, Object? data) async {
+    dio.options.headers['Content-Type'] = 'multipart/form-data';
+    return await dio.post(url, data: data);
   }
 }

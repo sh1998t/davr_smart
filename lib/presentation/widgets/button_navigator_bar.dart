@@ -37,13 +37,6 @@ class _ButtonNavigationBarState extends State<ButtonNavigationBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // AuthUtil.checkIsAuth().then((value) {}).catchError((error) {
-    //   Navigator.pushReplacement(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => const LoginScreen()),
-    //   );
-    // });
-
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
         ? MainColor.darkTheme
         : MainColor.lightTheme;

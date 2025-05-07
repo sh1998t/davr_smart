@@ -18,7 +18,6 @@ class StatistikaApi extends BaseApiRequest {
       }
       return CourierData.fromJson(response.data['data']);
     } catch (e) {
-      print('StatistikaApi xatosi: $e');
       rethrow;
     }
   }

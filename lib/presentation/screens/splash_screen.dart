@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../ core/auth_util.dart';
+import '../../ core/base_api_requrest.dart';
+import '../widgets/button_navigator_bar.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,14 +18,33 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    checkAuth();
+  }
 
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ));
-    });
+  Future<void> checkAuth() async {
+    final token = await AuthUtil.getToken();
+
+    if (token == null) {
+      navigateTo(const LoginScreen());
+    } else {
+      try {
+        final response = await BaseApiRequest().getRequest('/me');
+        if (response.statusCode == 200) {
+          navigateTo(const ButtonNavigationBarWidget());
+        } else {
+          navigateTo(const LoginScreen());
+        }
+      } catch (_) {
+        navigateTo(const LoginScreen());
+      }
+    }
+  }
+
+  void navigateTo(Widget screen) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => screen),
+    );
   }
 
   @override
@@ -36,9 +58,9 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Image.asset(
                 "assets/images/logo_davr.png",
-                width: 175.w,
-                height: 267.h,
-                fit: BoxFit.cover,
+                width: 140.w,
+                height: 220.h,
+                fit: BoxFit.contain,
               ),
               SizedBox(
                 height: 130.h,

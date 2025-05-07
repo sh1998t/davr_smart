@@ -21,7 +21,6 @@ class AuthUtil {
       if (token != null) {
         await _storage.write(key: ApiConst.token, value: token);
       } else {
-        // Agar null bo‘lsa, mavjud tokenni o‘chirish
         await _storage.delete(key: ApiConst.token);
       }
     } catch (e) {

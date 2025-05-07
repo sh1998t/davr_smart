@@ -3,11 +3,10 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:incasator/data/bloc/statistika_bloc/statistika__cubit.dart';
+import 'package:incasator/data/bloc/userme/user_me_cubit.dart';
 import 'package:incasator/presentation/screens/statics.dart';
 
 import '../../ core/colors.dart';
-import '../../data/bloc/userme/user_me_cubit.dart';
 import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -73,48 +72,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
             )
           ],
         ),
-        body:
-            BlocListener<UserMeCubit, UserMeState>(listener: (context, state) {
-          if (state is UserMeLoaded) {
-            final userId = state.userMe.id;
-            context.read<StatistikaCubit>().data(userId);
-          }
-        }, child: BlocBuilder<StatistikaCubit, StatistikaState>(
+        body: BlocBuilder<UserMeCubit, UserMeState>(
           builder: (context, state) {
-            if (state is StatistikaLoading) {
+            if (state is UserMeLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is StatistikaData && state.data == null) {
-              return Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/noData.png',
-                      height: 180.h,
-                      width: 200.w,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text('Нет новых поступлений',
-                        style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                            color: dynamicTheme.white))
-                  ],
-                ),
-              );
-            } else if (state is StatistikaError) {
+            } else if (state is UserMeError) {
+              print(state.message);
               return Center(
                 child: Text(
-                  '${state.error}',
+                  state.message,
                   style: TextStyle(color: dynamicTheme.white),
                 ),
               );
-            } else if (state is StatistikaData) {
+            } else if (state is UserMeData) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
@@ -138,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 5.h,
                     ),
                     Text(
-                      state.data.courierUserName,
+                      "${state.userMe.login}",
                       style: TextStyle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
@@ -146,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Text(
-                      "${state.data.courierCode}",
+                      "${state.userMe.code}",
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
@@ -377,17 +349,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 )),
                                           ],
                                         ),
-                                        Text(
-                                          "${state.data.courierBalance}   ",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 14.sp,
-                                              color:
-                                                  (state.data.courierBalance >
-                                                          0)
-                                                      ? dynamicTheme.white
-                                                      : Colors.red),
-                                        )
+                                        // Text(
+                                        //   "${state.data.courierBalance}   ",
+                                        //   style: TextStyle(
+                                        //       fontWeight: FontWeight.w600,
+                                        //       fontSize: 14.sp,
+                                        //       color:
+                                        //           (state.data.courierBalance >
+                                        //                   0)
+                                        //               ? dynamicTheme.white
+                                        //               : Colors.red),
+                                        // )
                                       ],
                                     ),
                                   ),
@@ -628,6 +600,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             return Container();
           },
-        )));
+        ));
   }
 }

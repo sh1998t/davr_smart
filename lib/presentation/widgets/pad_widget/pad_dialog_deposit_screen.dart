@@ -78,8 +78,8 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
     final filePath = "${directory.path}/image_to_pdf.pdf";
     final file = File(filePath);
     await file.writeAsBytes(await pdf.save());
-
-    await OpenFile.open(filePath);
+    final result = await OpenFile.open(filePath);
+    print('OpenFile result: ${result.type}, message: ${result.message}');
   }
 
   Future<void> openOperatorImage() async {
@@ -171,8 +171,8 @@ class _ShowDialogDepositScreenState extends State<PadDialogDepositScreen> {
                             padding: EdgeInsets.all(0),
                           ),
                           onPressed: () {
-                            openOperatorImage();
-                            print(" salom  ${widget.operatorImage}");
+                            // openOperatorImage();
+                            // print(" salom  ${widget.operatorImage}");
                           },
                           child: Text(
                             'документ',

@@ -7,9 +7,9 @@ class UserMeInitial extends UserMeState {}
 
 class UserMeLoading extends UserMeState {}
 
-class UserMeLoaded extends UserMeState {
+class UserMeData extends UserMeState {
   final UserMeModel userMe;
-  UserMeLoaded(this.userMe);
+  UserMeData(this.userMe);
 }
 
 class UserMeError extends UserMeState {

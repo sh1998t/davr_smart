@@ -10,8 +10,6 @@ class PrecessingApi extends BaseApiRequest {
     var endPoint = '${ApiConst.new_deposit}?page=$currentPage&limit=$limit';
     final response = await super.getRequest(endPoint);
 
-    print('API javobi (Page $currentPage): ${response?.data}'); // Debug
-
     if (response?.statusCode != 200) {
       throw Exception('Server xatosi: ${response?.statusCode}');
     }
@@ -26,7 +24,6 @@ class PrecessingApi extends BaseApiRequest {
 
     List<DepositReplenishmentsModel> replenishments = [];
     var data = response?.data['data'] ?? [];
-    print('Ma’lumotlar soni (Page $currentPage): ${data.length}'); // Debug
     for (final item in data) {
       replenishments.add(DepositReplenishmentsModel.fromJson(item));
     }

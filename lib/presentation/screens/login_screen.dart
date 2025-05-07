@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:incasator/presentation/widgets/login_input_widget.dart';
 
+import '../../ core/auth_util.dart';
 import '../../ core/colors.dart';
 import '../../data/network/auth_api.dart';
 import '../widgets/button_navigator_bar.dart';
@@ -31,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     ThemeColors dynamicTheme = AdaptiveTheme.of(context).mode.isDark
@@ -169,63 +171,84 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  15.r)), // Agar radius kerak bo'lsa
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.r)),
                             ),
                             backgroundColor: Color(0xFF572DA6),
-                            side: BorderSide.none, // Borderni olib tashlash
+                            side: BorderSide.none,
                           ),
-                          onPressed: () async {
-                            try {
-                              await (AuthApiRequest()).request(
-                                loginController.text,
-                                passwordController.text,
-                              );
+                          onPressed: isLoading
+                              ? null
+                              : () async {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  try {
+                                    final token =
+                                        await AuthApiRequest().request(
+                                      loginController.text,
+                                      passwordController.text,
+                                    );
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ButtonNavigationBarWidget(),
+                                    await AuthUtil.setToken(token);
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ButtonNavigationBarWidget(),
+                                      ),
+                                    );
+                                  } catch (error) {
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    String errorMessage = error
+                                        .toString()
+                                        .replaceAll("Exception: ", "");
+                                    CherryToast.error(
+                                      animationDuration:
+                                          Duration(milliseconds: 300),
+                                      inheritThemeColors: true,
+                                      animationType: AnimationType.fromTop,
+                                      title: Text('Xatolik!'),
+                                      description: Text(errorMessage),
+                                    ).show(context);
+                                  } finally {
+                                    if (mounted) {
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                    }
+                                  }
+                                },
+                          child: isLoading
+                              ? CircularProgressIndicator(
+                                  padding: EdgeInsets.all(6.r),
+                                  color: Colors.white,
+                                  strokeWidth: 3,
+                                )
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Kirish",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16.sp,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    SizedBox(width: 12.w),
+                                    Image.asset(
+                                      'assets/images/Arrow_logo.png',
+                                      height: 16.h,
+                                      width: 16.w,
+                                      fit: BoxFit.cover,
+                                      color: Colors.white,
+                                    ),
+                                  ],
                                 ),
-                              );
-                            } catch (error) {
-                              String errorMessage = error
-                                  .toString()
-                                  .replaceAll("Exception: ", "");
-                              print("error === = == = = = =${errorMessage}");
-                              CherryToast.error(
-                                animationDuration: Duration(milliseconds: 300),
-                                inheritThemeColors: true,
-                                animationType: AnimationType.fromTop,
-                                title: Text('Ошибка!'),
-                                description: Text(errorMessage),
-                              ).show(context);
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Kirish",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16.sp,
-                                    color: Colors.white),
-                              ),
-                              SizedBox(
-                                width: 12.w,
-                              ),
-                              Image.asset(
-                                'assets/images/Arrow_logo.png',
-                                height: 16.h,
-                                width: 16.w,
-                                fit: BoxFit.cover,
-                                color: Colors.white,
-                              )
-                            ],
-                          ),
                         ),
                       ),
                     ),

@@ -1,7 +1,23 @@
 [
     {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-xhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-xhdpi/android12splash.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-mdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-mdpi/android12splash.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-night-mdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-night-mdpi/android12splash.png"
+    },
+    {
         "merged": "com.example.incasator.app-merged_res-49:/drawable-v21_launch_background.xml.flat",
         "source": "com.example.incasator.app-main-44:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-hdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-hdpi/android12splash.png"
     },
     {
         "merged": "com.example.incasator.app-merged_res-49:/drawable-hdpi_splash.png.flat",
@@ -32,8 +48,24 @@
         "source": "com.example.incasator.app-main-44:/drawable-xxhdpi/splash.png"
     },
     {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-xxxhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-xxxhdpi/android12splash.png"
+    },
+    {
         "merged": "com.example.incasator.app-merged_res-49:/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "com.example.incasator.app-main-44:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-xxhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-xxhdpi/android12splash.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-night-xxxhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-night-xxxhdpi/android12splash.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-night-hdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-night-hdpi/android12splash.png"
     },
     {
         "merged": "com.example.incasator.app-merged_res-49:/mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -44,7 +76,15 @@
         "source": "com.example.incasator.app-main-44:/drawable-xhdpi/splash.png"
     },
     {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-night-xhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-night-xhdpi/android12splash.png"
+    },
+    {
         "merged": "com.example.incasator.app-merged_res-49:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.incasator.app-main-44:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.incasator.app-merged_res-49:/drawable-night-xxhdpi_android12splash.png.flat",
+        "source": "com.example.incasator.app-main-44:/drawable-night-xxhdpi/android12splash.png"
     }
 ]

@@ -1,10 +1,10 @@
 class UserMeModel {
-  final int id;
-  final String firstName;
-  final String lastName;
-  final String login;
+  final int? id;
+  final String? firstName;
+  final String? lastName;
+  final String? login;
   final String? phone;
-  final String code;
+  final String? code;
   final StructureId? structureId;
   final RegionId? regionId;
   final Status? status;
@@ -15,12 +15,12 @@ class UserMeModel {
   final DateInfo? updatedAt;
 
   UserMeModel({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.login,
-    required this.phone,
-    required this.code,
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.login,
+    this.phone,
+    this.code,
     this.structureId,
     this.regionId,
     this.status,
@@ -33,12 +33,12 @@ class UserMeModel {
 
   factory UserMeModel.fromJson(Map<String, dynamic> json) {
     return UserMeModel(
-      id: json['id'] as int,
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
-      login: json['login'] as String,
-      phone: json['phone'] as String?,
-      code: json['code'] as String,
+      id: json['id'] as int?,
+      firstName: json['first_name'] as String? ?? '',
+      lastName: json['last_name'] as String? ?? '',
+      login: json['login'] as String? ?? '',
+      phone: json['phone'] as String? ?? '',
+      code: json['code'] as String? ?? '',
       structureId: json['structure_id'] != null
           ? StructureId.fromJson(json['structure_id'])
           : null,

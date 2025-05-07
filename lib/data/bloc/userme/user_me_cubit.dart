@@ -15,15 +15,15 @@ class UserMeCubit extends Cubit<UserMeState> {
     emit(UserMeLoading());
     try {
       final userMe = await userMeRequest.request();
-      emit(UserMeLoaded(userMe));
+      emit(UserMeData(userMe));
     } catch (e) {
       emit(UserMeError(e.toString()));
     }
   }
 
   int? getUserId() {
-    if (state is UserMeLoaded) {
-      return (state as UserMeLoaded).userMe.id;
+    if (state is UserMeData) {
+      return (state as UserMeData).userMe.id;
     }
     return null;
   }

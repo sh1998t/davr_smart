@@ -18,8 +18,9 @@ import 'data/bloc/collect_cubit.dart';
 import 'data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
 import 'data/network/deposit_api.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
-  // await initDi();
   WidgetsFlutterBinding.ensureInitialized();
   await Future.delayed(Duration(seconds: 3));
   await initializeDateFormatting('uz_UZ', null);
@@ -71,14 +72,15 @@ class MyApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp(
+              navigatorKey: navigatorKey,
               debugShowCheckedModeBanner: false,
-              theme: theme, // Light tema
-              darkTheme: darkTheme, // Dark tema
+              theme: theme,
+              darkTheme: darkTheme,
               home: child,
             ),
           );
         },
-        child: const SplashScreen(),
+        child: SplashScreen(),
       ),
     );
   }

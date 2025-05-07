@@ -60,9 +60,9 @@ class _ProfileScreenState extends State<StaticsScreen> {
         ),
         body:
             BlocListener<UserMeCubit, UserMeState>(listener: (context, state) {
-          if (state is UserMeLoaded) {
+          if (state is UserMeData) {
             final userId = state.userMe.id;
-            context.read<StatistikaCubit>().data(userId);
+            context.read<StatistikaCubit>().data(userId!);
           }
         }, child: BlocBuilder<StatistikaCubit, StatistikaState>(
           builder: (context, state) {
