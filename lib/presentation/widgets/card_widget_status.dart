@@ -36,14 +36,13 @@ class _CardWidgetStatusState extends State<CardWidgetStatus> {
 
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(left: 20.w, right: 20.w),
+        padding: EdgeInsets.only(left: 25.w, right: 25.w),
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 3.w, right: 3.w),
               decoration: BoxDecoration(
                 color: dynamicTheme.CardColor,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
                 boxShadow: [
                   BoxShadow(
                     color: dynamicTheme.CardColor == Colors.white
@@ -57,36 +56,29 @@ class _CardWidgetStatusState extends State<CardWidgetStatus> {
               ),
               height: widget.height,
               width: MediaQuery.of(context).size.width,
-              child: OutlinedButton(
-                onPressed: widget.onevent,
-                style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.only(left: 10.w, right: 10.w),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  side: BorderSide.none,
-                ),
+              child: InkWell(
+                onTap: widget.onevent,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
+                  padding: EdgeInsets.only(
+                      top: 4, left: 6.w, right: 14.w, bottom: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Center(
-                            child: Container(
-                              height: 40.h,
-                              width: 40.w,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF5FAFF),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  'assets/images/logo.svg',
-                                  width: 20,
-                                ),
+                          Container(
+                            height: 40.h,
+                            width: 40.w,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF5FAFF),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/images/logo.svg',
+                                width: 20,
                               ),
                             ),
                           ),

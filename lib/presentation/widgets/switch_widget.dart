@@ -42,10 +42,11 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
         ? MainColor.darkTheme
         : MainColor.lightTheme;
     return Container(
-      height: 48,
+      height: 45.h,
+      width: MediaQuery.of(context).size.width - 80.w,
       decoration: BoxDecoration(
         color: dynamicTheme.grey600,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
         children: List.generate(widget.labels.length, (index) {

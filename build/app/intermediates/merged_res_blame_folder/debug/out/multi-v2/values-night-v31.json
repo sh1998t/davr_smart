@@ -6,20 +6,20 @@
                 {
                     "source": "/Users/davrsmart/projects/incasator/android/app/src/main/res/values-night-v31/styles.xml",
                     "from": {
-                        "startLines": "3,17",
+                        "startLines": "3,15",
                         "startColumns": "4,4",
-                        "startOffsets": "172,1046",
-                        "endLines": "10,19",
+                        "startOffsets": "172,880",
+                        "endLines": "8,17",
                         "endColumns": "12,12",
-                        "endOffsets": "695,1210"
+                        "endOffsets": "529,1044"
                     },
                     "to": {
-                        "startLines": "2,10",
+                        "startLines": "2,8",
                         "startColumns": "4,4",
-                        "startOffsets": "55,583",
-                        "endLines": "9,12",
+                        "startOffsets": "55,417",
+                        "endLines": "7,10",
                         "endColumns": "12,12",
-                        "endOffsets": "578,747"
+                        "endOffsets": "412,581"
                     }
                 }
             ]

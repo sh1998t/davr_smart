@@ -9,6 +9,7 @@ import 'package:incasator/presentation/widgets/pad_widget/pad_dialog_precessing_
 import 'package:intl/intl.dart';
 
 import '../../data/bloc/precessing_bloc/precessing_bloc_cubit.dart';
+import '../../data/bloc/userme/user_me_cubit.dart';
 import '../../data/model/deposit_model.dart';
 import '../widgets/card_widget.dart';
 import '../widgets/widget_dialog.dart';
@@ -58,6 +59,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
     super.initState();
     getDeviceInfo();
     _scrollController.addListener(_onScroll);
+    context.read<UserMeCubit>().fetchUserMe();
     context.read<ProcessingCubit>().fetchProcessing();
   }
 
@@ -143,7 +145,7 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
         backgroundColor: Color(0xFFF5FAFF),
         centerTitle: true,
         leading: const SizedBox(),
-        toolbarHeight: 40.h,
+        toolbarHeight: 55.h,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 12.h),
@@ -158,8 +160,8 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
           "Поступление",
           style: TextStyle(
             color: dynamicTheme.white,
-            fontSize: 18.sp,
-            fontFamily: 'Regular',
+            fontSize: 17.sp,
+            height: 0,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -242,6 +244,41 @@ class _PrecessingScreenState extends State<PrecessingScreen> {
           spacing: 0,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            BlocBuilder<UserMeCubit, UserMeState>(
+              builder: (context, state) {
+                if (state is UserMeLoading) {
+                  return CircularProgressIndicator();
+                } else if (state is UserMeError) {
+                  return Text(
+                    state.message,
+                    style:
+                        TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                  );
+                } else if (state is UserMeData) {
+                  return Center(
+                    child: Container(
+                      height: 36.h,
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          color: Colors.deepPurple),
+                      child: Center(
+                        child: Text(
+                          "${state.userMe.code}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17.sp,
+                            height: 0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
+                return SizedBox();
+              },
+            ),
             Padding(
               padding: EdgeInsets.only(left: 12.w, bottom: 4.h),
               child: Text(
